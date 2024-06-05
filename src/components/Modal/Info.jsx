@@ -1,10 +1,10 @@
 import './Modal.css';
+import ModalLayout from './ModalLayout';
 
-const Info = (title, content) => {
+
+const Info = ({ title, className, style, content }) => {
     return (
-        <div>
-            <h2></h2>
-        </div>
+        <ModalLayout open={true} className={className} style={style} title={title} content={content} />
     )
 }
 
