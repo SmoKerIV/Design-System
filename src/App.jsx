@@ -1,13 +1,24 @@
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Menu from './components/navigation/menus/menus';
 
-import './App.css'
+const App = () => {
+  const menuItems = [
+    { label: 'Home', url: '/' },
+    { label: 'About', url: '/about' },
+    { label: 'Services', url: '/services' },
+    { label: 'Contact', url: '/contact' }
+  ];
 
-function App() {
+  const handleItemClick = (item) => {
+    console.log(`Selected item: ${item.label}`);
+  };
 
   return (
     <>
 
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
