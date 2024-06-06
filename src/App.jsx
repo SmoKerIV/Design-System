@@ -25,7 +25,7 @@ function App() {
     { label: "Services", url: "/services" },
     { label: "Contact", url: "/contact" },
   ];
-  
+
   const handleItemClick = (item) => {
     console.log(`Selected item: ${item.label}`);
   };
@@ -53,6 +53,7 @@ function App() {
             alignItems: "center",
             height: "100%",
             width: "100%",
+            margin: "20px",
           }}
         >
           <Router>
@@ -86,6 +87,42 @@ function App() {
             </div>
           </Router>
         </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          gap: "15px",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+          width: "100%",
+        }}
+      >
+        <h1
+          style={{
+            textAlign: "center",
+            padding: "10px",
+            margin: "0",
+          }}
+        >
+          Buttons
+        </h1>
+        <PrimaryButton title="Primary Button" onClick={onclick}></PrimaryButton>
+        <SecondaryButton
+          title="Secondary Button"
+          onClick={onclick}
+        ></SecondaryButton>
+        <LinkButton title="Link Button" onClick={onclick}></LinkButton>
+        <TextButton title="Text Button" onClick={onclick}></TextButton>
+        <DashedButton title="Dashed Button" onClick={onclick}></DashedButton>
+        <Card
+          imageSrc="https://via.placeholder.com/300"
+          title="Card Title 1"
+          description="This is a longer description of the card content. Click the button to toggle more or less content."
+        />
       </div>
       <div>
         <h1
