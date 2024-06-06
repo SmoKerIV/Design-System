@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from './generalButton';
 
-const LinkButton = ({ title }) => {
-  return <Button type="link" title={title} />;
+const LinkButton = ({ title , onClick }) => {
+  return <Button type="link" title={title} onClick={onClick} />;
 };
 
 export default LinkButton;

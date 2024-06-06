@@ -3,6 +3,8 @@
     font-size: 16px;
     border: none;
     cursor: pointer;
+    border-radius: 2px;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 0.2);;
   }
   
   .btn.primary {
@@ -27,6 +29,7 @@
     color: #007bff;
     border: none;
     padding: 0;
+    box-shadow: none;
   }
   
   .btn.text {
@@ -34,5 +37,6 @@
     color: black;
     border: none;
     padding: 0;
+    box-shadow: none;
   }
   
