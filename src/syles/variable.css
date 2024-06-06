@@ -2,10 +2,10 @@
 
 :root {
   /* Colors */
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --success-color: #28a745;
-  --danger-color: #dc3545;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --danger: #dc3545;
   /* Typography */
   --font-family: "Roboto", sans-serif;
   --font-size: 16px;

@@ -1,6 +1,4 @@
-:root {
-  --Primary6: #1890ff;
-}
+
 
 * {
   margin: 0%;
@@ -40,7 +38,7 @@
   border: 0;
   color: #fff;
   font-size: 14px;
-  background-color: var(--Primary6);
+  background-color: var(--primary);
   padding: 4px 15px 4px 15px;
   box-shadow: 0px 2px 0px 0px #0000000b;
   border: 1px;

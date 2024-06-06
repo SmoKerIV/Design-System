@@ -7,6 +7,17 @@ import Success from "./components/Modal/Success";
 import ErrorModal from "./components/Modal/ErrorMondal";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Menu from "./components/navigation/menus/menus";
+<<<<<<< Updated upstream
+=======
+import PrimaryButton from "./components/buttons/primary-button";
+import LinkButton from "./components/buttons/link-button";
+import SecondaryButton from "./components/buttons/sec-button";
+import TextButton from "./components/buttons/text-button";
+import DashedButton from "./components/buttons/dashedbutton";
+import Card from "./components/card/card";
+import InlineMenu from "./components/navigation/menus/inlinemenu";
+
+>>>>>>> Stashed changes
 function App() {
   const menuItems = [
     { label: "Home", url: "/" },
@@ -54,6 +65,23 @@ function App() {
                   <Route path="/services" />
                   <Route path="/contact" />
                 </Routes>
+              </div>
+            </div>
+            <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: "15px",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            width: "100%",
+            margin: "20px",
+          }}>
+            <InlineMenu items={menuItems} onSelect={handleItemClick} />
+              <div>
+                 
               </div>
             </div>
           </Router>
