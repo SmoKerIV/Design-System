@@ -1,0 +1,46 @@
+.notification-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    width: 300px;
+    position: relative;
+    font-family: Arial, sans-serif;
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.notification-title {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.notification-message {
+    margin: 0 0 16px 0;
+}
+
+.notification-actions {
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.notification-confirm {
+    background-color: #4285f4;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}

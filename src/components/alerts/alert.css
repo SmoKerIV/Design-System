@@ -1,0 +1,50 @@
+.alert {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: Arial, sans-serif;
+  height: 100px; 
+  width: 300px;
+  box-sizing: border-box; 
+  font-family: 'Roboto', sans-serif;
+}
+
+.alert-icon {
+  margin-right: 10px;
+}
+
+.alert-content {
+  text-align: left;
+}
+
+.alert-title {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.alert-description {
+  margin: 5px 0 0;
+}
+
+.SuccessAlert {
+  background-color: #f6ffed;
+  border-color: #b7eb8f;
+}
+
+.informational-note {
+  background-color: #e8f4fa;
+  border-color: #bee5eb;
+}
+
+.warning {
+  background-color: #fff8e5;
+  border-color: #ffeeba;
+}
+
+.error {
+  background-color: #fdecea;
+  border-color: #f5c6cb;
+}
