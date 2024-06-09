@@ -31,14 +31,14 @@ const SelectedMenu = ({ items, onSelect }) => {
   return (
     <div className="selected-menu" ref={menuRef}>
       <div className="selected-menu-toggle" onClick={() => setIsOpen(!isOpen)}>
-        <div>
+        <div className='selector-title'>
         <img src={message} alt="message" className="menu-icon" />
         {selectedItem ? selectedItem.label : 'Navigation One'}
         </div>
         <img
           src={arrowr}
           alt="Arrow"
-          className={`arrow ${isOpen ? 'arrow-up' : 'arrow-down'}`}
+          className={'arrow'}
         />
       </div>
       {isOpen && (

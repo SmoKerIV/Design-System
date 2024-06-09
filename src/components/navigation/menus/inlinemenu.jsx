@@ -32,7 +32,7 @@ const InlineMenu = ({ items, onSelect }) => {
     <div className="selector-menu" ref={menuRef}>
       <div className="selector-menu-toggle" onClick={() => setIsOpen(!isOpen)}>
         
-        <div>
+        <div className='selector-title'>
         <img src={message} alt="message" className="menu-icon" />
         {selectedItem ? selectedItem.label : 'Navigation One'}
         </div>

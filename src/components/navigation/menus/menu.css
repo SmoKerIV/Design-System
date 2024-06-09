@@ -113,10 +113,14 @@ body {
   margin-right: 10px;
 }
 
-.arrow {
+img .arrow {
   margin-left: 10px;
   width: 12px;
   height: 12px;
+}
+
+.selector-title {
+  display: flex;
 }
 
 .selector-menu-list {
@@ -147,16 +151,7 @@ body {
   background-color: #e6f7ff;
   color: #1890ff;
 }
-/* General Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
-body {
-  font-family: Arial, sans-serif;
-}
 
 /* Menu Container */
 .selected-menu {
@@ -197,7 +192,7 @@ body {
 .selected-menu-list {
   position: absolute;
   top: 0;
-  left: 250px;
+  left: 255px;
   right: -200px;
   background-color: #fff;
   border: 1px solid #ddd;

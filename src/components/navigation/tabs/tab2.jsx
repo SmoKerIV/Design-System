@@ -3,15 +3,15 @@ import './tabs.css';
 import icon from './assets/tb.svg';
 import aicon from './assets/atb.svg';
 
-const Tabs = ({ tabs }) => {
+const VerticalTabs = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(0);
-  const [tabPosition, setTabPosition] = useState({ left: 0, width: 0 });
+  const [tabPosition, setTabPosition] = useState({ top: 0, height: 0 });
   const tabsRef = useRef(null);
 
   useEffect(() => {
     const activeTabElement = tabsRef.current.children[activeTab];
-    const { offsetLeft: left, offsetWidth: width } = activeTabElement;
-    setTabPosition({ left, width });
+    const { offsetTop: top, offsetHeight: height } = activeTabElement;
+    setTabPosition({ top, height });
   }, [activeTab]);
 
   const handleClick = (index) => {
@@ -19,12 +19,12 @@ const Tabs = ({ tabs }) => {
   };
 
   return (
-    <div className="tabs">
-      <div className="tabs-header" ref={tabsRef}>
+    <div className="vertical-tabs">
+      <div className="vertical-tabs-header" ref={tabsRef}>
         {tabs.map((tab, index) => (
           <div
             key={index}
-            className={`tab ${index === activeTab ? 'active' : ''}`}
+            className={`vertical-tab ${index === activeTab ? 'active' : ''}`}
             onClick={() => handleClick(index)}
           >
             <img src={index === activeTab ? aicon : icon} alt="icon" className="icon" />
@@ -32,15 +32,15 @@ const Tabs = ({ tabs }) => {
           </div>
         ))}
         <div
-          className="active-tabs-indicator"
-          style={{ left: tabPosition.left, width: tabPosition.width }}
+          className="active-tab-indicator"
+          style={{ top: tabPosition.top, height: tabPosition.height }}
         />
       </div>
-      <div className="tabs-content">
+      <div className="vertical-tabs-content">
         {tabs[activeTab].content}
       </div>
     </div>
   );
 };
 
-export default Tabs;
+export default VerticalTabs;

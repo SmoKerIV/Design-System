@@ -17,6 +17,7 @@ import InlineMenu from "./components/navigation/menus/inlinemenu";
 import SelectedMenu from "./components/navigation/menus/selected";
 import Breadcrumbs from "./components/navigation/breadcrumbs/bread";
 import Tabs from "./components/navigation/tabs/tabs";
+import VerticalTabs from "./components/navigation/tabs/tab2";
 
 function App() {
   const items = [
@@ -156,7 +157,7 @@ function App() {
               margin: "10px",
             }}
           >
-            Tabs
+            Tabs Example
           </h1>
           <div
             style={{
@@ -172,6 +173,23 @@ function App() {
             }}
           >
             <Tabs tabs={tabs} />
+          </div>
+        </div>
+        <div style={
+          {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: "15px",
+            height: "100%",
+            width: "100%",
+            margin: "20px",
+          }
+        
+        }>
+          <div>
+            <VerticalTabs tabs={tabs} />
           </div>
         </div>
       </div>
