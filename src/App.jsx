@@ -2,6 +2,8 @@ import './App.css';
 import style from './components/PureModal/pureModal.module.css'
 import { PureModal } from './components/PureModal/pureModal';
 import { useState } from 'react';
+import { Row } from './components/layouts/Row';
+import Col from './components/layouts/Column';
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -22,6 +24,37 @@ function App() {
             <h1>Hello Modal</h1>
           </PureModal>
         </div>
+
+        <div>
+          <Row gutter={[16, 16]}>
+            <Col span={8}>
+              <div>hello</div>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, nulla!
+              </p>
+            </Col>
+            <Col span={8}>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, sint.</p>
+            </Col>
+            <Col span={8} >
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, accusantium.</Col>
+            <Col span={0}>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, reiciendis.</p></Col>
+            <Col span={24}>
+              <p>Lorem ipsum dolor sit amet.</p>
+            </Col>
+            <Col span={6} >
+              <p>Lorem ipsum dolor sit amet.</p>
+            </Col>
+            <Col span={6}>
+              Lorem ipsum dolor sit amet.
+            </Col>
+            <Col span={6}>
+              Lorem ipsum dolor sit amet.</Col>
+            <Col span={6}>
+              Lorem ipsum dolor sit amet.</Col>
+          </Row>
+        </div>
+
       </div>
     </div>
   );
