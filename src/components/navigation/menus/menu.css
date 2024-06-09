@@ -45,7 +45,7 @@ body {
   background-color: var(--primary);
   color: var(--menu-active-color, #fff);
 }
-.menu-item.active a{
+.menu-item.active a {
   color: var(--menu-active-color, #fff);
 }
 
@@ -97,12 +97,12 @@ body {
   padding: 0px 16px;
   width: 256px;
   height: 40px;
-
   border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;
   background-color: #fff;
   transition: background-color 0.3s, color 0.3s;
+  box-shadow: 0px 3px 6px -4px #0000001f;
 }
 
 .selector-menu-toggle:hover {
@@ -138,8 +138,8 @@ body {
 }
 
 .selector-menu-item:hover {
-  box-shadow: -3px 0px 0px 0px #1890FF inset;
-  background-color:#E6F7FF;
+  box-shadow: -3px 0px 0px 0px #1890ff inset;
+  background-color: #e6f7ff;
   color: var(--primary);
 }
 
@@ -147,4 +147,79 @@ body {
   background-color: #e6f7ff;
   color: #1890ff;
 }
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Menu Container */
+.selected-menu {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.selected-menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 16px;
+  width: 256px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+  box-shadow: 0px 3px 6px -4px #0000001f;
+}
+
+.selected-menu-toggle:hover {
+  background-color: #f0f0f0;
+}
+
+.menu-icon {
+  margin-right: 10px;
+}
+
+.arrow {
+  margin-left: 10px;
+  width: 12px;
+  height: 12px;
+}
+
+.selected-menu-list {
+  position: absolute;
+  top: 0;
+  left: 250px;
+  right: -200px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.selected-menu-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.selected-menu-item:hover {
+  box-shadow: -3px 0px 0px 0px #1890ff inset;
+  background-color: #e6f7ff;
+  color: var(--primary);
+}
+
+.selected-menu-item.selected {
+  background-color: #e6f7ff;
+  color: #1890ff;
+}

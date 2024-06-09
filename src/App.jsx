@@ -14,19 +14,35 @@ import TextButton from "./components/buttons/text-button";
 import DashedButton from "./components/buttons/dashedbutton";
 import Card from "./components/card/card";
 import InlineMenu from "./components/navigation/menus/inlinemenu";
+import SelectedMenu from "./components/navigation/menus/selected";
+import Breadcrumbs from "./components/navigation/breadcrumbs/bread";
 
 function App() {
+  const items = [
+    { label: "Option 1" },
+    { label: "Option 2" },
+    { label: "Option 3" },
+    { label: "Option 4" },
+  ];
+
   const menuItems = [
     { label: "Home", url: "/" },
     { label: "About", url: "/about" },
     { label: "Services", url: "/services" },
     { label: "Contact", url: "/contact" },
   ];
-
+  const breadItems = [
+    { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
+    { label: "Services", path: "/services" },
+    { label: "Contact", path: "/contact" },
+  ];
   const handleItemClick = (item) => {
     console.log(`Selected item: ${item.label}`);
   };
-
+  const handleSelect = (item) => {
+    console.log("Selected item:", item);
+  };
   return (
     <>
       <div>
@@ -46,7 +62,6 @@ function App() {
             justifyContent: "center",
             flexDirection: "column",
             gap: "15px",
-            justifyContent: "center",
             alignItems: "center",
             height: "100%",
             width: "100%",
@@ -65,22 +80,66 @@ function App() {
                 </Routes>
               </div>
             </div>
-            <div style={{
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                gap: "15px",
+                alignItems: "center",
+                height: "100%",
+                width: "100%",
+                margin: "20px",
+              }}
+            >
+              <InlineMenu items={menuItems} onSelect={handleItemClick} />
+              <div></div>
+            </div>
+          </Router>
+        </div>
+        <div
+          style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexDirection: "column",
             gap: "15px",
-            justifyContent: "center",
             alignItems: "center",
             height: "100%",
             width: "100%",
             margin: "20px",
-          }}>
-            <InlineMenu items={menuItems} onSelect={handleItemClick} />
-              <div>
-                 
-              </div>
+          }}
+        >
+          <SelectedMenu items={items} onSelect={handleSelect} />
+        </div>
+      </div>
+      <div>
+        <h1
+          style={{
+            textAlign: "center",
+            padding: "10px",
+            margin: "10px",
+          }}
+        >
+          Breadcrumbs
+        </h1>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: "15px",
+            alignItems: "center",
+            height: "100%",
+            width: "100%",
+            margin: "20px",
+          }}
+        >
+          <Router>
+            <div>
+              <Breadcrumbs breadcrumbs={breadItems} />
             </div>
           </Router>
         </div>
@@ -92,10 +151,10 @@ function App() {
           justifyContent: "center",
           flexDirection: "column",
           gap: "15px",
-          justifyContent: "center",
           alignItems: "center",
           height: "100%",
           width: "100%",
+          margin: "20px",
         }}
       >
         <h1

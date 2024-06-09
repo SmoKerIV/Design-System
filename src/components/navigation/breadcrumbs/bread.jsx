@@ -1,24 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './bread.css';
+import React from "react";
+import { useLocation } from "react-router-dom";
+import "./bread.css";
 
 const Breadcrumbs = ({ breadcrumbs }) => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">
-        {breadcrumbs.map((breadcrumb, index) => (
-          <li
-            key={index}
-            className={`breadcrumb-item ${index === breadcrumbs.length - 1 ? 'active' : ''}`}
-            aria-current={index === breadcrumbs.length - 1 ? 'page' : undefined}
-          >
-            {index === breadcrumbs.length - 1 ? (
-              breadcrumb.label
-            ) : (
-              <Link to={breadcrumb.path}>{breadcrumb.label}</Link>
-            )}
-          </li>
-        ))}
+        {breadcrumbs.map((breadcrumb, index) => {
+          const isActive = currentPath === breadcrumb.path;
+          return (
+            <li
+              key={index}
+              className={`breadcrumb-item ${isActive ? "active" : ""}`}
+              aria-current={isActive ? "page" : undefined}
+            >
+              {isActive ? (
+                breadcrumb.label
+              ) : (
+                <a href={breadcrumb.path}>{breadcrumb.label}</a>
+              )}
+            </li>
+          );
+        })}
       </ol>
     </nav>
   );
