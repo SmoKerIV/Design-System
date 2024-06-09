@@ -1,11 +1,11 @@
 import React from 'react';
 import BaseAlert from './alert.jsx';
-import { FaCheckCircle } from 'react-icons/fa';
+import Successicon from '../../../icons/success-icon.svg';
 
 const SuccessAlert = ({title , description}) => {
   return (
     <BaseAlert
-      icon={<FaCheckCircle style={{ color: 'green' , fontSize:'30px' }} />}
+      icon={<img src={Successicon} alt="Success icon" className="Success-icon" style={{ height:'30px',width:'30px',color:'#4ab417'}}/>}
       title={title}
       description={description}
       styleClass="SuccessAlert"

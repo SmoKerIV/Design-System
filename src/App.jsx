@@ -1,4 +1,3 @@
-import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css'
 import DeleteModal from './components/Modal/DeleteModal';
 import Info from './components/Modal/Info';
@@ -13,17 +12,18 @@ import TextButton from './components/buttons/text-button'
 import DashedButton from './components/buttons/dashedbutton'
 import DisabledButton from './components/buttons/disabledButton'
 import IconButton from './components/buttons/iconButton'
-import Badges from './components/badges/badges'
+import Badges from './components/datadisplay/badges/badges'
 import LoadingButton from './components/buttons/loadingButton';
-import Card from './components/card/card';
-import ListComponent from './components/lists/list';
-import InfoAlert from './components/alerts/infoAlert';
-import WarningAlert from './components/alerts/warningAlert';
-import ErrorAlert from './components/alerts/errorAlert';
-import SuccessAlert from './components/alerts/successAlert';
-import Notification from './components/Notifications/notification';
-import LinearProgressBar from './components/progress/linear';
-import CircularProgressBar from './components/progress/circular';
+import Card from './components/datadisplay/card/card';
+import ListComponent from './components/datadisplay/lists/list';
+import InfoAlert from './components/feedback/alerts/infoAlert';
+import WarningAlert from './components/feedback/alerts/warningAlert';
+import ErrorAlert from './components/feedback/alerts/errorAlert';
+import SuccessAlert from './components/feedback/alerts/successAlert';
+import Notification from './components/feedback/Notifications/notification';
+import CircularProgressBar from './components/feedback/progress/circular';
+import HomeIcon from './icons/home-icon.svg';
+import BellIcon from './icons/bell-icon.svg';
 
 function App() {
   const handleClick = () => {
@@ -34,6 +34,11 @@ function App() {
     console.log('Notifications clicked');
   };
   
+  const initialRows = Array.from({ length: 10 }, () => ({
+    columns: Array(8).fill('text'),
+    tag1: 'green',
+    tag2: 'geekblue'
+  }));
   
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "15px", justifyContent: 'center', alignItems: "center", height: "100vh", width: "100vw" }}>
@@ -54,14 +59,14 @@ function App() {
         description="This is a longer description of the card content. Click the button to toggle more or less content." 
       />
       <DisabledButton title='Disabled Button'></DisabledButton>
-      <IconButton title="Icon Button" onClick={handleClick} icon={<i className="fas fa-home"></i>} />
+      <IconButton title="Icon Button" onClick={handleClick} icon={<img src={HomeIcon} alt="Bell icon" className="Bell-icon" style={{ height:'20px',width:'25px'}}/>} />
       <LoadingButton 
         title="Loading Button" 
         onClick={async () => {
           return new Promise(resolve => setTimeout(resolve, 3000)); 
         }} 
       />  
-      <Badges title="" notificationCount={5} onClick={handleNotificationsClick} icon={<i className="fas fa-bell"></i>} />
+      <Badges title="" notificationCount={5} onClick={handleNotificationsClick} icon={<img src={BellIcon} alt="Bell icon" className="Bell-icon" style={{ height:'20px',width:'25px',cursor:'pointer'}}/>} />
       <ListComponent initialItems={[
         "[ITEM] Racing car sprays burning fuel into crowd.",
         "[ITEM] Japanese princess to wed commoner.",
@@ -81,8 +86,7 @@ function App() {
                 title="Notification Title"
                 message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."
             /> 
-            <CircularProgressBar value={75} color="pink" />
-                 
+      <CircularProgressBar value={75} color="pink" />
      </div>
   )
 }
