@@ -11,39 +11,44 @@ import { PureModal } from "./components/PureModal/pureModal";
 import { useState } from "react";
 import { Row } from "./components/layouts/Row";
 import Col from "./components/layouts/Column";
-import PrimaryButton from './components/buttons/primary-button'
-import LinkButton from './components/buttons/link-button'
-import SecondaryButton from './components/buttons/sec-button'
-import TextButton from './components/buttons/text-button'
-import DashedButton from './components/buttons/dashedbutton'
-import DisabledButton from './components/buttons/disabledButton'
-import IconButton from './components/buttons/iconButton'
-import Badges from './components/datadisplay/badges/badges'
-import LoadingButton from './components/buttons/loadingButton';
-import Card from './components/datadisplay/card/card';
-import ListComponent from './components/datadisplay/lists/list';
-import InfoAlert from './components/feedback/alerts/infoAlert';
-import WarningAlert from './components/feedback/alerts/warningAlert';
-import ErrorAlert from './components/feedback/alerts/errorAlert';
-import SuccessAlert from './components/feedback/alerts/successAlert';
-import Notification from './components/feedback/Notifications/notification';
-import CircularProgressBar from './components/feedback/progress/circular';
-import HomeIcon from './icons/home-icon.svg';
-import BellIcon from './icons/bell-icon.svg';
+import PrimaryButton from "./components/buttons/primary-button";
+import LinkButton from "./components/buttons/link-button";
+import SecondaryButton from "./components/buttons/sec-button";
+import TextButton from "./components/buttons/text-button";
+import DashedButton from "./components/buttons/dashedbutton";
+import DisabledButton from "./components/buttons/disabledButton";
+import IconButton from "./components/buttons/iconButton";
+import Badges from "./components/datadisplay/badges/badges";
+import LoadingButton from "./components/buttons/loadingButton";
+import Card from "./components/datadisplay/card/card";
+import ListComponent from "./components/datadisplay/lists/list";
+import InfoAlert from "./components/feedback/alerts/infoAlert";
+import WarningAlert from "./components/feedback/alerts/warningAlert";
+import ErrorAlert from "./components/feedback/alerts/errorAlert";
+import SuccessAlert from "./components/feedback/alerts/successAlert";
+import Notification from "./components/feedback/Notifications/notification";
+import CircularProgressBar from "./components/feedback/progress/circular";
+import HomeIcon from "./icons/home-icon.svg";
+import BellIcon from "./icons/bell-icon.svg";
+import InputField from "./components/Forms/Input/input";
+import Inputmail from "./components/Forms/Input/inputmail";
+import SearchInput from "./components/Forms/Input/searchinput";
 
 function App() {
   const [visible, setVisible] = useState(false);
+  const [inputValue, setInputValue] = useState('');
+
   const handleClick = () => {
-    console.log('Button clicked');
+    console.log("Button clicked");
   };
 
   const handleNotificationsClick = () => {
-    console.log('Notifications clicked');
+    console.log("Notifications clicked");
   };
   const initialRows = Array.from({ length: 10 }, () => ({
-    columns: Array(8).fill('text'),
-    tag1: 'green',
-    tag2: 'geekblue'
+    columns: Array(8).fill("text"),
+    tag1: "green",
+    tag2: "geekblue",
   }));
   const items = [
     { label: "Option 1" },
@@ -74,6 +79,13 @@ function App() {
   const handleSelect = (item) => {
     console.log("Selected item:", item);
   };
+  const handleInputChange = (value) => {
+    console.log(value);
+  };
+  const handleSearch = (value) => {
+    alert(`Searching for: ${value}`);
+  };
+
   return (
     <>
       <div>
@@ -236,48 +248,120 @@ function App() {
             margin: "0",
           }}
         >
+          Input
+        </h1>
+        <div>
+          <InputField placeholder={"example"} onChange={handleInputChange} />
+          <Inputmail placeholder={"example"} onChange={handleInputChange} />
+          <SearchInput placeholder={"example"} onChange={handleInputChange} onSearch={handleSearch}/>
+        </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          gap: "15px",
+          alignItems: "center",
+          height: "100%",
+          width: "100%",
+        }}
+      >
+        <h1
+          style={{
+            textAlign: "center",
+            padding: "10px",
+            margin: "0",
+          }}
+        >
           Buttons
         </h1>
-        <PrimaryButton title='Primary Button' onClick={handleClick}></PrimaryButton>
-      <SecondaryButton title='Secondary Button'onClick={handleClick}></SecondaryButton>
-      <LinkButton title='Link Button'onClick={handleClick}></LinkButton>
-      <TextButton title='Text Button'onClick={handleClick}></TextButton>
-      <DashedButton title='Dashed Button'onClick={handleClick}></DashedButton>
-      <Card
-        imageSrc="https://via.placeholder.com/300" 
-        title="Card Title 1" 
-        description="This is a longer description of the card content. Click the button to toggle more or less content." 
-      />
-      <DisabledButton title='Disabled Button'></DisabledButton>
-      <IconButton title="Icon Button" onClick={handleClick} icon={<img src={HomeIcon} alt="Bell icon" className="Bell-icon" style={{ height:'20px',width:'25px'}}/>} />
-      <LoadingButton 
-        title="Loading Button" 
-        onClick={async () => {
-          return new Promise(resolve => setTimeout(resolve, 3000)); 
-        }} 
-      />  
-      <Badges title="" notificationCount={5} onClick={handleNotificationsClick} icon={<img src={BellIcon} alt="Bell icon" className="Bell-icon" style={{ height:'20px',width:'25px',cursor:'pointer'}}/>} />
-      <ListComponent initialItems={[
-        "[ITEM] Racing car sprays burning fuel into crowd.",
-        "[ITEM] Japanese princess to wed commoner.",
-        "[ITEM] Australian walks 100km after outback crash.",
-        "[ITEM] Man charged over missing wedding girl.",
-        "[ITEM] Los Angeles battles huge wildfires.",
-        "[ITEM] New item 1.",
-        "[ITEM] New item 2.",
-        "[ITEM] New item 3.",
-        "[ITEM] New item 4."
-      ]} />
-     <SuccessAlert title="Success Tips" description="Detailed description and advice about successful copywriting."/>
-      <InfoAlert title="Informational Notes" description="Additional description and information about copywriting."/>
-      <WarningAlert title="Warning" description="This is a warning notice about copywriting." />
-      <ErrorAlert title="Error" description="This is a warning notice about copywriting." />
-      <Notification
-                title="Notification Title"
-                message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."
-            /> 
-            <CircularProgressBar value={75} color="pink" />
-                 
+        <PrimaryButton
+          title="Primary Button"
+          onClick={handleClick}
+        ></PrimaryButton>
+        <SecondaryButton
+          title="Secondary Button"
+          onClick={handleClick}
+        ></SecondaryButton>
+        <LinkButton title="Link Button" onClick={handleClick}></LinkButton>
+        <TextButton title="Text Button" onClick={handleClick}></TextButton>
+        <DashedButton
+          title="Dashed Button"
+          onClick={handleClick}
+        ></DashedButton>
+        <Card
+          imageSrc="https://via.placeholder.com/300"
+          title="Card Title 1"
+          description="This is a longer description of the card content. Click the button to toggle more or less content."
+        />
+        <DisabledButton title="Disabled Button"></DisabledButton>
+        <IconButton
+          title="Icon Button"
+          onClick={handleClick}
+          icon={
+            <img
+              src={HomeIcon}
+              alt="Bell icon"
+              className="Bell-icon"
+              style={{ height: "20px", width: "25px" }}
+            />
+          }
+        />
+        <LoadingButton
+          title="Loading Button"
+          onClick={async () => {
+            return new Promise((resolve) => setTimeout(resolve, 3000));
+          }}
+        />
+        <Badges
+          title=""
+          notificationCount={5}
+          onClick={handleNotificationsClick}
+          icon={
+            <img
+              src={BellIcon}
+              alt="Bell icon"
+              className="Bell-icon"
+              style={{ height: "20px", width: "25px", cursor: "pointer" }}
+            />
+          }
+        />
+        <ListComponent
+          initialItems={[
+            "[ITEM] Racing car sprays burning fuel into crowd.",
+            "[ITEM] Japanese princess to wed commoner.",
+            "[ITEM] Australian walks 100km after outback crash.",
+            "[ITEM] Man charged over missing wedding girl.",
+            "[ITEM] Los Angeles battles huge wildfires.",
+            "[ITEM] New item 1.",
+            "[ITEM] New item 2.",
+            "[ITEM] New item 3.",
+            "[ITEM] New item 4.",
+          ]}
+        />
+        <SuccessAlert
+          title="Success Tips"
+          description="Detailed description and advice about successful copywriting."
+        />
+        <InfoAlert
+          title="Informational Notes"
+          description="Additional description and information about copywriting."
+        />
+        <WarningAlert
+          title="Warning"
+          description="This is a warning notice about copywriting."
+        />
+        <ErrorAlert
+          title="Error"
+          description="This is a warning notice about copywriting."
+        />
+        <Notification
+          title="Notification Title"
+          message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."
+        />
+        <CircularProgressBar value={75} color="pink" />
       </div>
       <div>
         <h1
