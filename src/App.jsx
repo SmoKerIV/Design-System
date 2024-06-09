@@ -16,6 +16,7 @@ import Card from "./components/card/card";
 import InlineMenu from "./components/navigation/menus/inlinemenu";
 import SelectedMenu from "./components/navigation/menus/selected";
 import Breadcrumbs from "./components/navigation/breadcrumbs/bread";
+import Tabs from "./components/navigation/tabs/tabs";
 
 function App() {
   const items = [
@@ -24,7 +25,11 @@ function App() {
     { label: "Option 3" },
     { label: "Option 4" },
   ];
-
+  const tabs = [
+    { title: "Tab 1", content: <div>Content for Tab 1</div> },
+    { title: "Tab 2", content: <div>Content for Tab 2</div> },
+    { title: "Tab 3", content: <div>Content for Tab 3</div> },
+  ];
   const menuItems = [
     { label: "Home", url: "/" },
     { label: "About", url: "/about" },
@@ -142,6 +147,32 @@ function App() {
               <Breadcrumbs breadcrumbs={breadItems} />
             </div>
           </Router>
+        </div>
+        <div>
+          <h1
+            style={{
+              textAlign: "center",
+              padding: "10px",
+              margin: "10px",
+            }}
+          >
+            Tabs Example
+          </h1>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+              gap: "15px",
+              alignItems: "center",
+              height: "100%",
+              width: "100%",
+              margin: "20px",
+            }}
+          >
+            <Tabs tabs={tabs} />
+          </div>
         </div>
       </div>
       <div
