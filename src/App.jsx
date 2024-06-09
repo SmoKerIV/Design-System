@@ -17,6 +17,7 @@ import { PureModal } from "./components/PureModal/pureModal";
 import { useState } from "react";
 import { Row } from "./components/layouts/Row";
 import Col from "./components/layouts/Column";
+import { Divider } from "./components/layouts/Divider";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -227,6 +228,8 @@ function App() {
           description="This is a longer description of the card content. Click the button to toggle more or less content."
         />
       </div>
+
+
       <div>
         <h1
           style={{
@@ -300,14 +303,14 @@ function App() {
 
               <div>
                 <Row gutter={[16, 16]}>
-                  <Col span={8}>
+                  <Col span={4} md={8} sm={4} lg={16}>
                     <div>hello</div>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Id, nulla!
                     </p>
                   </Col>
-                  <Col span={8}>
+                  <Col span={8} sm={4} md={8}>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Iste, sint.
@@ -329,10 +332,16 @@ function App() {
                   <Col span={6}>
                     <p>Lorem ipsum dolor sit amet.</p>
                   </Col>
-                  <Col span={6}>Lorem ipsum dolor sit amet.</Col>
+                  <Col span={6} >Lorem ipsum dolor sit amet.</Col>
                   <Col span={6}>Lorem ipsum dolor sit amet.</Col>
                   <Col span={6}>Lorem ipsum dolor sit amet.</Col>
                 </Row>
+              </div>
+
+              <div style={{ width: '100%', height: '100%' }}>
+                <Divider orientation='right'>
+                  <p>laboriosam.</p>
+                </Divider>
               </div>
             </div>
           </div>

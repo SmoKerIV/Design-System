@@ -10,3 +10,51 @@
   height: 100%;
   background-color: rgba(76, 76, 244, 0.708);
 }
+
+.Divider {
+  width: 100%;
+  height: 1px;
+  position: relative;
+  z-index: 0;
+  text-align: center;
+  margin: 16px auto;
+  display: block;
+  background-color: black;
+}
+
+.p {
+  width: fit-content;
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  background-color: white;
+  margin: 0 2rem;
+  padding: 0 1rem;
+}
+
+@media (max-width: 640px) {
+}
+
+@media (min-width: 768px) {
+  .span-md-24 {
+    grid-column: auto / span 24 !important;
+  }
+
+  .span-md-16 {
+    grid-column: auto / span 16;
+  }
+
+  .span-md-8 {
+    grid-column: auto / span 8;
+  }
+
+  .span-md-4 {
+    grid-column: auto / span 4;
+  }
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1280px) {
+}
