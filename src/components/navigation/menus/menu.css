@@ -42,10 +42,10 @@ body {
 }
 
 .menu-item.active {
-  background-color: var(--primary);
+  background-color: #1890FF;
   color: var(--menu-active-color, #fff);
-}
-.menu-item.active a {
+  }
+  .menu-item.active a {
   color: var(--menu-active-color, #fff);
 }
 
@@ -144,7 +144,7 @@ img .arrow {
 .selector-menu-item:hover {
   box-shadow: -3px 0px 0px 0px #1890ff inset;
   background-color: #e6f7ff;
-  color: var(--primary);
+  color: #1890FF;
 }
 
 .selector-menu-item.selected {
@@ -211,7 +211,7 @@ img .arrow {
 .selected-menu-item:hover {
   box-shadow: -3px 0px 0px 0px #1890ff inset;
   background-color: #e6f7ff;
-  color: var(--primary);
+  color: #1890FF;
 }
 
 .selected-menu-item.selected {

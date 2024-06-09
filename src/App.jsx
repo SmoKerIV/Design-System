@@ -1,6 +1,6 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Menu from "./components/navigation/menus/menus";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PrimaryButton from "./components/buttons/primary-button";
 import LinkButton from "./components/buttons/link-button";
 import SecondaryButton from "./components/buttons/sec-button";
@@ -71,7 +71,7 @@ function App() {
             alignItems: "center",
             height: "100%",
             width: "100%",
-            margin: "20px",
+            marginBottom: "10px",
           }}
         >
           <Router>
@@ -96,7 +96,7 @@ function App() {
                 alignItems: "center",
                 height: "100%",
                 width: "100%",
-                margin: "20px",
+                marginBottom: "10px",
               }}
             >
               <InlineMenu items={menuItems} onSelect={handleItemClick} />
@@ -114,7 +114,7 @@ function App() {
             alignItems: "center",
             height: "100%",
             width: "100%",
-            margin: "20px",
+            marginBottom: "10px",
           }}
         >
           <SelectedMenu items={items} onSelect={handleSelect} />
@@ -140,7 +140,7 @@ function App() {
             alignItems: "center",
             height: "100%",
             width: "100%",
-            margin: "20px",
+            marginBottom: "10px",
           }}
         >
           <Router>
@@ -169,7 +169,7 @@ function App() {
               alignItems: "center",
               height: "100%",
               width: "100%",
-              margin: "20px",
+              marginBottom: "10px",
             }}
           >
             <Tabs tabs={tabs} />
@@ -184,7 +184,7 @@ function App() {
             gap: "15px",
             height: "100%",
             width: "100%",
-            margin: "20px",
+            marginBottom: "10px",
           }}
         >
           <div>
@@ -202,7 +202,6 @@ function App() {
           alignItems: "center",
           height: "100%",
           width: "100%",
-          margin: "20px",
         }}
       >
         <h1
@@ -233,7 +232,6 @@ function App() {
           style={{
             textAlign: "center",
             padding: "10px",
-            margin: "10px",
           }}
         >
           Modal Components
@@ -261,20 +259,20 @@ function App() {
               alignItems: "center",
               height: "100%",
               width: "100%",
-              margin: "20px",
             }}
           >
-            <div style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-              gap: "15px",
-              alignItems: "center",
-              height: "100%",
-              width: "100%",
-              margin: "20px",
-            }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                gap: "15px",
+                alignItems: "center",
+                height: "100%",
+                width: "100%",
+              }}
+            >
               <h1>Lorem ipsum dolor sit amet.</h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
