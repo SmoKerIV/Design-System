@@ -1,0 +1,19 @@
+.circular-progress-bar {
+    position: relative;
+    display: inline-block;
+}
+
+.circular-progress-bar-bg {
+    fill: none;
+    stroke: #e0e0e0;
+}
+
+.circular-progress-bar-fill {
+    fill: none;
+    transition: stroke-dashoffset 0.3s ease-in-out;
+}
+
+.circular-progress-bar text {
+    fill: black;
+    font-family: Arial, sans-serif;
+}
