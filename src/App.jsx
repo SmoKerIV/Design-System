@@ -1,12 +1,6 @@
 import "./App.css";
 import Menu from "./components/navigation/menus/menus";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import PrimaryButton from "./components/buttons/primary-button";
-import LinkButton from "./components/buttons/link-button";
-import SecondaryButton from "./components/buttons/sec-button";
-import TextButton from "./components/buttons/text-button";
-import DashedButton from "./components/buttons/dashedbutton";
-import Card from "./components/card/card";
 import InlineMenu from "./components/navigation/menus/inlinemenu";
 import SelectedMenu from "./components/navigation/menus/selected";
 import Breadcrumbs from "./components/navigation/breadcrumbs/bread";
