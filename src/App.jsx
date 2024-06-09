@@ -156,7 +156,7 @@ function App() {
               margin: "10px",
             }}
           >
-            Tabs Example
+            Tabs
           </h1>
           <div
             style={{
