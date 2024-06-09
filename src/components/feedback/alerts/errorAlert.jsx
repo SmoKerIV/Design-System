@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseAlert from './alert.jsx';
-import Erroricon from '../../../icons/error.svg';
+import Erroricon from './assets/error.svg';
 
 const ErrorAlert = ({title , description}) => {
   return (

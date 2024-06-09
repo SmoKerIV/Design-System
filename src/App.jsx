@@ -22,8 +22,9 @@ import ErrorAlert from './components/feedback/alerts/errorAlert';
 import SuccessAlert from './components/feedback/alerts/successAlert';
 import Notification from './components/feedback/Notifications/notification';
 import CircularProgressBar from './components/feedback/progress/circular';
-import HomeIcon from './icons/home-icon.svg';
-import BellIcon from './icons/bell-icon.svg';
+import HomeIcon from './components/buttons/button-assets/home-icon.svg';
+import BellIcon from './components/datadisplay/badges/assets/bell-icon.svg';
+import { FaY } from 'react-icons/fa6';
 
 function App() {
   const handleClick = () => {

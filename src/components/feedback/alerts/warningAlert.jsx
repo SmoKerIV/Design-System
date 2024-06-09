@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseAlert from './alert.jsx';
-import Warningicon from '../../../icons/info-icon2.svg'
+import Warningicon from './assets/info-icon2.svg'
 const WarningAlert = ({title,description}) => {
   return (
     <BaseAlert

@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseAlert from './alert.jsx';
-import Successicon from '../../../icons/success-icon.svg';
+import Successicon from './assets/success-icon.svg';
 
 const SuccessAlert = ({title , description}) => {
   return (

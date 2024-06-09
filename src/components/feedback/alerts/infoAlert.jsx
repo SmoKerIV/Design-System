@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseAlert from './alert.jsx';
-import InfoIcon from '/Users/fatimamuhammed/Desktop/puretik tasks/Design-System/src/icons/info-icon.svg';
+import InfoIcon from './assets/info-icon.svg';
 
 const InfoAlert = ({title ,description}) => {
   return (
