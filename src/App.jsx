@@ -36,12 +36,6 @@ function App() {
     console.log('Notifications clicked');
   };
   
-  const initialRows = Array.from({ length: 10 }, () => ({
-    columns: Array(8).fill('text'),
-    tag1: 'green',
-    tag2: 'geekblue'
-  }));
-  
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "15px", justifyContent: 'center', alignItems: "center", height: "100vh", width: "100vw" }}>
       <ModalLayout open={true} />
@@ -63,11 +57,9 @@ function App() {
       <DisabledButton title='Disabled Button'></DisabledButton>
       <IconButton title="Icon Button" onClick={handleClick} icon={<img src={HomeIcon} alt="Bell icon" className="Bell-icon" style={{ height:'20px',width:'25px'}}/>} />
       <LoadingButton 
-        title="Loading Button" 
-        onClick={async () => {
-          return new Promise(resolve => setTimeout(resolve, 3000)); 
-        }} 
-      />  
+       title="Loading Button" 
+       loadingDurationInSeconds={3}  
+       />
       <Badges title="" notificationCount={5} onClick={handleNotificationsClick} icon={<img src={BellIcon} alt="Bell icon" className="Bell-icon" style={{ height:'20px',width:'25px',cursor:'pointer'}}/>} />
       <ListComponent initialItems={[
         "[ITEM] Racing car sprays burning fuel into crowd.",
