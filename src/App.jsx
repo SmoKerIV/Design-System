@@ -33,10 +33,15 @@ import BellIcon from "./icons/bell-icon.svg";
 import InputField from "./components/Forms/Input/input";
 import Inputmail from "./components/Forms/Input/inputmail";
 import SearchInput from "./components/Forms/Input/searchinput";
+import Checkbox from "./components/Forms/checkbox/checkbox";
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [checked, setChecked] = useState(true);
+  const [unchecked, setUnchecked] = useState(false);
+  const [indeterminate, setIndeterminate] = useState(true);
+  const [disabledChecked, setDisabledChecked] = useState(true);
+  const [disabledUnchecked, setDisabledUnchecked] = useState(false);
 
   const handleClick = () => {
     console.log("Button clicked");
@@ -253,7 +258,59 @@ function App() {
         <div>
           <InputField placeholder={"example"} onChange={handleInputChange} />
           <Inputmail placeholder={"example"} onChange={handleInputChange} />
-          <SearchInput placeholder={"example"} onChange={handleInputChange} onSearch={handleSearch}/>
+          <SearchInput
+            placeholder={"example"}
+            onChange={handleInputChange}
+            onSearch={handleSearch}
+          />
+        </div>
+      </div>
+      <div>
+        <h1
+          style={{
+            textAlign: "center",
+            padding: "10px",
+            margin: "0",
+          }}
+        >
+          Checkboxes
+        </h1>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: "15px",
+            alignItems: "center",
+            height: "100%",
+            width: "100%",
+          }}
+        >
+          <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+          }}>
+              <Checkbox
+                label="Label"
+                checked={checked}
+                onChange={() => setChecked(!checked)}
+              />
+              <Checkbox
+                label="Label"
+                indeterminate={indeterminate}
+                checked={false}
+                onChange={() => setIndeterminate(!indeterminate)}
+              />
+              <Checkbox
+                label="Label"
+                disabled
+                checked={disabledChecked}
+                onChange={() => setDisabledChecked(!disabledChecked)}
+              />
+          </div>
         </div>
       </div>
       <div
