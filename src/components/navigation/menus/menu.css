@@ -14,7 +14,7 @@ body {
   display: flex;
   list-style: none;
   background-color: var(--white);
-  border: 1px solid var(--gray);
+  border: 1px solid var(--grayer);
   border-radius: 4px;
   overflow: hidden;
 }

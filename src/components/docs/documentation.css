@@ -1,0 +1,23 @@
+/* DocumentationForm.css */
+.documentation-container {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.documentation-container h2 {
+    margin-top: 0;
+}
+
+.documentation-container ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.documentation-container ul li {
+    margin-bottom: 10px;
+}
+
+.documentation-container .component-preview {
+    margin-top: 20px;
+    padding: 10px;
+}

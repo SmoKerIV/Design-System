@@ -41,6 +41,7 @@ import Radio from "./components/Forms/radio/radio";
 import Form from "./components/Forms/form/form";
 import TableComponent from "./components/datadisplay/Table/table";
 import { Content, Divider, Footer, Header, Layout, Space } from "./components/layouts";
+import DocumentationForm from "./components/docs/documentation";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -92,22 +93,44 @@ function App() {
     return validationErrors;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length === 0) {
-      console.log("Form submitted successfully", formValues);
-    } else {
-      setErrors(validationErrors);
-    }
-  };
-  const handleClick = () => {
-    console.log("Button clicked");
-  };
+  const menuCode = `
+    const menuItems = [
+    { label: "Home", url: "/" },
+    { label: "About", url: "/about" },
+    { label: "Services", url: "/services" },
+    { label: "Contact", url: "/contact" },
+  ];
 
-  const handleNotificationsClick = () => {
-    console.log("Notifications clicked");
-  };
+    const handleItemClick = (item) => {
+    console.log(Selected item: (item.label);
+    return(
+      <Menu items={menuItems} onItemClick={handleItemClick} />
+    )
+  };`;
+  const inlineMenu = `
+  import React, { useState } from 'react';
+  import InlineMenu from './InlineMenu';
+  
+  function App() {
+      const items = [
+          { label: 'Navigation One' },
+          { label: 'Navigation Two' },
+          { label: 'Navigation Three' },
+      ];
+  
+      const handleSelect = (item) => {
+          console.log('Selected item:', item);
+      };
+  
+      return (
+          <div className="App">
+              <InlineMenu items={items} onSelect={handleSelect} />
+          </div>
+      );
+  }
+  
+  export default App;
+  `;
   const initialRows = Array.from({ length: 10 }, () => ({
     columns: Array(8).fill("text"),
     tag1: "green",
@@ -136,6 +159,22 @@ function App() {
     { label: "Services", path: "/services" },
     { label: "Contact", path: "/contact" },
   ];
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length === 0) {
+      console.log("Form submitted successfully", formValues);
+    } else {
+      setErrors(validationErrors);
+    }
+  };
+  const handleClick = () => {
+    console.log("Button clicked");
+  };
+
+  const handleNotificationsClick = () => {
+    console.log("Notifications clicked");
+  };
   const handleItemClick = (item) => {
     console.log(`Selected item: ${item.label}`);
   };
@@ -156,18 +195,36 @@ function App() {
         <div className="container">
           <Router>
             <div>
+            <DocumentationForm
+                componentName="Menu"
+                description="A dynamic menu to navigate from one page to another."
+                propsInfo={[
+                    { name: 'items', type: 'array', description: 'objects of each path and its label' },
+
+                ]}
+                stateInfo={[
+                    { name: 'onClick', type: 'function', description: ' handles when the item is clicked' },
+                ]}
+                codeSnippet={menuCode}
+
+            
+            >
               <Menu items={menuItems} onItemClick={handleItemClick} />
-              <div className="content">
-                <Routes>
-                  <Route path="/" />
-                  <Route path="/about" />
-                  <Route path="/services" />
-                  <Route path="/contact" />
-                </Routes>
-              </div>
+            </DocumentationForm>
             </div>
             <div className="container">
-              <InlineMenu items={menuItems} onSelect={handleItemClick} />
+            <DocumentationForm
+                componentName="InlineMenu"
+                description="An inline menu component that displays a dropdown menu. It allows users to select an item from the list."
+                propsInfo={[
+                    { name: 'items', type: 'array', description: 'Array of menu items to be displayed in the dropdown. Each item should have a `label` property.' },
+                   
+                ]}
+                stateInfo={[ { name: 'onSelect', type: 'function', description: 'Callback function to handle item selection. It receives the selected item as an argument.' }]}
+                codeSnippet={inlineMenu}
+            >
+                <InlineMenu items={menuItems} onSelect={handleSelect} />
+            </DocumentationForm>
               <div></div>
             </div>
           </Router>
