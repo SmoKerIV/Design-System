@@ -34,15 +34,66 @@ import InputField from "./components/Forms/Input/input";
 import Inputmail from "./components/Forms/Input/inputmail";
 import SearchInput from "./components/Forms/Input/searchinput";
 import Checkbox from "./components/Forms/checkbox/checkbox";
+import Radio from "./components/Forms/radio/radio";
+import Form from "./components/Forms/form/form";
 
 function App() {
   const [visible, setVisible] = useState(false);
   const [checked, setChecked] = useState(true);
-  const [unchecked, setUnchecked] = useState(false);
   const [indeterminate, setIndeterminate] = useState(true);
   const [disabledChecked, setDisabledChecked] = useState(true);
-  const [disabledUnchecked, setDisabledUnchecked] = useState(false);
+  const [formValues, setFormValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const [fields, setFields] = useState([
+    {
+      id: 1,
+      name: "name",
+      label: "Name",
+      type: "text",
+      value: "",
+      required: true,
+    },
+    {
+      id: 2,
+      name: "email",
+      label: "Email",
+      type: "email",
+      value: "",
+      required: false,
+    },
+  ]);
 
+  const handleChange = (e, id) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+    const updatedFields = fields.map((field) =>
+      field.id === id ? { ...field, value } : field
+    );
+    setFields(updatedFields);
+  };
+
+  const validate = () => {
+    let validationErrors = {};
+    fields.forEach((field) => {
+      if (field.required && !formValues[field.name]) {
+        validationErrors[field.name] = `${field.label} is required`;
+      }
+    });
+    return validationErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length === 0) {
+      console.log("Form submitted successfully", formValues);
+    } else {
+      setErrors(validationErrors);
+    }
+  };
   const handleClick = () => {
     console.log("Button clicked");
   };
@@ -94,28 +145,8 @@ function App() {
   return (
     <>
       <div>
-        <h1
-          style={{
-            textAlign: "center",
-            padding: "10px",
-            margin: "0",
-          }}
-        >
-          Menu
-        </h1>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "15px",
-            alignItems: "center",
-            height: "100%",
-            width: "100%",
-            marginBottom: "10px",
-          }}
-        >
+        <h1>Menu</h1>
+        <div className="container">
           <Router>
             <div>
               <Menu items={menuItems} onItemClick={handleItemClick} />
@@ -128,63 +159,19 @@ function App() {
                 </Routes>
               </div>
             </div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-                gap: "15px",
-                alignItems: "center",
-                height: "100%",
-                width: "100%",
-                marginBottom: "10px",
-              }}
-            >
+            <div className="container">
               <InlineMenu items={menuItems} onSelect={handleItemClick} />
               <div></div>
             </div>
           </Router>
         </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "15px",
-            alignItems: "center",
-            height: "100%",
-            width: "100%",
-            marginBottom: "10px",
-          }}
-        >
+        <div className="container">
           <SelectedMenu items={items} onSelect={handleSelect} />
         </div>
       </div>
       <div>
-        <h1
-          style={{
-            textAlign: "center",
-            padding: "10px",
-            margin: "10px",
-          }}
-        >
-          Breadcrumbs
-        </h1>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "15px",
-            alignItems: "center",
-            height: "100%",
-            width: "100%",
-            marginBottom: "10px",
-          }}
-        >
+        <h1>Breadcrumbs</h1>
+        <div className="container">
           <Router>
             <div>
               <Breadcrumbs breadcrumbs={breadItems} />
@@ -192,69 +179,19 @@ function App() {
           </Router>
         </div>
         <div>
-          <h1
-            style={{
-              textAlign: "center",
-              padding: "10px",
-              margin: "10px",
-            }}
-          >
-            Tabs Example
-          </h1>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-              gap: "15px",
-              alignItems: "center",
-              height: "100%",
-              width: "100%",
-              marginBottom: "10px",
-            }}
-          >
+          <h1>Tabs Example</h1>
+          <div className="container">
             <Tabs tabs={tabs} />
           </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "15px",
-            height: "100%",
-            width: "100%",
-            marginBottom: "10px",
-          }}
-        >
+        <div className="container">
           <div>
             <VerticalTabs tabs={tabs} />
           </div>
         </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          gap: "15px",
-          alignItems: "center",
-          height: "100%",
-          width: "100%",
-        }}
-      >
-        <h1
-          style={{
-            textAlign: "center",
-            padding: "10px",
-            margin: "0",
-          }}
-        >
-          Input
-        </h1>
+      <div className="container">
+        <h1>Input</h1>
         <div>
           <InputField placeholder={"example"} onChange={handleInputChange} />
           <Inputmail placeholder={"example"} onChange={handleInputChange} />
@@ -266,74 +203,53 @@ function App() {
         </div>
       </div>
       <div>
-        <h1
-          style={{
-            textAlign: "center",
-            padding: "10px",
-            margin: "0",
-          }}
-        >
-          Checkboxes
-        </h1>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "15px",
-            alignItems: "center",
-            height: "100%",
-            width: "100%",
-          }}
-        >
-          <div style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-          }}>
-              <Checkbox
-                label="Label"
-                checked={checked}
-                onChange={() => setChecked(!checked)}
-              />
-              <Checkbox
-                label="Label"
-                indeterminate={indeterminate}
-                checked={false}
-                onChange={() => setIndeterminate(!indeterminate)}
-              />
-              <Checkbox
-                label="Label"
-                disabled
-                checked={disabledChecked}
-                onChange={() => setDisabledChecked(!disabledChecked)}
-              />
+        <h1>Checkboxes</h1>
+        <div className="container">
+          <div>
+            <Checkbox
+              label="Label"
+              checked={checked}
+              onChange={() => setChecked(!checked)}
+            />
+            <Checkbox
+              label="Label"
+              indeterminate={indeterminate}
+              checked={false}
+              onChange={() => setIndeterminate(!indeterminate)}
+            />
+            <Checkbox
+              label="Label"
+              disabled
+              checked={disabledChecked}
+              onChange={() => setDisabledChecked(!disabledChecked)}
+            />
           </div>
         </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          gap: "15px",
-          alignItems: "center",
-          height: "100%",
-          width: "100%",
-        }}
-      >
-        <h1
-          style={{
-            textAlign: "center",
-            padding: "10px",
-            margin: "0",
-          }}
-        >
-          Buttons
-        </h1>
+      <div className="container">
+        <h1>Radio Buttons</h1>
+        <div className="radio-group">
+          <div className="radio-row">
+            <Radio label="Normal" name="example" value="normal" />
+            <Radio label="Normal" name="example" value="normal" />
+            <Radio label="Disabled" name="example" value="disabled" disabled />
+          </div>
+        </div>
+      </div>
+      <div>
+        <h1>Form</h1>
+        <div className="container">
+          <Form
+            fields={fields}
+            formValues={formValues}
+            errors={errors}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        </div>
+      </div>
+      <div className="container">
+        <h1>Buttons</h1>
         <PrimaryButton
           title="Primary Button"
           onClick={handleClick}
@@ -429,43 +345,9 @@ function App() {
         >
           Modal Components
         </h1>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "15px",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100%",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexDirection: "column",
-              gap: "15px",
-              alignItems: "center",
-              height: "100%",
-              width: "100%",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-                gap: "15px",
-                alignItems: "center",
-                height: "100%",
-                width: "100%",
-              }}
-            >
+        <div className="container">
+          <div className="modal-container">
+            <div className="modal-content">
               <h1>Lorem ipsum dolor sit amet.</h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore

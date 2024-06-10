@@ -1,0 +1,21 @@
+/* Radio.css */
+.radio-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  border: none;
+}
+.radio-wrapper input {
+  width: 20px;
+}
+.radio-wrapper input[type="radio"] {
+  margin-right: 8px;
+}
+
+.radio-wrapper.disabled {
+  color: #ccc;
+}
+
+.radio-wrapper input[type="radio"]:disabled {
+  cursor: not-allowed;
+}
