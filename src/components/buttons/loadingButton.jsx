@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Button from './generalButton'; 
-import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const LoadingButton = ({ title, onClick }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +19,7 @@ const LoadingButton = ({ title, onClick }) => {
       title={
         isLoading ? (
           <>
-            <i className="fas fa-spinner fa-spin"></i> Loading...
+             Loading...
           </>
         ) : (
           title

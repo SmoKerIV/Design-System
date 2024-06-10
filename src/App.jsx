@@ -89,8 +89,8 @@ function App() {
                 message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."
             /> 
       <CircularProgressBar value={75} color="pink" />
-      <TableComponent initialRows={[{ columns: ['Text', 'Text','Text','Text' , 'Text','Text'], tag1: 'Tag 1', tag2: 'Tag 2' },
-    { columns: ['Text', 'Text','Text','Text','Text','Text'], tag1: 'Tag 3', tag2: 'Tag 4' },]} name={'john Doe'} numColumns={12}/>
+      <TableComponent initialRows={[{ columns: ['Text', 'Text'], tag1: 'Tag 1', tag2: 'Tag 2' },
+    { columns: ['Text', 'Text'], tag1: 'Tag 3', tag2: 'Tag 4' },]} name={'john Doe'} numColumns={8}/>
      </div>
   )
 }
