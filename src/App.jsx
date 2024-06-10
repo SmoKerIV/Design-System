@@ -34,7 +34,7 @@ import InputField from "./components/Forms/Input/input";
 import Inputmail from "./components/Forms/Input/inputmail";
 import SearchInput from "./components/Forms/Input/searchinput";
 import TableComponent from './components/datadisplay/Table/table';
-import { FaY } from 'react-icons/fa6';
+import { Divider } from "./components/layouts/Divider";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -442,14 +442,14 @@ function App() {
 
               <div>
                 <Row gutter={[16, 16]}>
-                  <Col span={8}>
+                  <Col span={4} md={8} sm={4} lg={16}>
                     <div>hello</div>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Id, nulla!
                     </p>
                   </Col>
-                  <Col span={8}>
+                  <Col span={8} sm={4} md={8}>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Iste, sint.
@@ -471,10 +471,16 @@ function App() {
                   <Col span={6}>
                     <p>Lorem ipsum dolor sit amet.</p>
                   </Col>
-                  <Col span={6}>Lorem ipsum dolor sit amet.</Col>
+                  <Col span={6} >Lorem ipsum dolor sit amet.</Col>
                   <Col span={6}>Lorem ipsum dolor sit amet.</Col>
                   <Col span={6}>Lorem ipsum dolor sit amet.</Col>
                 </Row>
+              </div>
+
+              <div style={{ width: '100%', height: '100%' }}>
+                <Divider orientation='right'>
+                  <p>laboriosam.</p>
+                </Divider>
               </div>
             </div>
           </div>
