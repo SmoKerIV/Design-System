@@ -18,6 +18,7 @@ import { useState } from "react";
 import { Row } from "./components/layouts/Row";
 import Col from "./components/layouts/Column";
 import { Divider } from "./components/layouts/Divider";
+import Space from "./components/layouts/Space";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -303,30 +304,30 @@ function App() {
 
               <div>
                 <Row gutter={[16, 16]}>
-                  <Col span={4} md={8} sm={4} lg={16}>
+                  <Col span={4} md={8} sm={4} lg={24}>
                     <div>hello</div>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Id, nulla!
                     </p>
                   </Col>
-                  <Col span={8} sm={4} md={8}>
+                  <Col span={8} sm={4} md={8} lg={24}>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Iste, sint.
                     </p>
                   </Col>
-                  <Col span={8}>
+                  <Col span={8} sm={4} md={8} lg={24}>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Quibusdam, accusantium.
                   </Col>
-                  <Col span={0}>
+                  <Col span={6} sm={8} md={8} lg={16}>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                       Quas, reiciendis.
                     </p>
                   </Col>
-                  <Col span={24}>
+                  <Col span={6} sm={4} md={8} lg={16}>
                     <p>Lorem ipsum dolor sit amet.</p>
                   </Col>
                   <Col span={6}>
@@ -343,6 +344,12 @@ function App() {
                   <p>laboriosam.</p>
                 </Divider>
               </div>
+
+              <Space size={20} direction='column' align='center' wrap='wrap'>
+                <button>submit</button>
+                <button>reload</button>
+                <button>close</button>
+              </Space>
             </div>
           </div>
         </div>
