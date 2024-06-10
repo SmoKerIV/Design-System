@@ -24,6 +24,7 @@ import Notification from './components/feedback/Notifications/notification';
 import CircularProgressBar from './components/feedback/progress/circular';
 import HomeIcon from './components/buttons/button-assets/home-icon.svg';
 import BellIcon from './components/datadisplay/badges/assets/bell-icon.svg';
+import TableComponent from './components/datadisplay/Table/table';
 import { FaY } from 'react-icons/fa6';
 
 function App() {
@@ -88,6 +89,8 @@ function App() {
                 message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."
             /> 
       <CircularProgressBar value={75} color="pink" />
+      <TableComponent initialRows={[{ columns: ['Text', 'Text','Text','Text' , 'Text','Text'], tag1: 'Tag 1', tag2: 'Tag 2' },
+    { columns: ['Text', 'Text','Text','Text','Text','Text'], tag1: 'Tag 3', tag2: 'Tag 4' },]} name={'john Doe'} numColumns={12}/>
      </div>
   )
 }
