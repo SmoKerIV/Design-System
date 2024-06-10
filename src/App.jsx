@@ -15,16 +15,9 @@ import VerticalTabs from "./components/navigation/tabs/tab2";
 import style from "./components/PureModal/pureModal.module.css";
 import { PureModal } from "./components/PureModal/pureModal";
 import { useState } from "react";
-import { Row } from "./components/layouts/Row";
-import Col from "./components/layouts/Column";
-import { Divider } from "./components/layouts/Divider";
-import Space from "./components/layouts/Space";
-import Header from "./components/layouts/Header";
-import Layout from "./components/layouts/Layout";
-import Content from "./components/layouts/Content";
 import Sider from "./components/layouts/Sider";
-import Footer from './components/layouts/Footer'
 import style2 from './components/layouts/layout.module.css'
+import { Col, Content, Divider, Footer, Header, Layout, Row, Space } from "./components/layouts";
 
 function App() {
   const [visible, setVisible] = useState(false);
