@@ -10,6 +10,8 @@ import VerticalTabs from "./components/navigation/tabs/tab2";
 import style from "./components/PureModal/pureModal.module.css";
 import { PureModal } from "./components/PureModal/pureModal";
 import { useState } from "react";
+import Sider from "./components/layouts/Sider";
+import style2 from './components/layouts/layout.module.css'
 import { Row } from "./components/layouts/Row";
 import Col from "./components/layouts/Column";
 import PrimaryButton from "./components/buttons/primary-button";
@@ -38,7 +40,7 @@ import Checkbox from "./components/Forms/checkbox/checkbox";
 import Radio from "./components/Forms/radio/radio";
 import Form from "./components/Forms/form/form";
 import TableComponent from "./components/datadisplay/Table/table";
-import { Divider } from "./components/layouts/Divider";
+import { Col, Content, Divider, Footer, Header, Layout, Row, Space } from "./components/layouts";
 import Space from "./components/layouts/Space";
 
 function App() {
@@ -48,6 +50,8 @@ function App() {
   const [disabledChecked, setDisabledChecked] = useState(true);
   const [formValues, setFormValues] = useState({});
   const [errors, setErrors] = useState({});
+  const [collapsible, setCollapsible] = useState(true);
+  const [collapseStatus, setCollapseStatus] = useState(false);
   const [fields, setFields] = useState([
     {
       id: 1,
@@ -466,6 +470,18 @@ function App() {
                 <button>reload</button>
                 <button>close</button>
               </Space>
+
+              <Layout>
+                <Header>Header</Header>
+                <Layout className={style2.layout2} hasSider={true}>
+                  <Sider collapsed={collapseStatus} collapsible={collapsible}>
+                    <p>Lorem</p>
+                    <button onClick={() => setCollapseStatus(!collapseStatus)}>open/close</button>
+                  </Sider>
+                  <Content>lorem</Content>
+                </Layout>
+                <Footer>Footer</Footer>
+              </Layout>
             </div>
           </div>
         </div>

@@ -1,8 +1,8 @@
+import style from './layout.module.css'
 
-
-const Footer = () => {
+const Footer = ({ children }) => {
     return (
-        <div>Footer</div>
+        <div className={style.footer}>{children}</div>
     )
 }
 
