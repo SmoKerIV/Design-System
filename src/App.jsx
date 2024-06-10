@@ -40,8 +40,7 @@ import Checkbox from "./components/Forms/checkbox/checkbox";
 import Radio from "./components/Forms/radio/radio";
 import Form from "./components/Forms/form/form";
 import TableComponent from "./components/datadisplay/Table/table";
-import { Col, Content, Divider, Footer, Header, Layout, Row, Space } from "./components/layouts";
-import Space from "./components/layouts/Space";
+import { Content, Divider, Footer, Header, Layout, Space } from "./components/layouts";
 
 function App() {
   const [visible, setVisible] = useState(false);
