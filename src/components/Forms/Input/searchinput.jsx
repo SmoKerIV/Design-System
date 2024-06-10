@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import './input.css';
 import search from './assets/search.svg';
 
-const SearchInput = ({ placeholder, type = 'text', onChange, onSearch }) => {
+const SearchInput = ({ placeholder, onChange, onSearch }) => {
   const [value, setValue] = useState('');
 
   const handleChange = (e) => {
@@ -24,7 +24,6 @@ const SearchInput = ({ placeholder, type = 'text', onChange, onSearch }) => {
   return (
     <div className='search-input-container'>
       <input
-        type={type}
         value={value}
         onChange={handleChange}
         placeholder={placeholder}
