@@ -286,17 +286,6 @@ function App() {
                 width: "100%",
               }}
             >
-              <h1>Lorem ipsum dolor sit amet.</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-                error earum eligtia, perferendis ut? Error esse magnam natus
-                placeat iure!
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea
-                explicabo facilis cupiditate! Eos quos officiis architecto modi
-                ex eum repellendus odit nesciunt assumenda, nihil, voluptatem
-              </p>
 
               <div>
                 <button
@@ -361,15 +350,15 @@ function App() {
               </Space>
 
               <Layout>
-                <Header>sdf</Header>
+                <Header>Header</Header>
                 <Layout className={style2.layout2} hasSider={true}>
                   <Sider collapsed={collapseStatus} collapsible={collapsible}>
                     <p>Lorem</p>
                     <button onClick={() => setCollapseStatus(!collapseStatus)}>open/close</button>
                   </Sider>
-                  <Content>sdf</Content>
+                  <Content>lorem</Content>
                 </Layout>
-                <Footer>sdf</Footer>
+                <Footer>Footer</Footer>
               </Layout>
             </div>
           </div>

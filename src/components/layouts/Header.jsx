@@ -1,8 +1,8 @@
 import style from './layout.module.css';
 
-const Header = () => {
+const Header = ({ children }) => {
     return (
-        <div className={style.header}>Header</div>
+        <div className={style.header}>{children}</div>
     )
 }
 
