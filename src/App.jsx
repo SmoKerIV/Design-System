@@ -28,14 +28,16 @@ import ErrorAlert from "./components/feedback/alerts/errorAlert";
 import SuccessAlert from "./components/feedback/alerts/successAlert";
 import Notification from "./components/feedback/Notifications/notification";
 import CircularProgressBar from "./components/feedback/progress/circular";
-import HomeIcon from "./icons/home-icon.svg";
-import BellIcon from "./icons/bell-icon.svg";
+import HomeIcon from "./components/buttons/button-assets/home-icon.svg";
+import BellIcon from "./components/datadisplay/badges/assets/bell-icon.svg";
 import InputField from "./components/Forms/Input/input";
 import Inputmail from "./components/Forms/Input/inputmail";
 import SearchInput from "./components/Forms/Input/searchinput";
 import Checkbox from "./components/Forms/checkbox/checkbox";
 import Radio from "./components/Forms/radio/radio";
 import Form from "./components/Forms/form/form";
+import TableComponent from "./components/datadisplay/Table/table";
+import { Divider } from "./components/layouts/Divider";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -336,6 +338,47 @@ function App() {
         />
         <CircularProgressBar value={75} color="pink" />
       </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          gap: "15px",
+          height: "100%",
+          width: "100%",
+        }}
+      >
+        <TableComponent
+          initialRows={[
+            {
+              columns: ["Text1", "Text2"],
+              tag1: "Tag 1",
+              tag2: "Tag 2",
+            },
+            {
+              columns: ["Text1", "Text2"],
+              tag1: "Tag 1",
+              tag2: "Tag 2",
+            },
+            {
+              columns: ["Text1", "Text2"],
+              tag1: "Tag 1",
+              tag2: "Tag 2",
+            },
+          ]}
+          name={"john Doe"}
+          columnTitles={[
+            "Title",
+            "Title",
+            "Title",
+            "Title",
+            "Title",
+            "Title",
+            "Title",
+          ]}
+        />
+      </div>
       <div>
         <h1
           style={{
@@ -360,7 +403,7 @@ function App() {
                 ex eum repellendus odit nesciunt assumenda, nihil, voluptatem
               </p>
 
-              <div>
+              <div >
                 <button
                   className={style.modal_button}
                   onClick={() => setVisible(true)}
@@ -375,14 +418,14 @@ function App() {
 
               <div>
                 <Row gutter={[16, 16]}>
-                  <Col span={8}>
+                  <Col span={4} md={8} sm={4} lg={16}>
                     <div>hello</div>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Id, nulla!
                     </p>
                   </Col>
-                  <Col span={8}>
+                  <Col span={8} sm={4} md={8}>
                     <p>
                       Lorem ipsum dolor sit amet consectetur adipisicing elit.
                       Iste, sint.
@@ -408,6 +451,12 @@ function App() {
                   <Col span={6}>Lorem ipsum dolor sit amet.</Col>
                   <Col span={6}>Lorem ipsum dolor sit amet.</Col>
                 </Row>
+              </div>
+
+              <div style={{ width: "100%", height: "100%" }}>
+                <Divider orientation="right">
+                  <p>laboriosam.</p>
+                </Divider>
               </div>
             </div>
           </div>
