@@ -13,7 +13,7 @@
 }
 
 .radio-wrapper.disabled {
-  color: #ccc;
+  color: var(--gray-dark);
 }
 
 .radio-wrapper input[type="radio"]:disabled {

@@ -1,3 +1,4 @@
+// import "./syles/variable.css"
 import "./App.css";
 import Menu from "./components/navigation/menus/menus";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";

@@ -16,7 +16,7 @@
   justify-content: center;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: #f2f2f2;
+  background-color: var(--off-white);
   transition: background-color 0.3s ease;
   position: relative; 
 }
@@ -26,14 +26,14 @@
 }
 
 .tab:hover {
-  background-color: #e0e0e0;
+  background-color: var(--light-gray) ;
 }
 
 .tab.active {
-  background-color: #fff;
+  background-color: var(--white);
   border-bottom: none;
-  color: #1890FF; 
-  border-bottom: 2px solid #1890FF; 
+  color: var(--primary); 
+  border-bottom: 2px solid var(--primary); 
 }
 
 .tabs-content {
@@ -46,7 +46,7 @@
   bottom: 0;
   left: 0;
   height: 2px; 
-  background-color: #1890FF; 
+  background-color: var(--primary); 
   transition: left 0.2s ease, width 0.2s ease;
 }
 
@@ -67,16 +67,16 @@
   width: 140px;
   padding: 10px;
   cursor: pointer;
-  background-color: #f2f2f2;
+  background-color: var(--off-white);
   transition: background-color 0.3s ease;
 }
 
 .vertical-tab.active {
-  color: #1890FF;
+  color: var(--primary);
 }
 
 .vertical-tab:hover {
-  background-color: #e0e0e0;
+  background-color: var(--light-gray);
 }
 
 .vertical-tabs-content {
@@ -93,6 +93,6 @@
   left: 100%; 
   top: 0;
   width: 2px; 
-  background-color: #1890FF; 
+  background-color: var(--primary); 
   transition: top 0.3s ease, height 0.3s ease; 
 }

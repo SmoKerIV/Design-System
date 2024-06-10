@@ -11,6 +11,7 @@ input {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #d9d9d9;
+  border-radius: var(--border-radius);
 }
 input:focus {
   outline: none;
@@ -21,13 +22,15 @@ input:focus {
   justify-content: center;
   margin-top: 50px;
   width: 395px;
+  border: 1px solid var(--border-color);
+  box-shadow: 1px var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: auto;
 }
 .mail input {
   padding: 10px;
   width: 269px;
-  border-right: none;
-  border-left: none;
-  
+  border: none;
 }
 .mail input:focus {
   outline: none;
@@ -35,24 +38,19 @@ input:focus {
 .mail .start {
   width: 70px;
   padding: 10px;
-  border: #d9d9d9;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fafafa;
-  border: 1px solid #d9d9d9;
-  box-shadow: 1px #d9d9d9;
+  background-color: var(--gray);
+  border: none;
 }
 .mail .end {
-  background-color: #fafafa;
+  background-color: var(--gray);
   width: 56px;
   padding: 10px;
-  border: #d9d9d9;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #d9d9d9;
-  box-shadow: 1px #d9d9d9;
 }
 /* search */
 
@@ -64,10 +62,10 @@ input:focus {
 }
 
 .search-input-field {
-  width: 280px;
-  border: 1px solid #d9d9d9;
+  width: 335px;
+  border: 1px solid var(--border-color);
   border-right: none;
-  border-radius: 4px 0 0 4px;
+  border-radius: var(--border-radius);
 }
 .search-input-field:focus {
   outline: none;
@@ -77,21 +75,21 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
   padding: 12px 20px;
-  background-color: #1890FF;
+  background-color: var(--primary);
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: 0.2s;
 }
-button img{
+.search-input-button img {
   width: 16px;
   height: 16px;
-  color: black;
+  color: white;
 }
 
 .search-input-button:hover {
-  background-color: #43a3fd;
-  border-color: #1890FF;
-  color: #1890FF;
+  background-color: var(--primary-hover);
+  border-color: var(--primary);
 }
