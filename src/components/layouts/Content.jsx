@@ -1,8 +1,8 @@
-
+import style from './layout.module.css'
 
 const Content = () => {
     return (
-        <div>Content</div>
+        <div className={style.content}>Content</div>
     )
 }
 

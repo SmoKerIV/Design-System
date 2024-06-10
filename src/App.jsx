@@ -19,9 +19,18 @@ import { Row } from "./components/layouts/Row";
 import Col from "./components/layouts/Column";
 import { Divider } from "./components/layouts/Divider";
 import Space from "./components/layouts/Space";
+import Header from "./components/layouts/Header";
+import Layout from "./components/layouts/Layout";
+import Content from "./components/layouts/Content";
+import Sider from "./components/layouts/Sider";
+import Footer from './components/layouts/Footer'
+import style2 from './components/layouts/layout.module.css'
 
 function App() {
   const [visible, setVisible] = useState(false);
+  const [collapsible, setCollapsible] = useState(true);
+  const [collapseStatus, setCollapseStatus] = useState(false);
+
   const items = [
     { label: "Option 1" },
     { label: "Option 2" },
@@ -350,6 +359,18 @@ function App() {
                 <button>reload</button>
                 <button>close</button>
               </Space>
+
+              <Layout>
+                <Header>sdf</Header>
+                <Layout className={style2.layout2} hasSider={true}>
+                  <Sider collapsed={collapseStatus} collapsible={collapsible}>
+                    <p>Lorem</p>
+                    <button onClick={() => setCollapseStatus(!collapseStatus)}>open/close</button>
+                  </Sider>
+                  <Content>sdf</Content>
+                </Layout>
+                <Footer>sdf</Footer>
+              </Layout>
             </div>
           </div>
         </div>
