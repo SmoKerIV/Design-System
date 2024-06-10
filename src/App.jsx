@@ -33,12 +33,12 @@ import BellIcon from "./components/datadisplay/badges/assets/bell-icon.svg";
 import InputField from "./components/Forms/Input/input";
 import Inputmail from "./components/Forms/Input/inputmail";
 import SearchInput from "./components/Forms/Input/searchinput";
-import TableComponent from './components/datadisplay/Table/table';
+import TableComponent from "./components/datadisplay/Table/table";
 import { Divider } from "./components/layouts/Divider";
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const handleClick = () => {
     console.log("Button clicked");
@@ -255,7 +255,11 @@ function App() {
         <div>
           <InputField placeholder={"example"} onChange={handleInputChange} />
           <Inputmail placeholder={"example"} onChange={handleInputChange} />
-          <SearchInput placeholder={"example"} onChange={handleInputChange} onSearch={handleSearch}/>
+          <SearchInput
+            placeholder={"example"}
+            onChange={handleInputChange}
+            onSearch={handleSearch}
+          />
         </div>
       </div>
       <div
@@ -365,9 +369,46 @@ function App() {
         />
         <CircularProgressBar value={75} color="pink" />
       </div>
-      <div>
-      <TableComponent initialRows={[{ columns: ['Text', 'Text'], tag1: 'Tag 1', tag2: 'Tag 2' },
-    { columns: ['Text', 'Text'], tag1: 'Tag 3', tag2: 'Tag 4' },]} name={'john Doe'} numColumns={8}/>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          gap: "15px",
+          height: "100%",
+          width: "100%",
+        }}
+      >
+        <TableComponent
+          initialRows={[
+            {
+              columns: ["Text1", "Text2"],
+              tag1: "Tag 1",
+              tag2: "Tag 2",
+            },
+            {
+              columns: ["Text1", "Text2"],
+              tag1: "Tag 1",
+              tag2: "Tag 2",
+            },
+            {
+              columns: ["Text1", "Text2"],
+              tag1: "Tag 1",
+              tag2: "Tag 2",
+            },
+          ]}
+          name={"john Doe"}
+          columnTitles={[
+            "Title",
+            "Title",
+            "Title",
+            "Title",
+            "Title",
+            "Title",
+            "Title",
+          ]}
+        />
       </div>
       <div>
         <h1
@@ -427,7 +468,7 @@ function App() {
                 ex eum repellendus odit nesciunt assumenda, nihil, voluptatem
               </p>
 
-              <div>
+              <div >
                 <button
                   className={style.modal_button}
                   onClick={() => setVisible(true)}
@@ -471,14 +512,14 @@ function App() {
                   <Col span={6}>
                     <p>Lorem ipsum dolor sit amet.</p>
                   </Col>
-                  <Col span={6} >Lorem ipsum dolor sit amet.</Col>
+                  <Col span={6}>Lorem ipsum dolor sit amet.</Col>
                   <Col span={6}>Lorem ipsum dolor sit amet.</Col>
                   <Col span={6}>Lorem ipsum dolor sit amet.</Col>
                 </Row>
               </div>
 
-              <div style={{ width: '100%', height: '100%' }}>
-                <Divider orientation='right'>
+              <div style={{ width: "100%", height: "100%" }}>
+                <Divider orientation="right">
                   <p>laboriosam.</p>
                 </Divider>
               </div>
