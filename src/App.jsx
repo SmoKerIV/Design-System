@@ -11,7 +11,7 @@ import style from "./components/PureModal/pureModal.module.css";
 import { PureModal } from "./components/PureModal/pureModal";
 import { useState } from "react";
 import Sider from "./components/layouts/Sider";
-import style2 from './components/layouts/layout.module.css'
+import style2 from "./components/layouts/layout.module.css";
 import { Row } from "./components/layouts/Row";
 import Col from "./components/layouts/Column";
 import PrimaryButton from "./components/buttons/primary-button";
@@ -40,7 +40,14 @@ import Checkbox from "./components/Forms/checkbox/checkbox";
 import Radio from "./components/Forms/radio/radio";
 import Form from "./components/Forms/form/form";
 import TableComponent from "./components/datadisplay/Table/table";
-import { Content, Divider, Footer, Header, Layout, Space } from "./components/layouts";
+import {
+  Content,
+  Divider,
+  Footer,
+  Header,
+  Layout,
+  Space,
+} from "./components/layouts";
 import DocumentationForm from "./components/docs/documentation";
 
 function App() {
@@ -148,19 +155,166 @@ export const PureModal = ({ isOpen = false, onClose = () => { }, children }) => 
         </div>
     </div>
 }`;
+  const SelectedMenuCode = `
+  const items = [
+    { label: "Option 1" },
+    { label: "Option 2" },
+    { label: "Option 3" },
+    { label: "Option 4" },
+  ];
 
-  const RowCode = `
-import style from './layout.module.css'
+  const handleSelect = (item) => {
+    console.log("Selected item:", item);
+  };
+  return (
+            <SelectedMenu items={items} onSelect={handleSelect} />
+  )
+  `;
+  const bread = `
+  const breadItems = [
+    { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
+    { label: "Services", path: "/services" },
+    { label: "Contact", path: "/contact" },
+  ];
+  return (
+    <Breadcrumbs breadcrumbs={breadItems} />
+  )
+`;
 
-export const Row = ({ gutter, children }) => {
+  const tab = `
+const tabs = [
+    { title: "Tab 1", content: <div>Content for Tab 1</div> },
+    { title: "Tab 2", content: <div>Content for Tab 2</div> },
+    { title: "Tab 3", content: <div>Content for Tab 3</div> },
+     ];
+     return (
+       <Tabs tabs={tabs} />
+       <VerticalTabs tabs={tabs} />
 
-    return (
-        <div className={style.grid} style={{ rowGap: gutter[0], columnGap: gutter[1] }}>
-            {children}
-        </div>
+     )`;
+     const inputCode = `     
+     return(       
+            <InputField placeholder={"example"} onChange={handleInputChange} />
+            <Inputmail placeholder={"example"} onChange={handleInputChange} />
+            <SearchInput placeholder={"example"} onChange={handleInputChange} onSearch={handleSearch}/>
+      )`;
+
+  const checkCode = `
+    const [checked, setChecked] = useState(true);
+    const [indeterminate, setIndeterminate] = useState(true);
+    const [disabledChecked, setDisabledChecked] = useState(true);
+    return(
+      <Checkbox
+       label="Label"
+        checked={checked}
+         onChange={() => setChecked(!checked)} />
+      <Checkbox
+       label="Label"
+        indeterminate={indeterminate}
+         checked={false} onChange={() => setIndeterminate(!indeterminate)} />
+      <Checkbox
+       label="Label"
+        disabled checked={disabledChecked}
+         onChange={() => setDisabledChecked(!disabledChecked)} />
     )
-}`;
+  `;
+  const radioCode = `
+  return(
+    <Radio label="Normal" name="example" value="normal" />
+    <Radio label="Normal" name="example" value="normal" />
+    <Radio label="Disabled" name="example" value="disabled" disabled />
+  )
+  `;
+  const formCode = `
+  const fields = [
+    {
+      id: 1,
+      name: "name",
+      label: "Name",
+      type: "text",
+      value: "",
+      required: true,
+    },
+    {
+      id: 2,
+      name: "email",
+      label: "Email",
+      type: "email",
+      value: "",
+      required: false,
+    },
+  ];
+  const handleChange = (e, id) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+    const updatedFields = fields.map((field) =>
+      field.id === id ? { ...field, value } : field
+    );
+    setFields(updatedFields);
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length === 0) {
+      console.log("Form submitted successfully", formValues);
+    } else {
+      setErrors(validationErrors);
+    }
+  }
+  return(
+    <Form fields={fields} formValues={formValues} errors={errors} handleChange={handleChange} handleSubmit={handleSubmit} />
+  )
+  `;
+  
 
+  const rowColCodeSnippet = `
+  import React from 'react';
+  
+  const Example = () => {
+      return (
+          <Row gutter={[16, 16]}>
+              <Col span={4} md={8} sm={4} lg={24}>
+                  <div>hello</div>
+                  <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Id, nulla!
+                  </p>
+              </Col>
+              <Col span={8} sm={4} md={8} lg={24}>
+                  <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Iste, sint.
+                  </p>
+              </Col>
+              <Col span={8} sm={4} md={8} lg={24}>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Quibusdam, accusantium.
+              </Col>
+              <Col span={6} sm={8} md={8} lg={16}>
+                  <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Quas, reiciendis.
+                  </p>
+              </Col>
+              <Col span={6} sm={4} md={8} lg={16}>
+                  <p>Lorem ipsum dolor sit amet.</p>
+              </Col>
+              <Col span={6}>
+                  <p>Lorem ipsum dolor sit amet.</p>
+              </Col>
+              <Col span={6}>Lorem ipsum dolor sit amet.</Col>
+              <Col span={6}>Lorem ipsum dolor sit amet.</Col>
+              <Col span={6}>Lorem ipsum dolor sit amet.</Col>
+          </Row>
+      );
+  };
+  
+  export default Example;
+  `;
 
   const dividerCode = `
   import style from './layout.module.css'
@@ -198,7 +352,6 @@ export const Divider = ({ orientation, orientationMargin, type, children }) => {
     );
 }`;
 
-
   const spaceCode = `
 import style from './layout.module.css';
 
@@ -234,11 +387,11 @@ const Layout = ({ children, hasSider }) => {
 export default Layout
 `;
 
-const headerCode = ``;
+  const headerCode = ``;
 
-const siderCode = ``;
+  const siderCode = ``;
 
-const footerCode = ``;
+  const footerCode = ``;
 
   const initialRows = Array.from({ length: 10 }, () => ({
     columns: Array(8).fill("text"),
@@ -308,15 +461,20 @@ const footerCode = ``;
                 componentName="Menu"
                 description="A dynamic menu to navigate from one page to another."
                 propsInfo={[
-                  { name: 'items', type: 'array', description: 'objects of each path and its label' },
-
+                  {
+                    name: "items",
+                    type: "array",
+                    description: "objects of each path and its label",
+                  },
                 ]}
                 stateInfo={[
-                  { name: 'onClick', type: 'function', description: ' handles when the item is clicked' },
+                  {
+                    name: "onClick",
+                    type: "function",
+                    description: " handles when the item is clicked",
+                  },
                 ]}
                 codeSnippet={menuCode}
-
-
               >
                 <Menu items={menuItems} onItemClick={handleItemClick} />
               </DocumentationForm>
@@ -326,10 +484,21 @@ const footerCode = ``;
                 componentName="InlineMenu"
                 description="An inline menu component that displays a dropdown menu. It allows users to select an item from the list."
                 propsInfo={[
-                  { name: 'items', type: 'array', description: 'Array of menu items to be displayed in the dropdown. Each item should have a `label` property.' },
-
+                  {
+                    name: "items",
+                    type: "array",
+                    description:
+                      "Array of menu items to be displayed in the dropdown. Each item should have a `label` property.",
+                  },
                 ]}
-                stateInfo={[{ name: 'onSelect', type: 'function', description: 'Callback function to handle item selection. It receives the selected item as an argument.' }]}
+                stateInfo={[
+                  {
+                    name: "onSelect",
+                    type: "function",
+                    description:
+                      "Callback function to handle item selection. It receives the selected item as an argument.",
+                  },
+                ]}
                 codeSnippet={inlineMenu}
               >
                 <InlineMenu items={menuItems} onSelect={handleSelect} />
@@ -339,46 +508,171 @@ const footerCode = ``;
           </Router>
         </div>
         <div className="container">
-          <SelectedMenu items={items} onSelect={handleSelect} />
+          <DocumentationForm
+            componentName="SelectedMenu"
+            description="A menu component that displays a list of items. It allows users to select an item from the list."
+            propsInfo={[
+              {
+                name: "items",
+                type: "array",
+                description:
+                  "Array of menu items to be displayed in the dropdown. Each item should have a `label` property.",
+              },
+            ]}
+            stateInfo={[
+              {
+                name: "onSelect",
+                type: "function",
+                description:
+                  "Callback function to handle item selection. It receives the selected item as an argument.",
+              },
+            ]}
+            codeSnippet={SelectedMenuCode}
+          >
+            <SelectedMenu items={items} onSelect={handleSelect} />
+          </DocumentationForm>
         </div>
       </div>
       <div>
-        <h1>Breadcrumbs</h1>
         <div className="container">
           <Router>
             <div>
-              <Breadcrumbs breadcrumbs={breadItems} />
+              <DocumentationForm
+                componentName="Breadcrumbs"
+                description="A breadcrumb navigation component that shows the current page's location within the hierarchical structure of the website."
+                propsInfo={[
+                  {
+                    name: "breadcrumbs",
+                    type: "array",
+                    description:
+                      "Array of breadcrumb objects, each containing a `path` and `label`.",
+                  },
+                ]}
+                stateInfo={[]}
+                codeSnippet={bread}
+              >
+                <Breadcrumbs breadcrumbs={breadItems} />
+              </DocumentationForm>
             </div>
           </Router>
         </div>
         <div>
           <h1>Tabs Example</h1>
           <div className="container">
-            <Tabs tabs={tabs} />
+            <DocumentationForm
+              componentName="Tabs"
+              description="A tabs component that allows users to switch between different content sections."
+              propsInfo={[
+                {
+                  name: "tabs",
+                  type: "array",
+                  description:
+                    "Array of tab objects, each containing a `title` and `content`.",
+                },
+              ]}
+              stateInfo={[]}
+              codeSnippet={tab}
+            >
+              <Tabs tabs={tabs} />
+            </DocumentationForm>{" "}
           </div>
         </div>
         <div className="container">
           <div>
-            <VerticalTabs tabs={tabs} />
+            <DocumentationForm
+              componentName="Tabs"
+              description="A tabs component that allows users to switch between different content sections."
+              propsInfo={[
+                {
+                  name: "tabs",
+                  type: "array",
+                  description:
+                    "Array of tab objects, each containing a `title` and `content`.",
+                },
+              ]}
+              stateInfo={[]}
+              codeSnippet={tab}
+            >
+              <VerticalTabs tabs={tabs} />
+            </DocumentationForm>
           </div>
         </div>
       </div>
       <div className="container">
         <h1>Input</h1>
-        <div>
-          <InputField placeholder={"example"} onChange={handleInputChange} />
-          <Inputmail placeholder={"example"} onChange={handleInputChange} />
-          <SearchInput
-            placeholder={"example"}
-            onChange={handleInputChange}
-            onSearch={handleSearch}
-          />
+        <div className="container">
+          <DocumentationForm
+            componentName="Input"
+            description="A basic input field component."
+            propsInfo={[
+              {
+                name: "placeholder",
+                type: "string",
+                description: "Placeholder text for the input field.",
+              },
+            ]}
+            stateInfo={[
+              {
+                name: "onChange",
+                type: "function",
+                description: "Callback function to handle input changes.",
+              },
+              {
+                name: "onSearch",
+                type: "function",
+                description: "Callback function to handle search input.",
+              },
+            ]}
+            codeSnippet={inputCode}
+          >
+            <InputField placeholder={"example"} onChange={handleInputChange} />
+            <Inputmail placeholder={"example"} onChange={handleInputChange} />
+            <SearchInput
+              placeholder={"example"}
+              onChange={handleInputChange}
+              onSearch={handleSearch}
+            />
+          </DocumentationForm>
         </div>
       </div>
       <div>
         <h1>Checkboxes</h1>
         <div className="container">
           <div>
+            <DocumentationForm
+              componentName="Checkbox"
+              description="A checkbox component that allows users to select multiple options."
+              propsInfo={[
+                {
+                  name: "label",
+                  type: "string",
+                  description: "Label text for the checkbox.",
+                },
+                {
+                  name: "indeterminate",
+                  type: "boolean",
+                  description: "Indicates whether the checkbox is indeterminate.",
+                },
+                {
+                  name: "disabled",
+                  type: "boolean",
+                  description: "Indicates whether the checkbox is disabled.",
+                },
+                {
+                  name: "checked",
+                  type: "boolean",
+                  description: "Indicates whether the checkbox is checked.",
+                },
+              ]}
+              stateInfo={[
+                {
+                  name: "onChange",
+                  type: "function",
+                  description: "Callback function to handle checkbox changes.",
+                },
+              ]}
+              codeSnippet={checkCode}
+            >
             <Checkbox
               label="Label"
               checked={checked}
@@ -396,6 +690,7 @@ const footerCode = ``;
               checked={disabledChecked}
               onChange={() => setDisabledChecked(!disabledChecked)}
             />
+          </DocumentationForm>
           </div>
         </div>
       </div>
@@ -403,15 +698,85 @@ const footerCode = ``;
         <h1>Radio Buttons</h1>
         <div className="radio-group">
           <div className="radio-row">
+            <DocumentationForm
+              componentName="Radio"
+              description="A radio button component that allows users to select one option from a list."
+              propsInfo={[
+                {
+                  name: "label",
+                  type: "string",
+                  description: "Label text for the radio button.",
+                },
+                {
+                  name: "name",
+                  type: "string",
+                  description: "Name of the radio button group.",
+                },
+                {
+                  name: "value",
+                  type: "string",
+                  description: "Value of the radio button.",
+                },
+                {
+                  name: "disabled",
+                  type: "boolean",
+                  description: "Indicates whether the radio button is disabled.",
+                },
+              ]}
+              stateInfo={[
+                {
+                  name: "onChange",
+                  type: "function",
+                  description: "Callback function to handle radio button changes.",
+                },
+              ]}
+              codeSnippet={radioCode}
+            >
             <Radio label="Normal" name="example" value="normal" />
             <Radio label="Normal" name="example" value="normal" />
             <Radio label="Disabled" name="example" value="disabled" disabled />
+          </DocumentationForm>
           </div>
         </div>
       </div>
       <div>
         <h1>Form</h1>
         <div className="container">
+          <DocumentationForm
+            componentName="Form"
+            description="A form component that allows users to input data."
+            propsInfo={[
+              {
+                name: "fields",
+                type: "array",
+                description:
+                  "Array of form fields to be displayed. Each field should have an `id`, `name`, `label`, `type`, `value`, and `required` property.",
+              },
+              {
+                name: "formValues",
+                type: "object",
+                description: "Object containing the form field values.",
+              },
+              {
+                name: "errors",
+                type: "object",
+                description: "Object containing form field validation errors.",
+              },
+            ]}
+            stateInfo={[
+              {
+                name: "handleChange",
+                type: "function",
+                description: "Callback function to handle form field changes.",
+              },
+              {
+                name: "handleSubmit",
+                type: "function",
+                description: "Callback function to handle form submission.",
+              },
+            ]}
+            codeSnippet={formCode}
+          >
           <Form
             fields={fields}
             formValues={formValues}
@@ -419,6 +784,7 @@ const footerCode = ``;
             handleChange={handleChange}
             handleSubmit={handleSubmit}
           />
+        </DocumentationForm>
         </div>
       </div>
       <div className="container">
@@ -455,12 +821,7 @@ const footerCode = ``;
             />
           }
         />
-        <LoadingButton
-          title="Loading Button"
-          loadingDurationInSeconds={3}  
-
-          
-        />
+        <LoadingButton title="Loading Button" loadingDurationInSeconds={3} />
         <Badges
           title=""
           notificationCount={5}
@@ -562,9 +923,7 @@ const footerCode = ``;
         <div className="container">
           <div className="modal-container">
             <div className="modal-content">
-
-
-              <div >
+              <div>
                 <button
                   className={style.modal_button}
                   onClick={() => setVisible(true)}
@@ -577,22 +936,48 @@ const footerCode = ``;
                     componentName="Modal"
                     description="An inline menu component that displays a dropdown menu. It allows users to select an item from the list."
                     propsInfo={[
-                      { name: 'items', type: 'array', description: 'Array of menu items to be displayed in the dropdown. Each item should have a `label` property.' },
-
+                      {
+                        name: "items",
+                        type: "array",
+                        description:
+                          "Array of menu items to be displayed in the dropdown. Each item should have a `label` property.",
+                      },
                     ]}
-                    stateInfo={[{ name: 'onSelect', type: 'function', description: 'Callback function to handle item selection. It receives the selected item as an argument.' }]}
+                    stateInfo={[
+                      {
+                        name: "onSelect",
+                        type: "function",
+                        description:
+                          "Callback function to handle item selection. It receives the selected item as an argument.",
+                      },
+                    ]}
                     codeSnippet={modalCode}
                   >
-                    <PureModal isOpen={visible} onClose={() => setVisible(false)}>
+                    <PureModal
+                      isOpen={visible}
+                      onClose={() => setVisible(false)}
+                    >
                       <button onClick={() => setVisible(false)}>Close</button>
                       <h1>Hello Modal</h1>
                     </PureModal>
                   </DocumentationForm>
                 </div>
-
               </div>
 
               <div>
+              <DocumentationForm
+                componentName="Row and Col"
+                description="The Row and Col components from Ant Design provide a responsive grid layout system. It allows for flexible and consistent layout structures."
+                propsInfo={[
+                    { name: 'gutter', type: 'array', description: 'Spacing between the grid columns. Accepts an array with horizontal and vertical spacing values.' },
+                    { name: 'span', type: 'number', description: 'Number of columns the grid item should span. Total columns in a row is 24.' },
+                    { name: 'sm', type: 'number', description: 'Grid item width at small breakpoint (576px).' },
+                    { name: 'md', type: 'number', description: 'Grid item width at medium breakpoint (768px).' },
+                    { name: 'lg', type: 'number', description: 'Grid item width at large breakpoint (992px).' },
+                ]}
+                stateInfo={[]}
+                codeSnippet={rowColCodeSnippet}
+            >
                 <Row gutter={[16, 16]}>
                   <Col span={4} md={8} sm={4} lg={24}>
                     <div>hello</div>
@@ -627,6 +1012,7 @@ const footerCode = ``;
                   <Col span={6}>Lorem ipsum dolor sit amet.</Col>
                   <Col span={6}>Lorem ipsum dolor sit amet.</Col>
                 </Row>
+              </DocumentationForm>
               </div>
 
               <div style={{ width: "100%", height: "100%" }}>
@@ -635,7 +1021,7 @@ const footerCode = ``;
                 </Divider>
               </div>
 
-              <Space size={20} direction='column' align='center' wrap='wrap'>
+              <Space size={20} direction="column" align="center" wrap="wrap">
                 <button>submit</button>
                 <button>reload</button>
                 <button>close</button>
@@ -646,7 +1032,9 @@ const footerCode = ``;
                 <Layout className={style2.layout2} hasSider={true}>
                   <Sider collapsed={collapseStatus} collapsible={collapsible}>
                     <p>Lorem</p>
-                    <button onClick={() => setCollapseStatus(!collapseStatus)}>open/close</button>
+                    <button onClick={() => setCollapseStatus(!collapseStatus)}>
+                      open/close
+                    </button>
                   </Sider>
                   <Content>lorem</Content>
                 </Layout>
