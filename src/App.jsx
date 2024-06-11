@@ -369,7 +369,248 @@ export default Layout
 
   const siderCode = ``;
 
-  const footerCode = ``;
+const footerCode = ``;
+
+const primarybtnCode = `
+const handleClick = () => {
+    console.log("Button clicked");
+  };
+
+return (
+<PrimaryButton
+  title="Primary Button"
+  onClick={handleClick}>
+</PrimaryButton>
+);
+`;
+
+const secbtnCode = `
+const handleClick = () => {
+    console.log("Button clicked");
+  };
+
+return (
+<SecondaryButton
+  title="Secondary Button"
+  onClick={handleClick}>
+</SecondaryButton>
+);
+`;
+
+const linkbtnCode = `
+const handleClick = () => {
+    console.log("Button clicked");
+  };
+
+return (
+  <LinkButton 
+    title="Link Button" 
+    onClick={handleClick}>
+  </LinkButton>
+);
+`;
+
+const textbtnCode = `
+const handleClick = () => {
+    console.log("Button clicked");
+  };
+
+return (
+   <TextButton 
+     title="Text Button" 
+     onClick={handleClick}>
+   </TextButton>
+);
+`;
+
+const dashedbtnCode = `
+const handleClick = () => {
+    console.log("Button clicked");
+  };
+
+return (
+   <DashedButton
+      title="Dashed Button"
+      onClick={handleClick}>
+   </DashedButton>
+);
+`;
+
+const disabledbtnCode = `
+
+return (
+   <DisabledButton 
+      title="Disabled Button">
+  </DisabledButton>
+
+);
+`;
+
+const iconbtnCode = `
+const handleClick = () => {
+    console.log("Button clicked");
+  };
+
+return (
+   <IconButton
+      title="Icon Button"
+      onClick={handleClick}
+      icon={
+        <img
+          src={HomeIcon}
+          alt="Bell icon"
+          className="Bell-icon"
+          tyle={{ height: "15px", width: "15px" }}/>}/>
+);
+`;
+
+const loadingbtnCode = `
+
+return (
+   <LoadingButton
+      title="Loading Button"
+      loadingDurationInSeconds={3}/>
+);
+`;
+
+const badgesCode = `
+
+const handleNotificationsClick = () => {
+    console.log("Notifications clicked");
+  };
+
+return (
+   <Badges
+     title=""
+     notificationCount={5}
+     onClick={handleNotificationsClick}
+     icon={
+       <img
+        src={BellIcon}
+        alt="Bell icon"
+        className="Bell-icon"
+        style={{ height: "20px", width: "25px", cursor: "pointer" }}/>
+          }
+        />
+);
+`;
+
+const cardCode = `
+
+return (
+   <Card
+      imageSrc="https://via.placeholder.com/300"
+      title="Card Title 1"
+      description="This is a longer description of the card content. Click the button to toggle more or less content."/>
+);
+`;
+
+const listCode = `
+
+return (
+     <ListComponent
+          initialItems={[
+            "[ITEM] Racing car sprays burning fuel into crowd.",
+            "[ITEM] Japanese princess to wed commoner.",
+            "[ITEM] Australian walks 100km after outback crash.",
+            "[ITEM] Man charged over missing wedding girl.",
+            "[ITEM] Los Angeles battles huge wildfires.",
+            "[ITEM] New item 1.",
+            "[ITEM] New item 2.",
+            "[ITEM] New item 3.",
+            "[ITEM] New item 4.",
+          ]}
+        />
+);
+`;
+
+const successAlertCode = `
+
+return (
+    <SuccessAlert
+      title="Success Tips"
+      description="Detailed description and advice about successful copywriting."/>
+);
+`;
+
+const infoAlertCode = `
+
+return (
+    <InfoAlert
+      title="Informational Notes"
+      description="Additional description and information about copywriting."/>
+);
+`;
+
+const warningAlertCode = `
+
+return (
+<WarningAlert
+  title="Warning"
+  description="This is a warning notice about copywriting."/>
+);
+`;
+
+const errorAlertCode = `
+
+return (
+<ErrorAlert
+  title="Error"
+  description="This is a warning notice about copywriting."/>
+);
+`;
+
+const notificationCode = `
+
+return (
+<Notification
+    title="Notification Title"
+    message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."/>
+);
+`;
+
+const circularProgCode = `
+
+return (
+  <CircularProgressBar value={75} color="pink" />
+);
+`;
+
+const tableCode = `
+
+return (
+     <TableComponent
+          initialRows={[
+            {
+              columns: ["Text1", "Text2"],
+              tag1: "Tag 1",
+              tag2: "Tag 2",
+            },
+            {
+              columns: ["Text1", "Text2"],
+              tag1: "Tag 1",
+              tag2: "Tag 2",
+            },
+            {
+              columns: ["Text1", "Text2"],
+              tag1: "Tag 1",
+              tag2: "Tag 2",
+            },
+          ]}
+          name={"john Doe"}
+          columnTitles={[
+            "Title",
+            "Title",
+            "Title",
+            "Title",
+            "Title",
+            "Title",
+            "Title",
+          ]}
+        />
+);
+`;
+
 
   const initialRows = Array.from({ length: 10 }, () => ({
     columns: Array(8).fill("text"),
@@ -795,11 +1036,16 @@ export default Layout
               src={HomeIcon}
               alt="Bell icon"
               className="Bell-icon"
-              style={{ height: "20px", width: "25px" }}
+              style={{ height: "15px", width: "15px" }}
             />
           }
         />
-        <LoadingButton title="Loading Button" loadingDurationInSeconds={3} />
+        <LoadingButton
+          title="Loading Button"
+          loadingDurationInSeconds={3}  
+
+          
+        />
         <Badges
           title=""
           notificationCount={5}
