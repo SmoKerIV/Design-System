@@ -131,11 +131,7 @@ function App() {
   
   export default App;
   `;
-  const initialRows = Array.from({ length: 10 }, () => ({
-    columns: Array(8).fill("text"),
-    tag1: "green",
-    tag2: "geekblue",
-  }));
+
   const items = [
     { label: "Option 1" },
     { label: "Option 2" },
