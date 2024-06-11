@@ -1,11 +1,12 @@
+@import url('../../../syles/variable.css');
 .notification-container {
-    background-color: white;
-    border-radius: 8px;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 16px;
     width: 300px;
     position: relative;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-family);
 }
 
 .notification-header {
@@ -37,10 +38,10 @@
 }
 
 .notification-confirm {
-    background-color: #4285f4;
+    background-color: var(--primary);
     border: none;
-    color: white;
+    color: var(--white);
     padding: 8px 16px;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     cursor: pointer;
 }

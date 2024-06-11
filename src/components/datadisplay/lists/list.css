@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('../../../syles/variable.css');
 
 .list-container {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
     text-align: left;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-family)
 }
 .header,
 .footer {
   padding: 10px;
-  background-color: white;
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
 }
 
 .list {
@@ -23,7 +23,7 @@
 
 .list-item {
   padding: 15px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .button-container {
@@ -35,14 +35,14 @@
 .load-more-button,
 .load-less-button {
   padding: 10px 20px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+  background-color: var(--gray);
+  border: 1px solid var(--border-color);
   cursor: pointer;
-  font-size: 16px;
+  font-size: var(--font-size);
   margin: 0 10px;
 }
 
 .load-more-button:hover,
 .load-less-button:hover {
-  background-color: #f1f1f1;
+  background-color: var(--gray);
 }
