@@ -321,9 +321,6 @@ const tabs = [
   `;
 
   const dividerCode = `
-
-
-
     return (
                 <Divider orientation="right">
                   <p>laboriosam.</p>
@@ -345,7 +342,6 @@ const tabs = [
 export default Space`;
 
   const LayoutCode = `
-
     return (
               <Layout>
                 <Header>Header</Header>
@@ -360,10 +356,7 @@ export default Space`;
                 </Layout>
                 <Footer>Footer</Footer>
               </Layout>    )
-}
-
-export default Layout
-`;
+}`;
 
   const headerCode = ``;
 
@@ -1239,7 +1232,7 @@ return (
               </DocumentationForm>
               </div>
 
-              <div style={{ width: "100%", height: "100%" }}>
+              <div>
                 <DocumentationForm
                   componentName="Divider"
                   description="A divider component that separates content with a horizontal line."
