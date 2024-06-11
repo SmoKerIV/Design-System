@@ -321,53 +321,23 @@ const tabs = [
   `;
 
   const dividerCode = `
-  import style from './layout.module.css'
 
-export const Divider = ({ orientation, orientationMargin, type, children }) => {
-    let st = {}
-
-    if (orientation === 'left') {
-        st = {
-            top: '50%',
-            left: '0%',
-            transform: 'transform: translate(0%, -50%)'
-        }
-    } else if (orientation === 'right') {
-        st = {
-            top: '50%',
-            right: '0%',
-            transform: 'translate(0%, -50%)'
-        }
-    } else {
-        st = {
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)'
-        }
-    }
 
 
     return (
-        <div className={style.Divider}>
-            <p className={style.p} style={st}>
-                {children}
-            </p>
-        </div>
+                <Divider orientation="right">
+                  <p>laboriosam.</p>
+                </Divider>
     );
 }`;
 
   const spaceCode = `
-import style from './layout.module.css';
-
-
-const Space = ({ children, align, size, direction, wrap }) => {
     return (
-        <div className={style.space} 
-        style={{ alignItems: align || 'flex-start',
-         flexDirection: direction || 'row',
-          flexWrap: wrap || 'nowrap',
-           gap: size || '0' }}>
-            {children}
+              <Space size={20} direction="column" align="center" wrap="wrap">
+                <button>submit</button>
+                <button>reload</button>
+                <button>close</button>
+              </Space>
         </div>
     )
 }
@@ -375,21 +345,21 @@ const Space = ({ children, align, size, direction, wrap }) => {
 export default Space`;
 
   const LayoutCode = `
-import style from './layout.module.css'
-
-const Layout = ({ children, hasSider }) => {
-
-    let st = {}
-
-    if (hasSider) {
-        st = {
-            display: 'flex',
-        }
-    }
 
     return (
-        <div className={style.layout} style={st}>{children}</div>
-    )
+              <Layout>
+                <Header>Header</Header>
+                <Layout className={style2.layout2} hasSider={true}>
+                  <Sider collapsed={collapseStatus} collapsible={collapsible}>
+                    <p>Lorem</p>
+                    <button onClick={() => setCollapseStatus(!collapseStatus)}>
+                      open/close
+                    </button>
+                  </Sider>
+                  <Content>lorem</Content>
+                </Layout>
+                <Footer>Footer</Footer>
+              </Layout>    )
 }
 
 export default Layout
