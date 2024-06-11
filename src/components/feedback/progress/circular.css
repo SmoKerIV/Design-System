@@ -1,3 +1,4 @@
+@import url('../../../syles/variable.css');
 .circular-progress-bar {
     position: relative;
     display: inline-block;
@@ -5,7 +6,7 @@
 
 .circular-progress-bar-bg {
     fill: none;
-    stroke: #e0e0e0;
+    stroke: var(--gray);
 }
 
 .circular-progress-bar-fill {
@@ -14,6 +15,6 @@
 }
 
 .circular-progress-bar text {
-    fill: black;
-    font-family: Arial, sans-serif;
+    fill: var(--black);
+    font-family: var(--font-family);
 }

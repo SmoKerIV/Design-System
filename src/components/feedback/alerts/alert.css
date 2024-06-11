@@ -1,15 +1,15 @@
+@import url('../../../syles/variable.css');
 .alert {
   display: flex;
   align-items: center;
   padding: 10px;
   border: 1px solid transparent;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   margin-bottom: 10px;
-  font-family: Arial, sans-serif;
   height: 100px; 
   width: 300px;
   box-sizing: border-box; 
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-family);
 }
 
 .alert-icon {

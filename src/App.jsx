@@ -348,9 +348,9 @@ function App() {
         />
         <LoadingButton
           title="Loading Button"
-          onClick={async () => {
-            return new Promise((resolve) => setTimeout(resolve, 3000));
-          }}
+          loadingDurationInSeconds={3}  
+
+          
         />
         <Badges
           title=""
