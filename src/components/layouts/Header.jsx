@@ -1,8 +1,8 @@
-import style from './layout.module.css';
+import cssStyle from './layout.module.css';
 
-const Header = ({ children }) => {
+const Header = ({ children, style, className }) => {
     return (
-        <div className={style.header}>{children}</div>
+        <div className={`${cssStyle.header} ${className}`} style={style}>{children}</div>
     )
 }
 

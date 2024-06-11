@@ -131,7 +131,120 @@ function App() {
   
   export default App;
   `;
+  const modalCode = `
+  import style from "./pureModal.module.css";
 
+
+export const PureModal = ({ isOpen = false, onClose = () => { }, children }) => {
+
+  const [visible, setVisible] = useState(false);
+
+    if (!isOpen) return;
+
+    return <div className={style.pureModal}>
+        <div className={style.backdrop} onClick={onClose}></div>
+        <div className={style.contnet}>
+            {children}
+        </div>
+    </div>
+}`;
+
+  const RowCode = `
+import style from './layout.module.css'
+
+export const Row = ({ gutter, children }) => {
+
+    return (
+        <div className={style.grid} style={{ rowGap: gutter[0], columnGap: gutter[1] }}>
+            {children}
+        </div>
+    )
+}`;
+
+
+  const dividerCode = `
+  import style from './layout.module.css'
+
+export const Divider = ({ orientation, orientationMargin, type, children }) => {
+    let st = {}
+
+    if (orientation === 'left') {
+        st = {
+            top: '50%',
+            left: '0%',
+            transform: 'transform: translate(0%, -50%)'
+        }
+    } else if (orientation === 'right') {
+        st = {
+            top: '50%',
+            right: '0%',
+            transform: 'translate(0%, -50%)'
+        }
+    } else {
+        st = {
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)'
+        }
+    }
+
+
+    return (
+        <div className={style.Divider}>
+            <p className={style.p} style={st}>
+                {children}
+            </p>
+        </div>
+    );
+}`;
+
+
+  const spaceCode = `
+import style from './layout.module.css';
+
+
+const Space = ({ children, align, size, direction, wrap }) => {
+    return (
+        <div className={style.space} style={{ alignItems: align || 'flex-start', flexDirection: direction || 'row', flexWrap: wrap || 'nowrap', gap: size || '0' }}>
+            {children}
+        </div>
+    )
+}
+
+export default Space`;
+
+  const LayoutCode = `
+import style from './layout.module.css'
+
+const Layout = ({ children, hasSider }) => {
+
+    let st = {}
+
+    if (hasSider) {
+        st = {
+            display: 'flex',
+        }
+    }
+
+    return (
+        <div className={style.layout} style={st}>{children}</div>
+    )
+}
+
+export default Layout
+`;
+
+const headerCode = ``;
+
+const siderCode = ``;
+
+const footerCode = ``;
+
+  const initialRows = Array.from({ length: 10 }, () => ({
+    columns: Array(8).fill("text"),
+    tag1: "green",
+    tag2: "geekblue",
+  }));
   const items = [
     { label: "Option 1" },
     { label: "Option 2" },
@@ -191,36 +304,36 @@ function App() {
         <div className="container">
           <Router>
             <div>
-            <DocumentationForm
+              <DocumentationForm
                 componentName="Menu"
                 description="A dynamic menu to navigate from one page to another."
                 propsInfo={[
-                    { name: 'items', type: 'array', description: 'objects of each path and its label' },
+                  { name: 'items', type: 'array', description: 'objects of each path and its label' },
 
                 ]}
                 stateInfo={[
-                    { name: 'onClick', type: 'function', description: ' handles when the item is clicked' },
+                  { name: 'onClick', type: 'function', description: ' handles when the item is clicked' },
                 ]}
                 codeSnippet={menuCode}
 
-            
-            >
-              <Menu items={menuItems} onItemClick={handleItemClick} />
-            </DocumentationForm>
+
+              >
+                <Menu items={menuItems} onItemClick={handleItemClick} />
+              </DocumentationForm>
             </div>
             <div className="container">
-            <DocumentationForm
+              <DocumentationForm
                 componentName="InlineMenu"
                 description="An inline menu component that displays a dropdown menu. It allows users to select an item from the list."
                 propsInfo={[
-                    { name: 'items', type: 'array', description: 'Array of menu items to be displayed in the dropdown. Each item should have a `label` property.' },
-                   
+                  { name: 'items', type: 'array', description: 'Array of menu items to be displayed in the dropdown. Each item should have a `label` property.' },
+
                 ]}
-                stateInfo={[ { name: 'onSelect', type: 'function', description: 'Callback function to handle item selection. It receives the selected item as an argument.' }]}
+                stateInfo={[{ name: 'onSelect', type: 'function', description: 'Callback function to handle item selection. It receives the selected item as an argument.' }]}
                 codeSnippet={inlineMenu}
-            >
+              >
                 <InlineMenu items={menuItems} onSelect={handleSelect} />
-            </DocumentationForm>
+              </DocumentationForm>
               <div></div>
             </div>
           </Router>
@@ -449,17 +562,7 @@ function App() {
         <div className="container">
           <div className="modal-container">
             <div className="modal-content">
-              <h1>Lorem ipsum dolor sit amet.</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-                error earum eligtia, perferendis ut? Error esse magnam natus
-                placeat iure!
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea
-                explicabo facilis cupiditate! Eos quos officiis architecto modi
-                ex eum repellendus odit nesciunt assumenda, nihil, voluptatem
-              </p>
+
 
               <div >
                 <button
@@ -468,10 +571,25 @@ function App() {
                 >
                   Open Modal
                 </button>
-                <PureModal isOpen={visible} onClose={() => setVisible(false)}>
-                  <button onClick={() => setVisible(false)}>Close</button>
-                  <h1>Hello Modal</h1>
-                </PureModal>
+
+                <div className="container">
+                  <DocumentationForm
+                    componentName="Modal"
+                    description="An inline menu component that displays a dropdown menu. It allows users to select an item from the list."
+                    propsInfo={[
+                      { name: 'items', type: 'array', description: 'Array of menu items to be displayed in the dropdown. Each item should have a `label` property.' },
+
+                    ]}
+                    stateInfo={[{ name: 'onSelect', type: 'function', description: 'Callback function to handle item selection. It receives the selected item as an argument.' }]}
+                    codeSnippet={modalCode}
+                  >
+                    <PureModal isOpen={visible} onClose={() => setVisible(false)}>
+                      <button onClick={() => setVisible(false)}>Close</button>
+                      <h1>Hello Modal</h1>
+                    </PureModal>
+                  </DocumentationForm>
+                </div>
+
               </div>
 
               <div>

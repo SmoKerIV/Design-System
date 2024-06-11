@@ -43,19 +43,19 @@
 .layout {
   width: 100%;
   height: 50vh;
-  background-color: aquamarine;
+  background-color: rgb(149, 229, 202);
 }
 
 .header {
   width: 100%;
   height: 50px;
-  background-color: azure;
+  background-color: rgb(207, 248, 248);
 }
 
 .sider {
   min-width: fit-content;
   height: 100%;
-  background-color: blueviolet;
+  background-color: rgb(167, 114, 216);
 }
 
 .content {
@@ -65,6 +65,7 @@
 .footer {
   height: 50px;
   width: 100%;
+  background-color: rgb(207, 248, 248);
 }
 
 .layout2 {
