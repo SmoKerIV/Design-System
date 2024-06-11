@@ -266,7 +266,11 @@ const tabs = [
     }
   }
   return(
-    <Form fields={fields} formValues={formValues} errors={errors} handleChange={handleChange} handleSubmit={handleSubmit} />
+    <Form fields={fields} 
+    formValues={formValues} 
+    errors={errors} 
+    handleChange={handleChange} 
+    handleSubmit={handleSubmit} />
   )
   `;
   
@@ -358,7 +362,11 @@ import style from './layout.module.css';
 
 const Space = ({ children, align, size, direction, wrap }) => {
     return (
-        <div className={style.space} style={{ alignItems: align || 'flex-start', flexDirection: direction || 'row', flexWrap: wrap || 'nowrap', gap: size || '0' }}>
+        <div className={style.space} 
+        style={{ alignItems: align || 'flex-start',
+         flexDirection: direction || 'row',
+          flexWrap: wrap || 'nowrap',
+           gap: size || '0' }}>
             {children}
         </div>
     )
@@ -1016,17 +1024,81 @@ export default Layout
               </div>
 
               <div style={{ width: "100%", height: "100%" }}>
+                <DocumentationForm
+                  componentName="Divider"
+                  description="A divider component that separates content with a horizontal line."
+                  propsInfo={[  
+                    {
+                      name: "orientation",
+                      type: "string",
+                      description: "Position of the divider line. Options: 'left', 'right', 'center'.",
+                    },
+                    {
+                      name: "orientationMargin",
+                      type: "string",
+                      description: "Margin of the divider line. Options: 'top', 'bottom'.",
+                    },
+                    {
+                      name: "type",
+                      type: "string",
+                      description: "Type of the divider line. Options: 'horizontal', 'vertical'.",
+                    },
+                  ]}
+                  stateInfo={[]}
+                  codeSnippet={dividerCode}>
                 <Divider orientation="right">
                   <p>laboriosam.</p>
                 </Divider>
+              </DocumentationForm>
               </div>
-
+              <DocumentationForm
+              
+                componentName="Space"
+                description="A space component that provides spacing between elements."
+                propsInfo={[
+                  {
+                    name: "size",
+                    type: "number",
+                    description: "Spacing size between elements.",
+                  },
+                  {
+                    name: "align",
+                    type: "string",
+                    description: "Alignment of elements. Options: 'flex-start', 'center', 'flex-end'.",
+                  },
+                  {
+                    name: "direction",
+                    type: "string",
+                    description: "Direction of elements. Options: 'row', 'column'.",
+                  },
+                  {
+                    name: "wrap",
+                    type: "string",
+                    description: "Wrap of elements. Options: 'nowrap', 'wrap'.",
+                  },
+                ]}
+                stateInfo={[]}
+                codeSnippet={spaceCode}
+              >
               <Space size={20} direction="column" align="center" wrap="wrap">
                 <button>submit</button>
                 <button>reload</button>
                 <button>close</button>
               </Space>
-
+            </DocumentationForm>
+            <DocumentationForm
+              componentName="Layout"
+              description="A layout component that provides a basic structure for the page."
+              propsInfo={[
+                {
+                  name: "hasSider",
+                  type: "boolean",
+                  description: "Indicates whether the layout has a sidebar.",
+                },
+              ]}
+              stateInfo={[]}
+              codeSnippet={LayoutCode}
+            >
               <Layout>
                 <Header>Header</Header>
                 <Layout className={style2.layout2} hasSider={true}>
@@ -1040,6 +1112,7 @@ export default Layout
                 </Layout>
                 <Footer>Footer</Footer>
               </Layout>
+            </DocumentationForm>
             </div>
           </div>
         </div>
