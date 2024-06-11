@@ -358,12 +358,6 @@ export default Space`;
               </Layout>    )
 }`;
 
-  const headerCode = ``;
-
-  const siderCode = ``;
-
-const footerCode = ``;
-
 const primarybtnCode = `
 const handleClick = () => {
     console.log("Button clicked");
@@ -375,12 +369,6 @@ return (
   onClick={handleClick}>
 </PrimaryButton>
 );
-`;
-
-const secbtnCode = `
-const handleClick = () => {
-    console.log("Button clicked");
-  };
 
 return (
 <SecondaryButton
@@ -388,12 +376,6 @@ return (
   onClick={handleClick}>
 </SecondaryButton>
 );
-`;
-
-const linkbtnCode = `
-const handleClick = () => {
-    console.log("Button clicked");
-  };
 
 return (
   <LinkButton 
@@ -401,12 +383,6 @@ return (
     onClick={handleClick}>
   </LinkButton>
 );
-`;
-
-const textbtnCode = `
-const handleClick = () => {
-    console.log("Button clicked");
-  };
 
 return (
    <TextButton 
@@ -414,12 +390,6 @@ return (
      onClick={handleClick}>
    </TextButton>
 );
-`;
-
-const dashedbtnCode = `
-const handleClick = () => {
-    console.log("Button clicked");
-  };
 
 return (
    <DashedButton
@@ -427,23 +397,12 @@ return (
       onClick={handleClick}>
    </DashedButton>
 );
-`;
-
-const disabledbtnCode = `
-
 return (
    <DisabledButton 
       title="Disabled Button">
   </DisabledButton>
 
 );
-`;
-
-const iconbtnCode = `
-const handleClick = () => {
-    console.log("Button clicked");
-  };
-
 return (
    <IconButton
       title="Icon Button"
@@ -455,17 +414,11 @@ return (
           className="Bell-icon"
           tyle={{ height: "15px", width: "15px" }}/>}/>
 );
-`;
-
-const loadingbtnCode = `
-
 return (
    <LoadingButton
       title="Loading Button"
       loadingDurationInSeconds={3}/>
-);
-`;
-
+);`;
 const badgesCode = `
 
 const handleNotificationsClick = () => {
@@ -524,44 +477,27 @@ return (
       title="Success Tips"
       description="Detailed description and advice about successful copywriting."/>
 );
-`;
-
-const infoAlertCode = `
-
 return (
     <InfoAlert
       title="Informational Notes"
       description="Additional description and information about copywriting."/>
 );
-`;
-
-const warningAlertCode = `
-
 return (
 <WarningAlert
   title="Warning"
   description="This is a warning notice about copywriting."/>
 );
-`;
-
-const errorAlertCode = `
-
 return (
 <ErrorAlert
   title="Error"
   description="This is a warning notice about copywriting."/>
 );
-`;
-
-const notificationCode = `
-
 return (
 <Notification
     title="Notification Title"
     message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."/>
 );
 `;
-
 const circularProgCode = `
 
 return (
@@ -604,12 +540,6 @@ return (
 );
 `;
 
-
-  const initialRows = Array.from({ length: 10 }, () => ({
-    columns: Array(8).fill("text"),
-    tag1: "green",
-    tag2: "geekblue",
-  }));
   const items = [
     { label: "Option 1" },
     { label: "Option 2" },
@@ -1001,6 +931,24 @@ return (
       </div>
       <div className="container">
         <h1>Buttons</h1>
+        <DocumentationForm
+          componentName="Button"
+          description="A button component that triggers an action when clicked."
+          propsInfo={[
+            {
+              name: "title",
+              type: "string",
+              description: "Text to be displayed on the button.",
+            },
+            {
+              name: "onClick",
+              type: "function",
+              description: "Callback function to handle button click.",
+            },
+          ]}
+          stateInfo={[]}
+          codeSnippet={primarybtnCode}
+        >
         <PrimaryButton
           title="Primary Button"
           onClick={handleClick}
@@ -1015,30 +963,54 @@ return (
           title="Dashed Button"
           onClick={handleClick}
         ></DashedButton>
-        <Card
-          imageSrc="https://via.placeholder.com/300"
-          title="Card Title 1"
-          description="This is a longer description of the card content. Click the button to toggle more or less content."
-        />
         <DisabledButton title="Disabled Button"></DisabledButton>
         <IconButton
           title="Icon Button"
           onClick={handleClick}
           icon={
             <img
-              src={HomeIcon}
-              alt="Bell icon"
-              className="Bell-icon"
-              style={{ height: "15px", width: "15px" }}
+            src={HomeIcon}
+            alt="Bell icon"
+            className="Bell-icon"
+            style={{ height: "15px", width: "15px" }}
             />
-          }
-        />
+            }
+            />
         <LoadingButton
           title="Loading Button"
           loadingDurationInSeconds={3}  
-
           
-        />
+          
+          />
+          </DocumentationForm>
+          <DocumentationForm
+            componentName="Badges"
+            description="A badge component that displays a notification count."
+            propsInfo={[
+              {
+                name: "title",
+                type: "string",
+                description: "Title text for the badge.",
+              },
+              {
+                name: "notificationCount",
+                type: "number",
+                description: "Number of notifications to be displayed.",
+              },
+              {
+                name: "onClick",
+                type: "function",
+                description: "Callback function to handle badge click.",
+              },
+              {
+                name: "icon",
+                type: "element",
+                description: "Icon element to be displayed in the badge.",
+              },
+            ]}
+            stateInfo={[]}
+            codeSnippet={badgesCode}
+          >
         <Badges
           title=""
           notificationCount={5}
@@ -1050,8 +1022,23 @@ return (
               className="Bell-icon"
               style={{ height: "20px", width: "25px", cursor: "pointer" }}
             />
+
           }
         />
+        </DocumentationForm>
+        <DocumentationForm
+          componentName="List"
+          description="A list component that displays a list of items."
+          propsInfo={[
+            {
+              name: "initialItems",
+              type: "array",
+              description: "Array of items to be displayed in the list.",
+            },
+          ]}
+          stateInfo={[]}
+          codeSnippet={listCode}
+        >
         <ListComponent
           initialItems={[
             "[ITEM] Racing car sprays burning fuel into crowd.",
@@ -1065,6 +1052,25 @@ return (
             "[ITEM] New item 4.",
           ]}
         />
+        </DocumentationForm>
+        <DocumentationForm
+          componentName="Alert"
+          description="An alert component that displays a message."
+          propsInfo={[
+            {
+              name: "title",
+              type: "string",
+              description: "Title text for the alert.",
+            },
+            {
+              name: "description",
+              type: "string",
+              description: "Description text for the alert.",
+            },
+          ]}
+          stateInfo={[]}
+          codeSnippet={successAlertCode}
+        >
         <SuccessAlert
           title="Success Tips"
           description="Detailed description and advice about successful copywriting."
@@ -1085,19 +1091,52 @@ return (
           title="Notification Title"
           message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."
         />
+        </DocumentationForm>
+        <DocumentationForm
+          componentName="CircularProgressBar"
+          description="A circular progress bar component that displays a percentage value."
+          propsInfo={[
+            {
+              name: "value",
+              type: "number",
+              description: "Percentage value to be displayed.",
+            },
+            {
+              name: "color",
+              type: "string",
+              description: "Color of the progress bar.",
+            },
+          ]}
+          stateInfo={[]}
+          codeSnippet={circularProgCode}
+        >
         <CircularProgressBar value={75} color="pink" />
+        </DocumentationForm>
       </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          gap: "15px",
-          height: "100%",
-          width: "100%",
-        }}
-      >
+      <div className="container">
+        <DocumentationForm
+          componentName="Table"
+          description="A table component that displays data in a tabular format."
+          propsInfo={[
+            {
+              name: "initialRows",
+              type: "array",
+              description: "Array of rows to be displayed in the table.",
+            },
+            {
+              name: "name",
+              type: "string",
+              description: "Name of the user.",
+            },
+            {
+              name: "columnTitles",
+              type: "array",
+              description: "Array of column titles to be displayed in the table.",
+            },
+          ]}
+          stateInfo={[]}
+          codeSnippet={tableCode}
+        >
         <TableComponent
           initialRows={[
             {
@@ -1127,6 +1166,7 @@ return (
             "Title",
           ]}
         />
+        </DocumentationForm>
       </div>
       <div>
         <h1
@@ -1140,7 +1180,7 @@ return (
         <div className="container">
           <div className="modal-container">
             <div className="modal-content">
-              <div>
+              <div className="container">
                 <button
                   className={style.modal_button}
                   onClick={() => setVisible(true)}
