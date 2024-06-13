@@ -591,48 +591,43 @@ export default Layout
 
               </div>
 
-              <div>
+              <div style={{ width: '100%', boxSizing: 'border-box', padding: '0' }}>
                 <Row gutter={[16, 16]}>
-                  <Col span={4} md={8} sm={4} lg={24}>
-                    <div>hello</div>
+                  <Col span={8} sm={14} md={8} lg={8}>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Id, nulla!
+                      Lorem ipsum dolor sit amet.
                     </p>
                   </Col>
-                  <Col span={8} sm={4} md={8} lg={24}>
+                  <Col span={8} sm={14} md={8} lg={8}>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Iste, sint.
+                      Lorem ipsum dolor sit amet.
                     </p>
                   </Col>
-                  <Col span={8} sm={4} md={8} lg={24}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Quibusdam, accusantium.
+                  <Col span={8} sm={14} md={8} lg={8}>
+                    Lorem ipsum dolor sit amet.
                   </Col>
-                  <Col span={6} sm={8} md={8} lg={16}>
+                  <Col span={8} sm={14} md={8} lg={8}>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Quas, reiciendis.
+                      Lorem ipsum dolor sit amet.
                     </p>
                   </Col>
-                  <Col span={6} sm={4} md={8} lg={16}>
+                  <Col span={8} sm={14} md={8} lg={8}>
                     <p>Lorem ipsum dolor sit amet.</p>
                   </Col>
-                  <Col span={6}>
-                    <p>Lorem ipsum dolor sit amet.</p>
+                  <Col span={8} sm={14} md={8} lg={24}>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ?</p>
                   </Col>
-                  <Col span={6}>Lorem ipsum dolor sit amet.</Col>
-                  <Col span={6}>Lorem ipsum dolor sit amet.</Col>
-                  <Col span={6}>Lorem ipsum dolor sit amet.</Col>
+                  <Col span={8} sm={14} md={8} lg={24}>Lorem ipsum dolor sit amet.</Col>
+                  <Col span={8} sm={14} md={8} lg={8}>Lorem ipsum dolor sit amet.</Col>
+                  <Col span={8} sm={14} md={8} lg={8}>Lorem ipsum dolor sit amet.</Col>
                 </Row>
               </div>
 
-              <div style={{ width: "100%", height: "100%" }}>
-                <Divider orientation="right">
-                  <p>laboriosam.</p>
-                </Divider>
-              </div>
+
+              <Divider orientation="right" style={{ margin: '3rem 0' }}>
+                <p>laboriosam.</p>
+              </Divider>
+
 
               <Space size={20} direction='column' align='center' wrap='wrap'>
                 <button>submit</button>
@@ -654,7 +649,7 @@ export default Layout
             </div>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 }

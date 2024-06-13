@@ -8,7 +8,10 @@
 .col {
   width: 100%;
   height: 100%;
-  background-color: rgba(76, 76, 244, 0.708);
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 14px;
 }
 
 .Divider {
@@ -36,7 +39,6 @@
   width: fit-content;
   height: auto;
   display: flex;
-  background-color: aqua;
   margin: 2rem 0;
 }
 
@@ -72,21 +74,21 @@
   background-color: bisque;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 400px) {
   .span-sm-24 {
     grid-column: auto / span 24 !important;
   }
 
   .span-sm-16 {
-    grid-column: auto / span 16;
+    grid-column: auto / span 16 !important;
   }
 
   .span-sm-8 {
-    grid-column: auto / span 8;
+    grid-column: auto / span 8 !important;
   }
 
   .span-sm-4 {
-    grid-column: auto / span 4;
+    grid-column: auto / span 4 !important;
   }
 }
 
@@ -96,15 +98,15 @@
   }
 
   .span-md-16 {
-    grid-column: auto / span 16;
+    grid-column: auto / span 16 !important;
   }
 
   .span-md-8 {
-    grid-column: auto / span 8;
+    grid-column: auto / span 8 !important;
   }
 
   .span-md-4 {
-    grid-column: auto / span 4;
+    grid-column: auto / span 4 !important;
   }
 }
 
@@ -114,14 +116,14 @@
   }
 
   .span-lg-16 {
-    grid-column: auto / span 16;
+    grid-column: auto / span 16 !important;
   }
 
   .span-lg-8 {
-    grid-column: auto / span 8;
+    grid-column: auto / span 8 !important;
   }
 
   .span-lg-4 {
-    grid-column: auto / span 4;
+    grid-column: auto / span 4 !important;
   }
 }
