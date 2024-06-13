@@ -1,45 +1,62 @@
 .checkbox-wrapper {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--grayer);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.checkbox:hover {
+  border-color: var(--blue);
+}
+
+.checkbox.checked {
+  animation: check 0.3s ease;
+  background-color: var(--blue);
+  border-color: var(--blue);
+}
+
+.checkmark {
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 900;
+    animation: mark 0.3s ease;
+}
+@keyframes check {
+  0% {
+    box-shadow: 0 0 0 0 var(--blue);
   }
-  
-  .checkbox {
-    width: 20px;
-    height: 20px;
-    border: 1px solid var(--grayer);
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 8px;
-    background: transparent;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+  100% {
+    box-shadow: 0 0 0 4px var(--white);
   }
-  .checkbox:hover {
-    border-color: var(--blue);
+}
+@keyframes mark {
+  0% {
+    transform: scale(0);
   }
-  
-  .checkbox.checked {
-    background-color: var(--blue);
-    border-color: var(--blue);
+  100% {
+    transform: scale(1.1);
   }
-  
-  .checkmark {
-    color: var(--white);
-    font-size: 12px;
-    font-weight: 900;
-  }
-  .checkbox-wrapper.disabled .checkbox {
-    border: 1px solid var(--grayer);
-    cursor: not-allowed;
-    background-color: transparent;
-    
-  }
-  .checkbox-wrapper.disabled {
-    color: var(--gray-dark);
-    cursor: not-allowed;
-  }
-  
+
+}
+.checkbox-wrapper.disabled .checkbox {
+  border: 1px solid var(--grayer);
+  cursor: not-allowed;
+  background-color: transparent;
+}
+.checkbox-wrapper.disabled {
+  color: var(--gray-dark);
+  cursor: not-allowed;
+}

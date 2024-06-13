@@ -23,7 +23,6 @@ import DisabledButton from "./components/buttons/disabledButton";
 import IconButton from "./components/buttons/iconButton";
 import Badges from "./components/datadisplay/badges/badges";
 import LoadingButton from "./components/buttons/loadingButton";
-import Card from "./components/datadisplay/card/card";
 import ListComponent from "./components/datadisplay/lists/list";
 import InfoAlert from "./components/feedback/alerts/infoAlert";
 import WarningAlert from "./components/feedback/alerts/warningAlert";
@@ -36,7 +35,6 @@ import BellIcon from "./components/datadisplay/badges/assets/bell-icon.svg";
 import InputField from "./components/Forms/Input/input";
 import Inputmail from "./components/Forms/Input/inputmail";
 import SearchInput from "./components/Forms/Input/searchinput";
-import Checkbox from "./components/Forms/checkbox/checkbox";
 import CheckboxGroup from "./components/Forms/checkbox/checkboxGroup";
 import RadioGroup from "./components/Forms/radio/radioGroup";
 import Radio from "./components/Forms/radio/radio";
@@ -56,9 +54,6 @@ import aicon from "./components/navigation/tabs/assets/atb.svg";
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const [checked, setChecked] = useState(true);
-  const [indeterminate, setIndeterminate] = useState(true);
-  const [disabledChecked, setDisabledChecked] = useState(true);
   const [formValues, setFormValues] = useState({});
   const [errors, setErrors] = useState({});
   const [collapsible, setCollapsible] = useState(true);
@@ -92,15 +87,8 @@ function App() {
   const options = [
     { label: 'Apple', value: 'Apple' },
     { label: 'Pear', value: 'Pear' },
-    { label: 'Orange', value: 'Orange' }
+    { label: 'Orange', value: 'Orange', disabled: true}
   ];
-
-  const optionsWithDisabled = [
-    { label: 'Apple', value: 'Apple' },
-    { label: 'Pear', value: 'Pear' },
-    { label: 'Orange', value: 'Orange', disabled: true }
-  ];
-
   const onRadioChange = (newValue) => {
     console.log("radio checked", newValue);
     setValue(newValue);
@@ -246,30 +234,39 @@ import aicon from "./components/navigation/tabs/assets/atb.svg";
       )`;
 
   const checkCode = `
-    const [checked, setChecked] = useState(true);
-    const [indeterminate, setIndeterminate] = useState(true);
-    const [disabledChecked, setDisabledChecked] = useState(true);
-    return(
-      <Checkbox
-       label="Label"
-        checked={checked}
-         onChange={() => setChecked(!checked)} />
-      <Checkbox
-       label="Label"
-        indeterminate={indeterminate}
-         checked={false} onChange={() => setIndeterminate(!indeterminate)} />
-      <Checkbox
-       label="Label"
-        disabled checked={disabledChecked}
-         onChange={() => setDisabledChecked(!disabledChecked)} />
-    )
+import CheckboxGroup from './CheckboxGroup';
+  const [checkedValues, setCheckedValues] = useState(['Apple']);
+
+  const onChange = (values) => {
+    console.log('checked = ', values);
+    setCheckedValues(values);
+  };
+    const optionsWithDisabled = [
+    { label: 'Apple', value: 'Apple' },
+    { label: 'Pear', value: 'Pear' },
+    { label: 'Orange', value: 'Orange', disabled: true }
+  ];
+
+  return (
+    <div className="app">
+      <CheckboxGroup options={options} value={checkedValues} onChange={onChange} />
+);
   `;
   const radioCode = `
-  return(
-    <Radio label="Normal" name="example" value="normal" />
-    <Radio label="Normal" name="example" value="normal" />
-    <Radio label="Disabled" name="example" value="disabled" disabled />
-  )
+import RadioGroup from "./components/Forms/radio/radioGroup";
+import Radio from "./components/Forms/radio/radio";
+  const [value, setValue] = useState();
+    const onRadioChange = (newValue) => {
+    console.log("radio checked", newValue);
+    setValue(newValue);
+  };
+  return (
+        <RadioGroup onChange={onRadioChange} value={value}>
+          <Radio value={1}>A</Radio>
+          <Radio value={2}>B</Radio>
+          <Radio value={3}>C</Radio>
+          <Radio value={4} disabled>D</Radio>
+        </RadioGroup>
   `;
   const formCode = `
   const fields = [
@@ -485,15 +482,6 @@ return (
 );
 `;
 
-  const cardCode = `
-
-return (
-   <Card
-      imageSrc="https://via.placeholder.com/300"
-      title="Card Title 1"
-      description="This is a longer description of the card content. Click the button to toggle more or less content."/>
-);
-`;
 
   const listCode = `
 
@@ -876,12 +864,6 @@ return (
               codeSnippet={checkCode}
             >
       <CheckboxGroup options={options} value={checkedValues} onChange={onChange} />
-      <br />
-      <br />
-      <CheckboxGroup options={options} value={checkedValues} onChange={onChange} />
-      <br />
-      <br />
-      <CheckboxGroup options={optionsWithDisabled} value={checkedValues} onChange={onChange} disabled />
             </DocumentationForm>
           </div>
         </div>
