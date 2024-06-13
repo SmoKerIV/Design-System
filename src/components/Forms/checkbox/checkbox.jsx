@@ -1,26 +1,24 @@
-// Checkbox.js
-import React, { useState, useEffect, useRef } from 'react';
-import './checkbox.css';
+import React from "react";
+import "./checkbox.css";
 
-const Checkbox = ({ label, indeterminate, disabled, checked, onChange }) => {
-    const checkboxRef = useRef();
-
-    useEffect(() => {
-        checkboxRef.current.indeterminate = indeterminate;
-    }, [indeterminate]);
-
-    return (
-        <div className={`checkbox-wrapper ${disabled ? 'disabled' : ''}`}>
-            <input
-                type="checkbox"
-                ref={checkboxRef}
-                checked={checked}
-                disabled={disabled}
-                onChange={onChange}
-            />
-            {label}
-        </div>
-    );
+const Checkbox = ({ children, checked, onChange, disabled }) => {
+  return (
+    <div
+      className={`checkbox-wrapper ${checked ? "checked" : ""} ${
+        disabled ? "disabled" : ""
+      }`}
+      onClick={onChange}
+    >
+      <div
+        className={`checkbox ${checked ? "checked" : ""} ${
+          disabled ? "disabled" : ""
+        }`}
+      >
+        {checked && <span className="checkmark">&#x2713;</span>}
+      </div>
+      {children}
+    </div>
+  );
 };
 
 export default Checkbox;

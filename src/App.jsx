@@ -37,6 +37,8 @@ import InputField from "./components/Forms/Input/input";
 import Inputmail from "./components/Forms/Input/inputmail";
 import SearchInput from "./components/Forms/Input/searchinput";
 import Checkbox from "./components/Forms/checkbox/checkbox";
+import CheckboxGroup from "./components/Forms/checkbox/checkboxGroup";
+import RadioGroup from "./components/Forms/radio/radioGroup";
 import Radio from "./components/Forms/radio/radio";
 import Form from "./components/Forms/form/form";
 import TableComponent from "./components/datadisplay/Table/table";
@@ -61,6 +63,7 @@ function App() {
   const [errors, setErrors] = useState({});
   const [collapsible, setCollapsible] = useState(true);
   const [collapseStatus, setCollapseStatus] = useState(false);
+  const [value, setValue] = useState();
   const [fields, setFields] = useState([
     {
       id: 1,
@@ -79,6 +82,29 @@ function App() {
       required: false,
     },
   ]);
+  const [checkedValues, setCheckedValues] = useState(['Apple']);
+
+  const onChange = (values) => {
+    console.log('checked = ', values);
+    setCheckedValues(values);
+  };
+
+  const options = [
+    { label: 'Apple', value: 'Apple' },
+    { label: 'Pear', value: 'Pear' },
+    { label: 'Orange', value: 'Orange' }
+  ];
+
+  const optionsWithDisabled = [
+    { label: 'Apple', value: 'Apple' },
+    { label: 'Pear', value: 'Pear' },
+    { label: 'Orange', value: 'Orange', disabled: true }
+  ];
+
+  const onRadioChange = (newValue) => {
+    console.log("radio checked", newValue);
+    setValue(newValue);
+  };
 
   const handleChange = (e, id) => {
     const { name, value } = e.target;
@@ -849,23 +875,13 @@ return (
               ]}
               codeSnippet={checkCode}
             >
-              <Checkbox
-                label="Label"
-                checked={checked}
-                onChange={() => setChecked(!checked)}
-              />
-              <Checkbox
-                label="Label"
-                indeterminate={indeterminate}
-                checked={false}
-                onChange={() => setIndeterminate(!indeterminate)}
-              />
-              <Checkbox
-                label="Label"
-                disabled
-                checked={disabledChecked}
-                onChange={() => setDisabledChecked(!disabledChecked)}
-              />
+      <CheckboxGroup options={options} value={checkedValues} onChange={onChange} />
+      <br />
+      <br />
+      <CheckboxGroup options={options} value={checkedValues} onChange={onChange} />
+      <br />
+      <br />
+      <CheckboxGroup options={optionsWithDisabled} value={checkedValues} onChange={onChange} disabled />
             </DocumentationForm>
           </div>
         </div>
@@ -910,14 +926,12 @@ return (
               ]}
               codeSnippet={radioCode}
             >
-              <Radio label="Normal" name="example" value="normal" />
-              <Radio label="Normal" name="example" value="normal" />
-              <Radio
-                label="Disabled"
-                name="example"
-                value="disabled"
-                disabled
-              />
+              <RadioGroup onChange={onRadioChange} value={value}>
+                <Radio value={1}>A</Radio>
+                <Radio value={2}>B</Radio>
+                <Radio value={3}>C</Radio>
+                <Radio value={4} disabled>D</Radio>
+              </RadioGroup>
             </DocumentationForm>
           </div>
         </div>

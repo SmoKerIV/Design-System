@@ -43,6 +43,6 @@
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+.form button:hover {
     background-color: var(--primary-hover);
 }
