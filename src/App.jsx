@@ -234,11 +234,11 @@ const Layout = ({ children, hasSider }) => {
 export default Layout
 `;
 
-const headerCode = ``;
+  const headerCode = ``;
 
-const siderCode = ``;
+  const siderCode = ``;
 
-const footerCode = ``;
+  const footerCode = ``;
 
   const initialRows = Array.from({ length: 10 }, () => ({
     columns: Array(8).fill("text"),
@@ -457,9 +457,9 @@ const footerCode = ``;
         />
         <LoadingButton
           title="Loading Button"
-          loadingDurationInSeconds={3}  
+          loadingDurationInSeconds={3}
 
-          
+
         />
         <Badges
           title=""
@@ -583,9 +583,8 @@ const footerCode = ``;
                     stateInfo={[{ name: 'onSelect', type: 'function', description: 'Callback function to handle item selection. It receives the selected item as an argument.' }]}
                     codeSnippet={modalCode}
                   >
-                    <PureModal isOpen={visible} onClose={() => setVisible(false)}>
-                      <button onClick={() => setVisible(false)}>Close</button>
-                      <h1>Hello Modal</h1>
+                    <PureModal title="Title here" closeIcon={true} isOpen={visible} onClose={() => setVisible(false)} onOk={() => console.log('OK button pressed')}>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, fugiat!</p>
                     </PureModal>
                   </DocumentationForm>
                 </div>
