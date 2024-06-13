@@ -11,7 +11,6 @@ import style from "./components/PureModal/pureModal.module.css";
 import { PureModal } from "./components/PureModal/pureModal";
 import { useState } from "react";
 import Sider from "./components/layouts/Sider";
-import style2 from "./components/layouts/layout.module.css";
 import { Row } from "./components/layouts/Row";
 import Col from "./components/layouts/Column";
 import PrimaryButton from "./components/buttons/primary-button";
@@ -1243,11 +1242,16 @@ return (
                     codeSnippet={modalCode}
                   >
                     <PureModal
+                      title="Title here"
+                      closeIcon={true}
                       isOpen={visible}
                       onClose={() => setVisible(false)}
+                      onOk={() => console.log("OK button pressed")}
                     >
-                      <button onClick={() => setVisible(false)}>Close</button>
-                      <h1>Hello Modal</h1>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Unde, fugiat!
+                      </p>
                     </PureModal>
                   </DocumentationForm>
                 </div>
@@ -1293,38 +1297,36 @@ return (
                   codeSnippet={rowColCodeSnippet}
                 >
                   <Row gutter={[16, 16]}>
-                    <Col span={4} md={8} sm={4} lg={24}>
-                      <div>hello</div>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Id, nulla!
-                      </p>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      <p>Lorem ipsum dolor sit amet.</p>
                     </Col>
-                    <Col span={8} sm={4} md={8} lg={24}>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Iste, sint.
-                      </p>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      <p>Lorem ipsum dolor sit amet.</p>
                     </Col>
-                    <Col span={8} sm={4} md={8} lg={24}>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Quibusdam, accusantium.
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      Lorem ipsum dolor sit amet.
                     </Col>
-                    <Col span={6} sm={8} md={8} lg={16}>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      <p>Lorem ipsum dolor sit amet.</p>
+                    </Col>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      <p>Lorem ipsum dolor sit amet.</p>
+                    </Col>
+                    <Col span={8} sm={14} md={8} lg={24}>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Quas, reiciendis.
+                        elit. Culpa ?
                       </p>
                     </Col>
-                    <Col span={6} sm={4} md={8} lg={16}>
-                      <p>Lorem ipsum dolor sit amet.</p>
+                    <Col span={8} sm={14} md={8} lg={24}>
+                      Lorem ipsum dolor sit amet.
                     </Col>
-                    <Col span={6}>
-                      <p>Lorem ipsum dolor sit amet.</p>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      Lorem ipsum dolor sit amet.
                     </Col>
-                    <Col span={6}>Lorem ipsum dolor sit amet.</Col>
-                    <Col span={6}>Lorem ipsum dolor sit amet.</Col>
-                    <Col span={6}>Lorem ipsum dolor sit amet.</Col>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      Lorem ipsum dolor sit amet.
+                    </Col>
                   </Row>
                 </DocumentationForm>
               </div>
@@ -1356,9 +1358,9 @@ return (
                   stateInfo={[]}
                   codeSnippet={dividerCode}
                 >
-                  <Divider orientation="right">
-                    <p>laboriosam.</p>
-                  </Divider>
+              <Divider orientation="right" style={{ margin: '3rem 0' }}>
+                <p>laboriosam.</p>
+              </Divider>
                 </DocumentationForm>
               </div>
               <DocumentationForm
@@ -1412,16 +1414,18 @@ return (
               >
                 <Layout>
                   <Header>Header</Header>
-                  <Layout className={style2.layout2} hasSider={true}>
-                    <Sider collapsed={collapseStatus} collapsible={collapsible}>
-                      <p>Lorem</p>
-                      <button
-                        onClick={() => setCollapseStatus(!collapseStatus)}
-                      >
-                        open/close
-                      </button>
-                    </Sider>
-                    <Content>lorem</Content>
+                  <Layout hasSider={true}>
+                  <Sider reverseArrow={true} collapsible={collapsible}>
+                    <div style={{ width: '100%', padding: '1rem', fontSize: '14px', fontWeight: '300', fontFamily: '"Roboto", sans-serif' }}>
+                      <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <li>Home</li>
+                        <li>Pricing</li>
+                        <li>About</li>
+                        <li>Contact us</li>
+                      </ul>
+                    </div>
+                  </Sider>
+                  <Content className='' style={{}}>lorem</Content>
                   </Layout>
                   <Footer>Footer</Footer>
                 </Layout>

@@ -8,7 +8,10 @@
 .col {
   width: 100%;
   height: 100%;
-  background-color: rgba(76, 76, 244, 0.708);
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 14px;
 }
 
 .Divider {
@@ -36,57 +39,89 @@
   width: fit-content;
   height: auto;
   display: flex;
-  background-color: aqua;
   margin: 2rem 0;
 }
 
 .layout {
   width: 100%;
   height: 50vh;
-  background-color: rgb(149, 229, 202);
 }
 
 .header {
   width: 100%;
   height: 50px;
-  background-color: rgb(207, 248, 248);
+  color: white;
+  background-color: #001628;
+  padding: 1rem;
 }
 
 .sider {
-  min-width: fit-content;
   height: 100%;
-  background-color: rgb(167, 114, 216);
+  width: fit-content;
+  min-width: fit-content;
+  background-color: #001628;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: #fff;
+}
+
+.closeArrow {
+  width: 100%;
+  height: 3rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #01203f;
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 1.5px 1.5px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
 }
 
 .content {
   width: 100%;
+  background-color: #fff;
+  padding: 1rem;
 }
 
 .footer {
   height: 50px;
   width: 100%;
-  background-color: rgb(207, 248, 248);
+  background-color: #fff;
+  padding: 1rem;
 }
 
-.layout2 {
-  background-color: bisque;
-}
-
-@media (min-width: 640px) {
+@media (min-width: 400px) {
   .span-sm-24 {
     grid-column: auto / span 24 !important;
   }
 
   .span-sm-16 {
-    grid-column: auto / span 16;
+    grid-column: auto / span 16 !important;
   }
 
   .span-sm-8 {
-    grid-column: auto / span 8;
+    grid-column: auto / span 8 !important;
   }
 
   .span-sm-4 {
-    grid-column: auto / span 4;
+    grid-column: auto / span 4 !important;
   }
 }
 
@@ -96,15 +131,15 @@
   }
 
   .span-md-16 {
-    grid-column: auto / span 16;
+    grid-column: auto / span 16 !important;
   }
 
   .span-md-8 {
-    grid-column: auto / span 8;
+    grid-column: auto / span 8 !important;
   }
 
   .span-md-4 {
-    grid-column: auto / span 4;
+    grid-column: auto / span 4 !important;
   }
 }
 
@@ -114,14 +149,14 @@
   }
 
   .span-lg-16 {
-    grid-column: auto / span 16;
+    grid-column: auto / span 16 !important;
   }
 
   .span-lg-8 {
-    grid-column: auto / span 8;
+    grid-column: auto / span 8 !important;
   }
 
   .span-lg-4 {
-    grid-column: auto / span 4;
+    grid-column: auto / span 4 !important;
   }
 }
