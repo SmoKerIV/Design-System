@@ -11,7 +11,6 @@ import style from "./components/PureModal/pureModal.module.css";
 import { PureModal } from "./components/PureModal/pureModal";
 import { useState } from "react";
 import Sider from "./components/layouts/Sider";
-import style2 from "./components/layouts/layout.module.css";
 import { Row } from "./components/layouts/Row";
 import Col from "./components/layouts/Column";
 import PrimaryButton from "./components/buttons/primary-button";
@@ -23,7 +22,6 @@ import DisabledButton from "./components/buttons/disabledButton";
 import IconButton from "./components/buttons/iconButton";
 import Badges from "./components/datadisplay/badges/badges";
 import LoadingButton from "./components/buttons/loadingButton";
-import Card from "./components/datadisplay/card/card";
 import ListComponent from "./components/datadisplay/lists/list";
 import InfoAlert from "./components/feedback/alerts/infoAlert";
 import WarningAlert from "./components/feedback/alerts/warningAlert";
@@ -60,7 +58,6 @@ function App() {
   const [formValues, setFormValues] = useState({});
   const [errors, setErrors] = useState({});
   const [collapsible, setCollapsible] = useState(true);
-  const [collapseStatus, setCollapseStatus] = useState(false);
   const [fields, setFields] = useState([
     {
       id: 1,
