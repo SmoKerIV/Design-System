@@ -637,12 +637,18 @@ export default Layout
 
               <Layout>
                 <Header>Header</Header>
-                <Layout className={style2.layout2} hasSider={true}>
-                  <Sider collapsed={collapseStatus} collapsible={collapsible}>
-                    <p>Lorem</p>
-                    <button onClick={() => setCollapseStatus(!collapseStatus)}>open/close</button>
+                <Layout hasSider={true}>
+                  <Sider reverseArrow={true} collapsible={collapsible}>
+                    <div style={{ width: '100%', padding: '1rem', fontSize: '14px', fontWeight: '300', fontFamily: '"Roboto", sans-serif' }}>
+                      <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <li>Home</li>
+                        <li>Pricing</li>
+                        <li>About</li>
+                        <li>Contact us</li>
+                      </ul>
+                    </div>
                   </Sider>
-                  <Content>lorem</Content>
+                  <Content className='' style={{}}>lorem</Content>
                 </Layout>
                 <Footer>Footer</Footer>
               </Layout>

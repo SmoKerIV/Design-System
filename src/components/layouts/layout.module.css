@@ -45,33 +45,66 @@
 .layout {
   width: 100%;
   height: 50vh;
-  background-color: rgb(149, 229, 202);
 }
 
 .header {
   width: 100%;
   height: 50px;
-  background-color: rgb(207, 248, 248);
+  color: white;
+  background-color: #001628;
+  padding: 1rem;
 }
 
 .sider {
-  min-width: fit-content;
   height: 100%;
-  background-color: rgb(167, 114, 216);
+  width: fit-content;
+  min-width: fit-content;
+  background-color: #001628;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: #fff;
+}
+
+.closeArrow {
+  width: 100%;
+  height: 3rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #01203f;
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 1.5px 1.5px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
 }
 
 .content {
   width: 100%;
+  background-color: #fff;
+  padding: 1rem;
 }
 
 .footer {
   height: 50px;
   width: 100%;
-  background-color: rgb(207, 248, 248);
-}
-
-.layout2 {
-  background-color: bisque;
+  background-color: #fff;
+  padding: 1rem;
 }
 
 @media (min-width: 400px) {
