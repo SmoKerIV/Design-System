@@ -32,28 +32,26 @@ const SelectedMenu = ({ items, onSelect }) => {
     <div className="selected-menu" ref={menuRef}>
       <div className="selected-menu-toggle" onClick={() => setIsOpen(!isOpen)}>
         <div className='selector-title'>
-        <img src={message} alt="message" className="menu-icon" />
-        {selectedItem ? selectedItem.label : 'Navigation One'}
+          <img src={message} alt="message" className="menu-icon" />
+          {selectedItem ? selectedItem.label : 'Navigation One'}
         </div>
         <img
-          src={arrowr}
+          src={isOpen ? arrowr : arrowd}
           alt="Arrow"
           className={'arrow'}
         />
       </div>
-      {isOpen && (
-        <div className="selected-menu-list">
-          {items.map((item, index) => (
-            <div
-              key={index}
-              className={`selected-menu-item ${selectedItem && selectedItem.label === item.label ? 'selected' : ''}`}
-              onClick={() => handleItemClick(item)}
-            >
-              {item.label}
-            </div>
-          ))}
-        </div>
-      )}
+      <div className={`selected-menu-list ${isOpen ? 'open' : 'close'}`}>
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className={`selected-menu-item ${selectedItem && selectedItem.label === item.label ? 'selected' : ''}`}
+            onClick={() => handleItemClick(item)}
+          >
+            {item.label}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

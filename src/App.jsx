@@ -49,6 +49,8 @@ import {
   Space,
 } from "./components/layouts";
 import DocumentationForm from "./components/docs/documentation";
+import icon from "./components/navigation/tabs/assets/tb.svg";
+import aicon from "./components/navigation/tabs/assets/atb.svg";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -183,17 +185,34 @@ export const PureModal = ({ isOpen = false, onClose = () => { }, children }) => 
 `;
 
   const tab = `
-const tabs = [
-    { title: "Tab 1", content: <div>Content for Tab 1</div> },
-    { title: "Tab 2", content: <div>Content for Tab 2</div> },
-    { title: "Tab 3", content: <div>Content for Tab 3</div> },
-     ];
+import icon from "./components/navigation/tabs/assets/tb.svg";
+import aicon from "./components/navigation/tabs/assets/atb.svg";
+  const tabs = [
+    {
+      title: "Tab 1",
+      content: <div>Content 1</div>,
+      icon: icon,
+      aicon: aicon,
+    },
+    {
+      title: "Tab 2",
+      content: <div>Content 2</div>,
+      icon: icon,
+      aicon: aicon,
+    },
+    {
+      title: "Tab 3",
+      content: <div>Content 3</div>,
+      icon: icon,
+      aicon: aicon,
+    },
+  ];
      return (
        <Tabs tabs={tabs} />
        <VerticalTabs tabs={tabs} />
 
      )`;
-     const inputCode = `     
+  const inputCode = `     
      return(       
             <InputField placeholder={"example"} onChange={handleInputChange} />
             <Inputmail placeholder={"example"} onChange={handleInputChange} />
@@ -273,7 +292,6 @@ const tabs = [
     handleSubmit={handleSubmit} />
   )
   `;
-  
 
   const rowColCodeSnippet = `
   import React from 'react';
@@ -358,7 +376,7 @@ export default Space`;
               </Layout>    )
 }`;
 
-const primarybtnCode = `
+  const primarybtnCode = `
 const handleClick = () => {
     console.log("Button clicked");
   };
@@ -419,7 +437,7 @@ return (
       title="Loading Button"
       loadingDurationInSeconds={3}/>
 );`;
-const badgesCode = `
+  const badgesCode = `
 
 const handleNotificationsClick = () => {
     console.log("Notifications clicked");
@@ -441,7 +459,7 @@ return (
 );
 `;
 
-const cardCode = `
+  const cardCode = `
 
 return (
    <Card
@@ -451,7 +469,7 @@ return (
 );
 `;
 
-const listCode = `
+  const listCode = `
 
 return (
      <ListComponent
@@ -470,7 +488,7 @@ return (
 );
 `;
 
-const successAlertCode = `
+  const successAlertCode = `
 
 return (
     <SuccessAlert
@@ -498,14 +516,14 @@ return (
     message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."/>
 );
 `;
-const circularProgCode = `
+  const circularProgCode = `
 
 return (
   <CircularProgressBar value={75} color="pink" />
 );
 `;
 
-const tableCode = `
+  const tableCode = `
 
 return (
      <TableComponent
@@ -547,9 +565,24 @@ return (
     { label: "Option 4" },
   ];
   const tabs = [
-    { title: "Tab 1", content: <div>Content for Tab 1</div> },
-    { title: "Tab 2", content: <div>Content for Tab 2</div> },
-    { title: "Tab 3", content: <div>Content for Tab 3</div> },
+    {
+      title: "Tab 1",
+      content: <div>Content 1</div>,
+      icon: icon,
+      aicon: aicon,
+    },
+    {
+      title: "Tab 2",
+      content: <div>Content 2</div>,
+      icon: icon,
+      aicon: aicon,
+    },
+    {
+      title: "Tab 3",
+      content: <div>Content 3</div>,
+      icon: icon,
+      aicon: aicon,
+    },
   ];
   const menuItems = [
     { label: "Home", url: "/" },
@@ -793,7 +826,8 @@ return (
                 {
                   name: "indeterminate",
                   type: "boolean",
-                  description: "Indicates whether the checkbox is indeterminate.",
+                  description:
+                    "Indicates whether the checkbox is indeterminate.",
                 },
                 {
                   name: "disabled",
@@ -815,24 +849,24 @@ return (
               ]}
               codeSnippet={checkCode}
             >
-            <Checkbox
-              label="Label"
-              checked={checked}
-              onChange={() => setChecked(!checked)}
-            />
-            <Checkbox
-              label="Label"
-              indeterminate={indeterminate}
-              checked={false}
-              onChange={() => setIndeterminate(!indeterminate)}
-            />
-            <Checkbox
-              label="Label"
-              disabled
-              checked={disabledChecked}
-              onChange={() => setDisabledChecked(!disabledChecked)}
-            />
-          </DocumentationForm>
+              <Checkbox
+                label="Label"
+                checked={checked}
+                onChange={() => setChecked(!checked)}
+              />
+              <Checkbox
+                label="Label"
+                indeterminate={indeterminate}
+                checked={false}
+                onChange={() => setIndeterminate(!indeterminate)}
+              />
+              <Checkbox
+                label="Label"
+                disabled
+                checked={disabledChecked}
+                onChange={() => setDisabledChecked(!disabledChecked)}
+              />
+            </DocumentationForm>
           </div>
         </div>
       </div>
@@ -862,22 +896,29 @@ return (
                 {
                   name: "disabled",
                   type: "boolean",
-                  description: "Indicates whether the radio button is disabled.",
+                  description:
+                    "Indicates whether the radio button is disabled.",
                 },
               ]}
               stateInfo={[
                 {
                   name: "onChange",
                   type: "function",
-                  description: "Callback function to handle radio button changes.",
+                  description:
+                    "Callback function to handle radio button changes.",
                 },
               ]}
               codeSnippet={radioCode}
             >
-            <Radio label="Normal" name="example" value="normal" />
-            <Radio label="Normal" name="example" value="normal" />
-            <Radio label="Disabled" name="example" value="disabled" disabled />
-          </DocumentationForm>
+              <Radio label="Normal" name="example" value="normal" />
+              <Radio label="Normal" name="example" value="normal" />
+              <Radio
+                label="Disabled"
+                name="example"
+                value="disabled"
+                disabled
+              />
+            </DocumentationForm>
           </div>
         </div>
       </div>
@@ -919,14 +960,14 @@ return (
             ]}
             codeSnippet={formCode}
           >
-          <Form
-            fields={fields}
-            formValues={formValues}
-            errors={errors}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
-        </DocumentationForm>
+            <Form
+              fields={fields}
+              formValues={formValues}
+              errors={errors}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
+          </DocumentationForm>
         </div>
       </div>
       <div className="container">
@@ -949,82 +990,76 @@ return (
           stateInfo={[]}
           codeSnippet={primarybtnCode}
         >
-        <PrimaryButton
-          title="Primary Button"
-          onClick={handleClick}
-        ></PrimaryButton>
-        <SecondaryButton
-          title="Secondary Button"
-          onClick={handleClick}
-        ></SecondaryButton>
-        <LinkButton title="Link Button" onClick={handleClick}></LinkButton>
-        <TextButton title="Text Button" onClick={handleClick}></TextButton>
-        <DashedButton
-          title="Dashed Button"
-          onClick={handleClick}
-        ></DashedButton>
-        <DisabledButton title="Disabled Button"></DisabledButton>
-        <IconButton
-          title="Icon Button"
-          onClick={handleClick}
-          icon={
-            <img
-            src={HomeIcon}
-            alt="Bell icon"
-            className="Bell-icon"
-            style={{ height: "15px", width: "15px" }}
-            />
+          <PrimaryButton
+            title="Primary Button"
+            onClick={handleClick}
+          ></PrimaryButton>
+          <SecondaryButton
+            title="Secondary Button"
+            onClick={handleClick}
+          ></SecondaryButton>
+          <LinkButton title="Link Button" onClick={handleClick}></LinkButton>
+          <TextButton title="Text Button" onClick={handleClick}></TextButton>
+          <DashedButton
+            title="Dashed Button"
+            onClick={handleClick}
+          ></DashedButton>
+          <DisabledButton title="Disabled Button"></DisabledButton>
+          <IconButton
+            title="Icon Button"
+            onClick={handleClick}
+            icon={
+              <img
+                src={HomeIcon}
+                alt="Bell icon"
+                className="Bell-icon"
+                style={{ height: "15px", width: "15px" }}
+              />
             }
-            />
-        <LoadingButton
-          title="Loading Button"
-          loadingDurationInSeconds={3}  
-          
-          
           />
-          </DocumentationForm>
-          <DocumentationForm
-            componentName="Badges"
-            description="A badge component that displays a notification count."
-            propsInfo={[
-              {
-                name: "title",
-                type: "string",
-                description: "Title text for the badge.",
-              },
-              {
-                name: "notificationCount",
-                type: "number",
-                description: "Number of notifications to be displayed.",
-              },
-              {
-                name: "onClick",
-                type: "function",
-                description: "Callback function to handle badge click.",
-              },
-              {
-                name: "icon",
-                type: "element",
-                description: "Icon element to be displayed in the badge.",
-              },
-            ]}
-            stateInfo={[]}
-            codeSnippet={badgesCode}
-          >
-        <Badges
-          title=""
-          notificationCount={5}
-          onClick={handleNotificationsClick}
-          icon={
-            <img
-              src={BellIcon}
-              alt="Bell icon"
-              className="Bell-icon"
-              style={{ height: "20px", width: "25px", cursor: "pointer" }}
-            />
-
-          }
-        />
+          <LoadingButton title="Loading Button" loadingDurationInSeconds={3} />
+        </DocumentationForm>
+        <DocumentationForm
+          componentName="Badges"
+          description="A badge component that displays a notification count."
+          propsInfo={[
+            {
+              name: "title",
+              type: "string",
+              description: "Title text for the badge.",
+            },
+            {
+              name: "notificationCount",
+              type: "number",
+              description: "Number of notifications to be displayed.",
+            },
+            {
+              name: "onClick",
+              type: "function",
+              description: "Callback function to handle badge click.",
+            },
+            {
+              name: "icon",
+              type: "element",
+              description: "Icon element to be displayed in the badge.",
+            },
+          ]}
+          stateInfo={[]}
+          codeSnippet={badgesCode}
+        >
+          <Badges
+            title=""
+            notificationCount={5}
+            onClick={handleNotificationsClick}
+            icon={
+              <img
+                src={BellIcon}
+                alt="Bell icon"
+                className="Bell-icon"
+                style={{ height: "20px", width: "25px", cursor: "pointer" }}
+              />
+            }
+          />
         </DocumentationForm>
         <DocumentationForm
           componentName="List"
@@ -1039,19 +1074,19 @@ return (
           stateInfo={[]}
           codeSnippet={listCode}
         >
-        <ListComponent
-          initialItems={[
-            "[ITEM] Racing car sprays burning fuel into crowd.",
-            "[ITEM] Japanese princess to wed commoner.",
-            "[ITEM] Australian walks 100km after outback crash.",
-            "[ITEM] Man charged over missing wedding girl.",
-            "[ITEM] Los Angeles battles huge wildfires.",
-            "[ITEM] New item 1.",
-            "[ITEM] New item 2.",
-            "[ITEM] New item 3.",
-            "[ITEM] New item 4.",
-          ]}
-        />
+          <ListComponent
+            initialItems={[
+              "[ITEM] Racing car sprays burning fuel into crowd.",
+              "[ITEM] Japanese princess to wed commoner.",
+              "[ITEM] Australian walks 100km after outback crash.",
+              "[ITEM] Man charged over missing wedding girl.",
+              "[ITEM] Los Angeles battles huge wildfires.",
+              "[ITEM] New item 1.",
+              "[ITEM] New item 2.",
+              "[ITEM] New item 3.",
+              "[ITEM] New item 4.",
+            ]}
+          />
         </DocumentationForm>
         <DocumentationForm
           componentName="Alert"
@@ -1071,26 +1106,26 @@ return (
           stateInfo={[]}
           codeSnippet={successAlertCode}
         >
-        <SuccessAlert
-          title="Success Tips"
-          description="Detailed description and advice about successful copywriting."
-        />
-        <InfoAlert
-          title="Informational Notes"
-          description="Additional description and information about copywriting."
-        />
-        <WarningAlert
-          title="Warning"
-          description="This is a warning notice about copywriting."
-        />
-        <ErrorAlert
-          title="Error"
-          description="This is a warning notice about copywriting."
-        />
-        <Notification
-          title="Notification Title"
-          message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."
-        />
+          <SuccessAlert
+            title="Success Tips"
+            description="Detailed description and advice about successful copywriting."
+          />
+          <InfoAlert
+            title="Informational Notes"
+            description="Additional description and information about copywriting."
+          />
+          <WarningAlert
+            title="Warning"
+            description="This is a warning notice about copywriting."
+          />
+          <ErrorAlert
+            title="Error"
+            description="This is a warning notice about copywriting."
+          />
+          <Notification
+            title="Notification Title"
+            message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."
+          />
         </DocumentationForm>
         <DocumentationForm
           componentName="CircularProgressBar"
@@ -1110,7 +1145,7 @@ return (
           stateInfo={[]}
           codeSnippet={circularProgCode}
         >
-        <CircularProgressBar value={75} color="pink" />
+          <CircularProgressBar value={75} color="pink" />
         </DocumentationForm>
       </div>
       <div className="container">
@@ -1131,41 +1166,42 @@ return (
             {
               name: "columnTitles",
               type: "array",
-              description: "Array of column titles to be displayed in the table.",
+              description:
+                "Array of column titles to be displayed in the table.",
             },
           ]}
           stateInfo={[]}
           codeSnippet={tableCode}
         >
-        <TableComponent
-          initialRows={[
-            {
-              columns: ["Text1", "Text2"],
-              tag1: "Tag 1",
-              tag2: "Tag 2",
-            },
-            {
-              columns: ["Text1", "Text2"],
-              tag1: "Tag 1",
-              tag2: "Tag 2",
-            },
-            {
-              columns: ["Text1", "Text2"],
-              tag1: "Tag 1",
-              tag2: "Tag 2",
-            },
-          ]}
-          name={"john Doe"}
-          columnTitles={[
-            "Title",
-            "Title",
-            "Title",
-            "Title",
-            "Title",
-            "Title",
-            "Title",
-          ]}
-        />
+          <TableComponent
+            initialRows={[
+              {
+                columns: ["Text1", "Text2"],
+                tag1: "Tag 1",
+                tag2: "Tag 2",
+              },
+              {
+                columns: ["Text1", "Text2"],
+                tag1: "Tag 1",
+                tag2: "Tag 2",
+              },
+              {
+                columns: ["Text1", "Text2"],
+                tag1: "Tag 1",
+                tag2: "Tag 2",
+              },
+            ]}
+            name={"john Doe"}
+            columnTitles={[
+              "Title",
+              "Title",
+              "Title",
+              "Title",
+              "Title",
+              "Title",
+              "Title",
+            ]}
+          />
         </DocumentationForm>
       </div>
       <div>
@@ -1222,86 +1258,114 @@ return (
               </div>
 
               <div>
-              <DocumentationForm
-                componentName="Row and Col"
-                description="The Row and Col components from Ant Design provide a responsive grid layout system. It allows for flexible and consistent layout structures."
-                propsInfo={[
-                    { name: 'gutter', type: 'array', description: 'Spacing between the grid columns. Accepts an array with horizontal and vertical spacing values.' },
-                    { name: 'span', type: 'number', description: 'Number of columns the grid item should span. Total columns in a row is 24.' },
-                    { name: 'sm', type: 'number', description: 'Grid item width at small breakpoint (576px).' },
-                    { name: 'md', type: 'number', description: 'Grid item width at medium breakpoint (768px).' },
-                    { name: 'lg', type: 'number', description: 'Grid item width at large breakpoint (992px).' },
-                ]}
-                stateInfo={[]}
-                codeSnippet={rowColCodeSnippet}
-            >
-                <Row gutter={[16, 16]}>
-                  <Col span={4} md={8} sm={4} lg={24}>
-                    <div>hello</div>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Id, nulla!
-                    </p>
-                  </Col>
-                  <Col span={8} sm={4} md={8} lg={24}>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Iste, sint.
-                    </p>
-                  </Col>
-                  <Col span={8} sm={4} md={8} lg={24}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Quibusdam, accusantium.
-                  </Col>
-                  <Col span={6} sm={8} md={8} lg={16}>
-                    <p>
+                <DocumentationForm
+                  componentName="Row and Col"
+                  description="The Row and Col components from Ant Design provide a responsive grid layout system. It allows for flexible and consistent layout structures."
+                  propsInfo={[
+                    {
+                      name: "gutter",
+                      type: "array",
+                      description:
+                        "Spacing between the grid columns. Accepts an array with horizontal and vertical spacing values.",
+                    },
+                    {
+                      name: "span",
+                      type: "number",
+                      description:
+                        "Number of columns the grid item should span. Total columns in a row is 24.",
+                    },
+                    {
+                      name: "sm",
+                      type: "number",
+                      description:
+                        "Grid item width at small breakpoint (576px).",
+                    },
+                    {
+                      name: "md",
+                      type: "number",
+                      description:
+                        "Grid item width at medium breakpoint (768px).",
+                    },
+                    {
+                      name: "lg",
+                      type: "number",
+                      description:
+                        "Grid item width at large breakpoint (992px).",
+                    },
+                  ]}
+                  stateInfo={[]}
+                  codeSnippet={rowColCodeSnippet}
+                >
+                  <Row gutter={[16, 16]}>
+                    <Col span={4} md={8} sm={4} lg={24}>
+                      <div>hello</div>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Id, nulla!
+                      </p>
+                    </Col>
+                    <Col span={8} sm={4} md={8} lg={24}>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Iste, sint.
+                      </p>
+                    </Col>
+                    <Col span={8} sm={4} md={8} lg={24}>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Quas, reiciendis.
-                    </p>
-                  </Col>
-                  <Col span={6} sm={4} md={8} lg={16}>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </Col>
-                  <Col span={6}>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </Col>
-                  <Col span={6}>Lorem ipsum dolor sit amet.</Col>
-                  <Col span={6}>Lorem ipsum dolor sit amet.</Col>
-                  <Col span={6}>Lorem ipsum dolor sit amet.</Col>
-                </Row>
-              </DocumentationForm>
+                      Quibusdam, accusantium.
+                    </Col>
+                    <Col span={6} sm={8} md={8} lg={16}>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Quas, reiciendis.
+                      </p>
+                    </Col>
+                    <Col span={6} sm={4} md={8} lg={16}>
+                      <p>Lorem ipsum dolor sit amet.</p>
+                    </Col>
+                    <Col span={6}>
+                      <p>Lorem ipsum dolor sit amet.</p>
+                    </Col>
+                    <Col span={6}>Lorem ipsum dolor sit amet.</Col>
+                    <Col span={6}>Lorem ipsum dolor sit amet.</Col>
+                    <Col span={6}>Lorem ipsum dolor sit amet.</Col>
+                  </Row>
+                </DocumentationForm>
               </div>
 
               <div>
                 <DocumentationForm
                   componentName="Divider"
                   description="A divider component that separates content with a horizontal line."
-                  propsInfo={[  
+                  propsInfo={[
                     {
                       name: "orientation",
                       type: "string",
-                      description: "Position of the divider line. Options: 'left', 'right', 'center'.",
+                      description:
+                        "Position of the divider line. Options: 'left', 'right', 'center'.",
                     },
                     {
                       name: "orientationMargin",
                       type: "string",
-                      description: "Margin of the divider line. Options: 'top', 'bottom'.",
+                      description:
+                        "Margin of the divider line. Options: 'top', 'bottom'.",
                     },
                     {
                       name: "type",
                       type: "string",
-                      description: "Type of the divider line. Options: 'horizontal', 'vertical'.",
+                      description:
+                        "Type of the divider line. Options: 'horizontal', 'vertical'.",
                     },
                   ]}
                   stateInfo={[]}
-                  codeSnippet={dividerCode}>
-                <Divider orientation="right">
-                  <p>laboriosam.</p>
-                </Divider>
-              </DocumentationForm>
+                  codeSnippet={dividerCode}
+                >
+                  <Divider orientation="right">
+                    <p>laboriosam.</p>
+                  </Divider>
+                </DocumentationForm>
               </div>
               <DocumentationForm
-              
                 componentName="Space"
                 description="A space component that provides spacing between elements."
                 propsInfo={[
@@ -1313,12 +1377,14 @@ return (
                   {
                     name: "align",
                     type: "string",
-                    description: "Alignment of elements. Options: 'flex-start', 'center', 'flex-end'.",
+                    description:
+                      "Alignment of elements. Options: 'flex-start', 'center', 'flex-end'.",
                   },
                   {
                     name: "direction",
                     type: "string",
-                    description: "Direction of elements. Options: 'row', 'column'.",
+                    description:
+                      "Direction of elements. Options: 'row', 'column'.",
                   },
                   {
                     name: "wrap",
@@ -1329,39 +1395,41 @@ return (
                 stateInfo={[]}
                 codeSnippet={spaceCode}
               >
-              <Space size={20} direction="column" align="center" wrap="wrap">
-                <button>submit</button>
-                <button>reload</button>
-                <button>close</button>
-              </Space>
-            </DocumentationForm>
-            <DocumentationForm
-              componentName="Layout"
-              description="A layout component that provides a basic structure for the page."
-              propsInfo={[
-                {
-                  name: "hasSider",
-                  type: "boolean",
-                  description: "Indicates whether the layout has a sidebar.",
-                },
-              ]}
-              stateInfo={[]}
-              codeSnippet={LayoutCode}
-            >
-              <Layout>
-                <Header>Header</Header>
-                <Layout className={style2.layout2} hasSider={true}>
-                  <Sider collapsed={collapseStatus} collapsible={collapsible}>
-                    <p>Lorem</p>
-                    <button onClick={() => setCollapseStatus(!collapseStatus)}>
-                      open/close
-                    </button>
-                  </Sider>
-                  <Content>lorem</Content>
+                <Space size={20} direction="column" align="center" wrap="wrap">
+                  <button>submit</button>
+                  <button>reload</button>
+                  <button>close</button>
+                </Space>
+              </DocumentationForm>
+              <DocumentationForm
+                componentName="Layout"
+                description="A layout component that provides a basic structure for the page."
+                propsInfo={[
+                  {
+                    name: "hasSider",
+                    type: "boolean",
+                    description: "Indicates whether the layout has a sidebar.",
+                  },
+                ]}
+                stateInfo={[]}
+                codeSnippet={LayoutCode}
+              >
+                <Layout>
+                  <Header>Header</Header>
+                  <Layout className={style2.layout2} hasSider={true}>
+                    <Sider collapsed={collapseStatus} collapsible={collapsible}>
+                      <p>Lorem</p>
+                      <button
+                        onClick={() => setCollapseStatus(!collapseStatus)}
+                      >
+                        open/close
+                      </button>
+                    </Sider>
+                    <Content>lorem</Content>
+                  </Layout>
+                  <Footer>Footer</Footer>
                 </Layout>
-                <Footer>Footer</Footer>
-              </Layout>
-            </DocumentationForm>
+              </DocumentationForm>
             </div>
           </div>
         </div>

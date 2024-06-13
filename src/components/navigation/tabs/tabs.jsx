@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './tabs.css';
-import icon from './assets/tb.svg';
-import aicon from './assets/atb.svg';
 
 const Tabs = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -27,7 +25,7 @@ const Tabs = ({ tabs }) => {
             className={`tab ${index === activeTab ? 'active' : ''}`}
             onClick={() => handleClick(index)}
           >
-            <img src={index === activeTab ? aicon : icon} alt="icon" className="icon" />
+            <img src={index === activeTab ? tab.aicon : tab.icon} alt="icon" className="icon" />
             {tab.title}
           </div>
         ))}
