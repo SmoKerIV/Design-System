@@ -2,8 +2,8 @@ import React from 'react';
 import Button from './generalButton';
 
 
-const DashedButton = ({ title , onClick }) => {
-  return <Button type="dashed" title={title} onClick={onClick} />;
+const DashedButton = ({ children , onClick }) => {
+  return <Button type="dashed" onClick={onClick}>{children}</Button>;
 };
 
 export default DashedButton;

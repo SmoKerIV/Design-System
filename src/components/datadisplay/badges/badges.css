@@ -28,9 +28,3 @@
   font-size: 0.8em;
   color: var(--white);
 }
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-}

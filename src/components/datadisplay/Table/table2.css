@@ -1,0 +1,74 @@
+@import url('../../../syles/variable.css');
+
+.custom-table {
+  border-collapse: collapse;
+  font-family: var(--font-family);
+}
+
+.custom-table th, .custom-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: var(--gray);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+}
+.custom-table td {
+  background-color: var(--gray-light);
+  vertical-align: middle;
+  border: 1px solid var(--border-color);
+}
+
+.custom-table input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4px;
+}
+
+.custom-table td a {
+  margin-right: 5px;
+}
+
+.delete, .invite {
+  background-color: transparent;
+  color: var(--primary);
+  border: none;
+  font-size: var(--font-family);
+}
+
+.tag-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size);
+  margin-right: 5px;
+  border: 1px solid transparent;
+}
+
+.tag-container .cancel-icon {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.tag1 {
+  background-color: #f6ffed;
+  color: #52c41a;
+  border: 1px solid #b7eb8f;
+}
+
+.tag2 {
+  background-color: #f0f5ff;
+  color: #2f54eb;
+  border: 1px solid #adc6ff;
+}
+
+.names {
+  color: var(--primary);
+}
+

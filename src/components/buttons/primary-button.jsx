@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from './generalButton';
 
-const PrimaryButton = ({ title , onClick }) => {
-  return <Button type="primary" title={title} onClick={onClick} />;
+const PrimaryButton = ({ children, onClick }) => {
+  return <Button type="primary" onClick={onClick}>{children}</Button>;
 };
 
 export default PrimaryButton;

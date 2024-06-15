@@ -1,36 +1,37 @@
 import React, { useState } from 'react';
-import './list.css'; 
+import styles from './list.module.css'; 
 
 const ListComponent = ({ initialItems = [] }) => {
-    const [items] = useState(initialItems);
-    const [visibleItems, setVisibleItems] = useState(5);
-    
-    const showMoreItems = () => {
-      setVisibleItems(visibleItems + 5);
-    };
+  const [items] = useState(initialItems);
+  const [visibleItems, setVisibleItems] = useState(5);
   
-    const showLessItems = () => {
-      setVisibleItems(5);
-    };
-  
-    return (
-        <div className="list-container">
-          <div className="header">Header</div>
-          <ul className="list">
-            {items.slice(0, visibleItems).map((item, index) => (
-              <li key={index} className="list-item">{item}</li>
-            ))}
-          </ul>
-          <div className="footer">Footer</div>
-          <div className="button-container">
-            {visibleItems < items.length && (
-              <button className="load-more-button" onClick={showMoreItems}>Loading more</button>
-            )}
-            {visibleItems > 5 && (
-              <button className="load-less-button" onClick={showLessItems}>Loading less</button>
-            )}
-          </div>
+  const showMoreItems = () => {
+    setVisibleItems(visibleItems + 5);
+  };
+
+  const showLessItems = () => {
+    setVisibleItems(5);
+  };
+
+  return (
+      <div className={styles.listContainer}>
+        <div className={styles.header}>Header</div>
+        <ul className={styles.list}>
+          {items.slice(0, visibleItems).map((item, index) => (
+            <li key={index} className={styles.listItem}>{item}</li>
+          ))}
+        </ul>
+        <div className={styles.footer}>Footer</div>
+        <div className={styles.buttonContainer}>
+          {visibleItems < items.length && (
+            <button className={styles.loadMoreButton} onClick={showMoreItems}>Loading more</button>
+          )}
+          {visibleItems > 5 && (
+            <button className={styles.loadLessButton} onClick={showLessItems}>Loading less</button>
+          )}
         </div>
-      );
-    };
-  export default ListComponent;
+      </div>
+    );
+  };
+export default ListComponent;
+

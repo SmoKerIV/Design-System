@@ -14,24 +14,13 @@ import Sider from "./components/layouts/Sider";
 import style2 from "./components/layouts/layout.module.css";
 import { Row } from "./components/layouts/Row";
 import Col from "./components/layouts/Column";
-import PrimaryButton from "./components/buttons/primary-button";
-import LinkButton from "./components/buttons/link-button";
-import SecondaryButton from "./components/buttons/sec-button";
-import TextButton from "./components/buttons/text-button";
-import DashedButton from "./components/buttons/dashedbutton";
-import DisabledButton from "./components/buttons/disabledButton";
-import IconButton from "./components/buttons/iconButton";
 import Badges from "./components/datadisplay/badges/badges";
 import LoadingButton from "./components/buttons/loadingButton";
 import Card from "./components/datadisplay/card/card";
 import ListComponent from "./components/datadisplay/lists/list";
-import InfoAlert from "./components/feedback/alerts/infoAlert";
-import WarningAlert from "./components/feedback/alerts/warningAlert";
-import ErrorAlert from "./components/feedback/alerts/errorAlert";
-import SuccessAlert from "./components/feedback/alerts/successAlert";
 import Notification from "./components/feedback/Notifications/notification";
 import CircularProgressBar from "./components/feedback/progress/circular";
-import HomeIcon from "./components/buttons/button-assets/home-icon.svg";
+import Homeicon from './components/buttons/button-assets/home-icon.svg'
 import BellIcon from "./components/datadisplay/badges/assets/bell-icon.svg";
 import InputField from "./components/Forms/Input/input";
 import Inputmail from "./components/Forms/Input/inputmail";
@@ -39,7 +28,10 @@ import SearchInput from "./components/Forms/Input/searchinput";
 import Checkbox from "./components/Forms/checkbox/checkbox";
 import Radio from "./components/Forms/radio/radio";
 import Form from "./components/Forms/form/form";
-import TableComponent from "./components/datadisplay/Table/table";
+import Alert from "./components/feedback/alerts/alert2";
+import { PureTable } from "./components/datadisplay/Table/table2";
+import CancelIcon from "./components/datadisplay/Table/assets/cancelicon";
+import Buttons from "./components/buttons/buttons2";
 import {
   Content,
   Divider,
@@ -100,6 +92,67 @@ function App() {
     return validationErrors;
   };
 
+  
+  const dataSource = [
+    {
+      name:'Ahmed',
+      age:'22',
+      address:'Baghdad'
+    },
+    {
+      name:'Ali',
+      age:'24',
+      address:'Erbil'
+    },
+    {
+      name:'Mariam',
+      age:'30',
+      address:'Najaf'
+    }
+  ];
+
+  const datacolumns = [
+    {
+      title: 'Name',
+      key: 'name',
+      render: (record) => <a className="names">{record.name}</a>,
+    },
+    {
+      title: 'Age',
+      key: 'age',
+      render: (record) => <span>{record.age}</span>,
+    },
+    {
+      title: 'Address',
+      key: 'address',
+      render: (record) => <span>{record.address}</span>,
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (record) => (
+        <span>
+          <span className="tag-container tag1">
+            green 
+            <CancelIcon className="cancel-icon" />
+          </span>
+          <span className="tag-container tag2">
+            geekblue 
+            <CancelIcon className="cancel-icon" />
+          </span>
+          <a className="invite" href="#">Invite</a>
+          <a className="delete" href="#">Delete</a>
+        </span>
+      ),
+    },
+  ];
+  const HomeIcon =<img src={Homeicon} style={{width:'10px',height:'10px'}}/>
+  const Bellicon = <img
+  src={BellIcon}
+  alt="Bell icon"
+  className="Bell-icon"
+  style={{ height: "20px", width: "25px", cursor: "pointer" ,  display: "block" , marginLeft:'3px'}}
+  />
   const menuCode = `
     const menuItems = [
     { label: "Home", url: "/" },
@@ -364,60 +417,35 @@ const handleClick = () => {
   };
 
 return (
-<PrimaryButton
-  title="Primary Button"
-  onClick={handleClick}>
-</PrimaryButton>
-);
 
-return (
-<SecondaryButton
-  title="Secondary Button"
-  onClick={handleClick}>
-</SecondaryButton>
-);
-
-return (
-  <LinkButton 
-    title="Link Button" 
-    onClick={handleClick}>
-  </LinkButton>
-);
-
-return (
-   <TextButton 
-     title="Text Button" 
-     onClick={handleClick}>
-   </TextButton>
-);
-
-return (
-   <DashedButton
-      title="Dashed Button"
-      onClick={handleClick}>
-   </DashedButton>
-);
-return (
-   <DisabledButton 
-      title="Disabled Button">
-  </DisabledButton>
+ <Buttons type="primary" onClick={handleClick}>Primary Button</Buttons>
 
 );
 return (
-   <IconButton
-      title="Icon Button"
-      onClick={handleClick}
-      icon={
-        <img
-          src={HomeIcon}
-          alt="Bell icon"
-          className="Bell-icon"
-          tyle={{ height: "15px", width: "15px" }}/>}/>
+  <Buttons type="secondary" onClick={handleClick}>Secondary Button</Buttons>
+);
+
+return (
+ <Buttons type="link" onClick={handleClick}>Linked Button</Buttons>
+);
+
+return (
+ <Buttons type="text" onClick={handleClick}>Text Button</Buttons>
+);
+
+return (
+<Buttons type="dashed" onClick={handleClick}>Dashed Button</Buttons>
+);
+return (
+  <Buttons type="disabled" onClick={handleClick}>Disabled Button</Buttons>
+);
+return (
+ <Buttons type="primary" onClick={handleClick} icon={HomeIcon}>Icon Button</Buttons>
 );
 return (
    <LoadingButton
-      title="Loading Button"
-      loadingDurationInSeconds={3}/>
+     loadingDurationInSeconds={3}  
+   >Loading Button</LoadingButton>
 );`;
 const badgesCode = `
 
@@ -427,16 +455,10 @@ const handleNotificationsClick = () => {
 
 return (
    <Badges
-     title=""
-     notificationCount={5}
-     onClick={handleNotificationsClick}
-     icon={
-       <img
-        src={BellIcon}
-        alt="Bell icon"
-        className="Bell-icon"
-        style={{ height: "20px", width: "25px", cursor: "pointer" }}/>
-          }
+          title=""
+          notificationCount={5}
+          onClick={handleNotificationsClick}
+          icon={Bellicon}
         />
 );
 `;
@@ -473,24 +495,18 @@ return (
 const successAlertCode = `
 
 return (
-    <SuccessAlert
-      title="Success Tips"
-      description="Detailed description and advice about successful copywriting."/>
+    <Alert type="Success" description="Detailed description and advice about successful copywriting." />
 );
 return (
-    <InfoAlert
-      title="Informational Notes"
-      description="Additional description and information about copywriting."/>
+    <Alert type="Warning" description="This is a warning notice about copywriting."/>
+
 );
 return (
-<WarningAlert
-  title="Warning"
-  description="This is a warning notice about copywriting."/>
+    <Alert type="Info" description="Additional description and information about copywriting."/>
 );
 return (
-<ErrorAlert
-  title="Error"
-  description="This is a warning notice about copywriting."/>
+    <Alert type="Error" description="This is a warning notice about copywriting."/>
+
 );
 return (
 <Notification
@@ -501,42 +517,68 @@ return (
 const circularProgCode = `
 
 return (
-  <CircularProgressBar value={75} color="pink" />
+    <CircularProgressBar value={75} color="pink" size={150}/>
 );
 `;
 
 const tableCode = `
+const dataSource = [
+    {
+      name:'Ahmed',
+      age:'22',
+      address:'Baghdad'
+    },
+    {
+      name:'Ali',
+      age:'24',
+      address:'Erbil'
+    },
+    {
+      name:'Mariam',
+      age:'30',
+      address:'Najaf'
+    }
+  ];
+
+  const datacolumns = [
+    {
+      title: 'Name',
+      key: 'name',
+      render: (record) => <a className="names">{record.name}</a>,
+    },
+    {
+      title: 'Age',
+      key: 'age',
+      render: (record) => <span>{record.age}</span>,
+    },
+    {
+      title: 'Address',
+      key: 'address',
+      render: (record) => <span>{record.address}</span>,
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (record) => (
+        <span>
+          <span className="tag-container tag1">
+            green 
+            <CancelIcon className="cancel-icon" />
+          </span>
+          <span className="tag-container tag2">
+            geekblue 
+            <CancelIcon className="cancel-icon" />
+          </span>
+          <a className="invite" href="#">Invite</a>
+          <a className="delete" href="#">Delete</a>
+        </span>
+      ),
+    },
+  ];
 
 return (
-     <TableComponent
-          initialRows={[
-            {
-              columns: ["Text1", "Text2"],
-              tag1: "Tag 1",
-              tag2: "Tag 2",
-            },
-            {
-              columns: ["Text1", "Text2"],
-              tag1: "Tag 1",
-              tag2: "Tag 2",
-            },
-            {
-              columns: ["Text1", "Text2"],
-              tag1: "Tag 1",
-              tag2: "Tag 2",
-            },
-          ]}
-          name={"john Doe"}
-          columnTitles={[
-            "Title",
-            "Title",
-            "Title",
-            "Title",
-            "Title",
-            "Title",
-            "Title",
-          ]}
-        />
+    <PureTable datacolumns={datacolumns} records={dataSource} />
+
 );
 `;
 
@@ -949,39 +991,16 @@ return (
           stateInfo={[]}
           codeSnippet={primarybtnCode}
         >
-        <PrimaryButton
-          title="Primary Button"
-          onClick={handleClick}
-        ></PrimaryButton>
-        <SecondaryButton
-          title="Secondary Button"
-          onClick={handleClick}
-        ></SecondaryButton>
-        <LinkButton title="Link Button" onClick={handleClick}></LinkButton>
-        <TextButton title="Text Button" onClick={handleClick}></TextButton>
-        <DashedButton
-          title="Dashed Button"
-          onClick={handleClick}
-        ></DashedButton>
-        <DisabledButton title="Disabled Button"></DisabledButton>
-        <IconButton
-          title="Icon Button"
-          onClick={handleClick}
-          icon={
-            <img
-            src={HomeIcon}
-            alt="Bell icon"
-            className="Bell-icon"
-            style={{ height: "15px", width: "15px" }}
-            />
-            }
-            />
+        <Buttons type="primary" onClick={handleClick}>Primary Button</Buttons>
+        <Buttons type="secondary" onClick={handleClick}>Secondary Button</Buttons>
+        <Buttons type="link" onClick={handleClick}>Linked Button</Buttons>
+        <Buttons type="text" onClick={handleClick}>Text Button</Buttons>
+        <Buttons type="disabled" onClick={handleClick}>Disabled Button</Buttons>
+        <Buttons type="dashed" onClick={handleClick}>Dashed Button</Buttons>
+        <Buttons type="primary" onClick={handleClick} icon={HomeIcon}>Icon Button</Buttons>
         <LoadingButton
-          title="Loading Button"
           loadingDurationInSeconds={3}  
-          
-          
-          />
+          >Loading Button</LoadingButton>
           </DocumentationForm>
           <DocumentationForm
             componentName="Badges"
@@ -1015,15 +1034,7 @@ return (
           title=""
           notificationCount={5}
           onClick={handleNotificationsClick}
-          icon={
-            <img
-              src={BellIcon}
-              alt="Bell icon"
-              className="Bell-icon"
-              style={{ height: "20px", width: "25px", cursor: "pointer" }}
-            />
-
-          }
+          icon={Bellicon}
         />
         </DocumentationForm>
         <DocumentationForm
@@ -1071,22 +1082,10 @@ return (
           stateInfo={[]}
           codeSnippet={successAlertCode}
         >
-        <SuccessAlert
-          title="Success Tips"
-          description="Detailed description and advice about successful copywriting."
-        />
-        <InfoAlert
-          title="Informational Notes"
-          description="Additional description and information about copywriting."
-        />
-        <WarningAlert
-          title="Warning"
-          description="This is a warning notice about copywriting."
-        />
-        <ErrorAlert
-          title="Error"
-          description="This is a warning notice about copywriting."
-        />
+          <Alert type="Success" description="Detailed description and advice about successful copywriting." />
+          <Alert type="Warning" description="This is a warning notice about copywriting."/>
+          <Alert type="Info" description="Additional description and information about copywriting."/>
+          <Alert type="Error" description="This is a warning notice about copywriting."/>
         <Notification
           title="Notification Title"
           message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."
@@ -1110,7 +1109,7 @@ return (
           stateInfo={[]}
           codeSnippet={circularProgCode}
         >
-        <CircularProgressBar value={75} color="pink" />
+        <CircularProgressBar value={75} color="pink" size={150}/>
         </DocumentationForm>
       </div>
       <div className="container">
@@ -1137,7 +1136,8 @@ return (
           stateInfo={[]}
           codeSnippet={tableCode}
         >
-        <TableComponent
+        <PureTable datacolumns={datacolumns} records={dataSource} />
+        {/* <TableComponent
           initialRows={[
             {
               columns: ["Text1", "Text2"],
@@ -1165,7 +1165,7 @@ return (
             "Title",
             "Title",
           ]}
-        />
+        /> */}
         </DocumentationForm>
       </div>
       <div>

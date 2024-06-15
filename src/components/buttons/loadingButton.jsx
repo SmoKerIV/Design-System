@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from './generalButton';
 import spinningCircle from './assets/spinning-circle.gif'; 
 
-const LoadingButton = ({ title, loadingDurationInSeconds, spinnerSize }) => {
+const LoadingButton = ({ children, loadingDurationInSeconds }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = async () => {
@@ -15,17 +15,13 @@ const LoadingButton = ({ title, loadingDurationInSeconds, spinnerSize }) => {
   };
 
   return (
-    <Button 
-      type="primary" 
-      title={
-        isLoading ? (
-          <img src={spinningCircle} alt="Loading..." style={{ width:'20px', height: '20px' }} />
-        ) : (
-          title
-        )
-      } 
-      onClick={handleClick} 
-    />
+    <Button type="primary" onClick={handleClick}>
+      {isLoading ? (
+        <img src={spinningCircle} alt="Loading..." style={{ width:'20px', height: '20px' }} />
+      ) : (
+        children
+      )}
+    </Button>
   );
 };
 

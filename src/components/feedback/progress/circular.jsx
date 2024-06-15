@@ -1,26 +1,26 @@
 import React from 'react';
 import './circular.css';
 
-const CircularProgressBar = ({ value, color }) => {
-    const circleRadius = 50;
-    const circleCircumference = 2 * Math.PI * circleRadius;
+const CircularProgressBar = ({ value, color, size }) => {
+    const radius = size / 2 - 10; 
+    const circleCircumference = 2 * Math.PI * radius;
     const strokeDashoffset = circleCircumference - (value / 100) * circleCircumference;
 
     return (
         <div className="circular-progress-bar">
-            <svg width="120" height="120">
+            <svg width={size} height={size}>
                 <circle
                     className="circular-progress-bar-bg"
-                    cx="60"
-                    cy="60"
-                    r="50"
+                    cx={size / 2}
+                    cy={size / 2}
+                    r={radius}
                     strokeWidth="10"
                 />
                 <circle
                     className="circular-progress-bar-fill"
-                    cx="60"
-                    cy="60"
-                    r="50"
+                    cx={size / 2}
+                    cy={size / 2}
+                    r={radius}
                     strokeWidth="10"
                     stroke={color}
                     strokeDasharray={circleCircumference}
@@ -35,3 +35,4 @@ const CircularProgressBar = ({ value, color }) => {
 };
 
 export default CircularProgressBar;
+

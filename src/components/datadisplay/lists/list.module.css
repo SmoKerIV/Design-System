@@ -1,12 +1,13 @@
 @import url('../../../syles/variable.css');
 
-.list-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: left;
-    font-family: var(--font-family)
+.listContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  font-family: var(--font-family);
 }
+
 .header,
 .footer {
   padding: 10px;
@@ -16,25 +17,30 @@
 }
 
 .list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.list-item {
-  padding: 15px;
+.listItem {
+  flex: 1;
+  padding: 15px 10px; 
   border-bottom: 1px solid var(--border-color);
+  margin: 0;
+  background-color: transparent;
 }
+ .listItem:last-child {
+  border-bottom: none;
+} 
 
-.button-container {
+.buttonContainer {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 10px ;
 }
 
-.load-more-button,
-.load-less-button {
-  color: black;
+.loadMoreButton,
+.loadLessButton {
+  color: var(--black);
   padding: 10px 20px;
   background-color: var(--gray);
   border: 1px solid var(--border-color);
@@ -43,7 +49,7 @@
   margin: 0 10px;
 }
 
-.load-more-button:hover,
-.load-less-button:hover {
+.loadMoreButton:hover,
+.loadLessButton:hover {
   background-color: var(--gray);
 }

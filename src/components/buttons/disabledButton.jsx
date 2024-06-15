@@ -1,9 +1,14 @@
 import React from 'react';
 import Button from './generalButton';
 
-const DisabledButton = ({ title , onClick }) => {
-  return <Button type="disabled" title={title} onClick={onClick} disabled={true} />;
+const DisabledButton = ({ children, onClick }) => {
+  return (
+    <Button type="disabled" onClick={onClick} disabled={true}>
+      {children}
+    </Button>
+  );
 };
 
 export default DisabledButton;
+
 

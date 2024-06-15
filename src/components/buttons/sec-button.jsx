@@ -1,8 +1,9 @@
 import React from 'react';
 import Button from './generalButton';
 
-const SecondaryButton = ({ title, onClick }) => {
-  return <Button type="secondary" title={title} onClick={onClick} />;
+const SecondaryButton = ({ children, onClick }) => {
+  return <Button type="secondary" onClick={onClick}>{children}</Button>;
 };
 
 export default SecondaryButton;
+
