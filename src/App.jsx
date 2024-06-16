@@ -1,7 +1,7 @@
 // import "./syles/variable.css"
 import "./App.css";
 import Menu from "./components/navigation/menus/menus";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import InlineMenu from "./components/navigation/menus/inlinemenu";
 import SelectedMenu from "./components/navigation/menus/selected";
 import Breadcrumbs from "./components/navigation/breadcrumbs/bread";
@@ -18,7 +18,7 @@ import LoadingButton from "./components/buttons/loadingButton";
 import ListComponent from "./components/datadisplay/lists/list";
 import Notification from "./components/feedback/Notifications/notification";
 import CircularProgressBar from "./components/feedback/progress/circular";
-import Homeicon from './components/buttons/button-assets/home-icon.svg'
+import Homeicon from "./components/buttons/button-assets/home-icon.svg";
 import BellIcon from "./components/datadisplay/badges/assets/bell-icon.svg";
 import InputField from "./components/Forms/Input/input";
 import Inputmail from "./components/Forms/Input/inputmail";
@@ -45,129 +45,115 @@ import aicon from "./components/navigation/tabs/assets/atb.svg";
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const [formValues, setFormValues] = useState({});
-  const [errors, setErrors] = useState({});
   const [collapsible, setCollapsible] = useState(true);
-  const [collapseStatus, setCollapseStatus] = useState(false);
   const [value, setValue] = useState();
-  const [fields, setFields] = useState([
+  const [checkedValues, setCheckedValues] = useState(["Apple"]);
+
+  const fields = [
     {
       id: 1,
-      name: "name",
-      label: "Name",
+      name: "username",
+      label: "Username",
       type: "text",
-      value: "",
       required: true,
     },
     {
       id: 2,
-      name: "email",
-      label: "Email",
-      type: "email",
-      value: "",
-      required: false,
+      name: "password",
+      label: "Password",
+      type: "password",
+      required: true,
     },
-  ]);
-  const [checkedValues, setCheckedValues] = useState(['Apple']);
-
+  ];
   const onChange = (values) => {
-    console.log('checked = ', values);
+    console.log("checked = ", values);
     setCheckedValues(values);
   };
 
   const options = [
-    { label: 'Apple', value: 'Apple' },
-    { label: 'Pear', value: 'Pear' },
-    { label: 'Orange', value: 'Orange', disabled: true}
+    { label: "Apple", value: "Apple" },
+    { label: "Pear", value: "Pear" },
+    { label: "Orange", value: "Orange", disabled: true },
   ];
   const onRadioChange = (newValue) => {
     console.log("radio checked", newValue);
     setValue(newValue);
   };
 
-  const handleChange = (e, id) => {
-    const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
-    const updatedFields = fields.map((field) =>
-      field.id === id ? { ...field, value } : field
-    );
-    setFields(updatedFields);
-  };
-
-  const validate = () => {
-    let validationErrors = {};
-    fields.forEach((field) => {
-      if (field.required && !formValues[field.name]) {
-        validationErrors[field.name] = `${field.label} is required`;
-      }
-    });
-    return validationErrors;
-  };
-
-  
   const dataSource = [
     {
-      name:'Ahmed',
-      age:'22',
-      address:'Baghdad'
+      name: "Ahmed",
+      age: "22",
+      address: "Baghdad",
     },
     {
-      name:'Ali',
-      age:'24',
-      address:'Erbil'
+      name: "Ali",
+      age: "24",
+      address: "Erbil",
     },
     {
-      name:'Mariam',
-      age:'30',
-      address:'Najaf'
-    }
+      name: "Mariam",
+      age: "30",
+      address: "Najaf",
+    },
   ];
 
   const datacolumns = [
     {
-      title: 'Name',
-      key: 'name',
+      title: "Name",
+      key: "name",
       render: (record) => <a className="names">{record.name}</a>,
     },
     {
-      title: 'Age',
-      key: 'age',
+      title: "Age",
+      key: "age",
       render: (record) => <span>{record.age}</span>,
     },
     {
-      title: 'Address',
-      key: 'address',
+      title: "Address",
+      key: "address",
       render: (record) => <span>{record.address}</span>,
     },
     {
-      title: 'Action',
-      key: 'action',
+      title: "Action",
+      key: "action",
       render: (record) => (
         <span>
           <span className="tag-container tag1">
-            green 
+            green
             <CancelIcon className="cancel-icon" />
           </span>
           <span className="tag-container tag2">
-            geekblue 
+            geekblue
             <CancelIcon className="cancel-icon" />
           </span>
-          <a className="invite" href="#">Invite</a>
-          <a className="delete" href="#">Delete</a>
+          <a className="invite" href="#">
+            Invite
+          </a>
+          <a className="delete" href="#">
+            Delete
+          </a>
         </span>
       ),
     },
   ];
-  const HomeIcon =<img src={Homeicon} style={{width:'10px',height:'10px'}}/>
-  const Bellicon = <img
-  src={BellIcon}
-  alt="Bell icon"
-  className="Bell-icon"
-  style={{ height: "20px", width: "25px", cursor: "pointer" ,  display: "block" , marginLeft:'3px'}}
-  />
+  const HomeIcon = (
+    <img src={Homeicon} style={{ width: "10px", height: "10px" }} />
+  );
+  const Bellicon = (
+    <img
+      src={BellIcon}
+      alt="Bell icon"
+      className="Bell-icon"
+      style={{
+        height: "20px",
+        width: "25px",
+        cursor: "pointer",
+        display: "block",
+        marginLeft: "3px",
+      }}
+    />
+  );
   const menuCode = `
     const menuItems = [
     { label: "Home", url: "/" },
@@ -324,49 +310,25 @@ import Radio from "./components/Forms/radio/radio";
   const fields = [
     {
       id: 1,
-      name: "name",
-      label: "Name",
+      name: "username",
+      label: "Username",
       type: "text",
-      value: "",
       required: true,
     },
     {
       id: 2,
-      name: "email",
-      label: "Email",
-      type: "email",
-      value: "",
-      required: false,
+      name: "password",
+      label: "Password",
+      type: "password",
+      required: true,
     },
   ];
-  const handleChange = (e, id) => {
-    const { name, value } = e.target;
-    setFormValues({
-      ...formValues,
-      [name]: value,
-    });
-    const updatedFields = fields.map((field) =>
-      field.id === id ? { ...field, value } : field
-    );
-    setFields(updatedFields);
-  }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length === 0) {
-      console.log("Form submitted successfully", formValues);
-    } else {
-      setErrors(validationErrors);
-    }
-  }
-  return(
-    <Form fields={fields} 
-    formValues={formValues} 
-    errors={errors} 
-    handleChange={handleChange} 
-    handleSubmit={handleSubmit} />
-  )
-  `;
+      const handleSubmit = (formValues) => {
+        console.log('Success:', formValues);
+    };
+  return (
+              <Form fields={fields} handleSubmit={handleSubmit} />
+  )`;
 
   const rowColCodeSnippet = `
   import React from 'react';
@@ -503,7 +465,6 @@ return (
 );
 `;
 
-
   const listCode = `
 
 return (
@@ -552,7 +513,7 @@ return (
 );
 `;
 
-const tableCode = `
+  const tableCode = `
 const dataSource = [
     {
       name:'Ahmed',
@@ -651,14 +612,8 @@ return (
     { label: "Services", path: "/services" },
     { label: "Contact", path: "/contact" },
   ];
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length === 0) {
-      console.log("Form submitted successfully", formValues);
-    } else {
-      setErrors(validationErrors);
-    }
+  const handleSubmit = (formValues) => {
+    console.log("Success:", formValues);
   };
   const handleClick = () => {
     console.log("Button clicked");
@@ -904,7 +859,11 @@ return (
               ]}
               codeSnippet={checkCode}
             >
-      <CheckboxGroup options={options} value={checkedValues} onChange={onChange} />
+              <CheckboxGroup
+                options={options}
+                value={checkedValues}
+                onChange={onChange}
+              />
             </DocumentationForm>
           </div>
         </div>
@@ -953,7 +912,9 @@ return (
                 <Radio value={1}>A</Radio>
                 <Radio value={2}>B</Radio>
                 <Radio value={3}>C</Radio>
-                <Radio value={4} disabled>D</Radio>
+                <Radio value={4} disabled>
+                  D
+                </Radio>
               </RadioGroup>
             </DocumentationForm>
           </div>
@@ -997,13 +958,7 @@ return (
             ]}
             codeSnippet={formCode}
           >
-            <Form
-              fields={fields}
-              formValues={formValues}
-              errors={errors}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-            />
+            <Form fields={fields} handleSubmit={handleSubmit} />
           </DocumentationForm>
         </div>
       </div>
@@ -1027,51 +982,65 @@ return (
           stateInfo={[]}
           codeSnippet={primarybtnCode}
         >
-        <Buttons type="primary" onClick={handleClick}>Primary Button</Buttons>
-        <Buttons type="secondary" onClick={handleClick}>Secondary Button</Buttons>
-        <Buttons type="link" onClick={handleClick}>Linked Button</Buttons>
-        <Buttons type="text" onClick={handleClick}>Text Button</Buttons>
-        <Buttons type="disabled" onClick={handleClick}>Disabled Button</Buttons>
-        <Buttons type="dashed" onClick={handleClick}>Dashed Button</Buttons>
-        <Buttons type="primary" onClick={handleClick} icon={HomeIcon}>Icon Button</Buttons>
-        <LoadingButton
-          loadingDurationInSeconds={3}  
-          >Loading Button</LoadingButton>
-          </DocumentationForm>
-          <DocumentationForm
-            componentName="Badges"
-            description="A badge component that displays a notification count."
-            propsInfo={[
-              {
-                name: "title",
-                type: "string",
-                description: "Title text for the badge.",
-              },
-              {
-                name: "notificationCount",
-                type: "number",
-                description: "Number of notifications to be displayed.",
-              },
-              {
-                name: "onClick",
-                type: "function",
-                description: "Callback function to handle badge click.",
-              },
-              {
-                name: "icon",
-                type: "element",
-                description: "Icon element to be displayed in the badge.",
-              },
-            ]}
-            stateInfo={[]}
-            codeSnippet={badgesCode}
-          >
-        <Badges
-          title=""
-          notificationCount={5}
-          onClick={handleNotificationsClick}
-          icon={Bellicon}
-        />
+          <Buttons type="primary" onClick={handleClick}>
+            Primary Button
+          </Buttons>
+          <Buttons type="secondary" onClick={handleClick}>
+            Secondary Button
+          </Buttons>
+          <Buttons type="link" onClick={handleClick}>
+            Linked Button
+          </Buttons>
+          <Buttons type="text" onClick={handleClick}>
+            Text Button
+          </Buttons>
+          <Buttons type="disabled" onClick={handleClick}>
+            Disabled Button
+          </Buttons>
+          <Buttons type="dashed" onClick={handleClick}>
+            Dashed Button
+          </Buttons>
+          <Buttons type="primary" onClick={handleClick} icon={HomeIcon}>
+            Icon Button
+          </Buttons>
+          <LoadingButton loadingDurationInSeconds={3}>
+            Loading Button
+          </LoadingButton>
+        </DocumentationForm>
+        <DocumentationForm
+          componentName="Badges"
+          description="A badge component that displays a notification count."
+          propsInfo={[
+            {
+              name: "title",
+              type: "string",
+              description: "Title text for the badge.",
+            },
+            {
+              name: "notificationCount",
+              type: "number",
+              description: "Number of notifications to be displayed.",
+            },
+            {
+              name: "onClick",
+              type: "function",
+              description: "Callback function to handle badge click.",
+            },
+            {
+              name: "icon",
+              type: "element",
+              description: "Icon element to be displayed in the badge.",
+            },
+          ]}
+          stateInfo={[]}
+          codeSnippet={badgesCode}
+        >
+          <Badges
+            title=""
+            notificationCount={5}
+            onClick={handleNotificationsClick}
+            icon={Bellicon}
+          />
         </DocumentationForm>
         <DocumentationForm
           componentName="List"
@@ -1118,14 +1087,26 @@ return (
           stateInfo={[]}
           codeSnippet={successAlertCode}
         >
-          <Alert type="Success" description="Detailed description and advice about successful copywriting." />
-          <Alert type="Warning" description="This is a warning notice about copywriting."/>
-          <Alert type="Info" description="Additional description and information about copywriting."/>
-          <Alert type="Error" description="This is a warning notice about copywriting."/>
-        <Notification
-          title="Notification Title"
-          message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."
-        />
+          <Alert
+            type="Success"
+            description="Detailed description and advice about successful copywriting."
+          />
+          <Alert
+            type="Warning"
+            description="This is a warning notice about copywriting."
+          />
+          <Alert
+            type="Info"
+            description="Additional description and information about copywriting."
+          />
+          <Alert
+            type="Error"
+            description="This is a warning notice about copywriting."
+          />
+          <Notification
+            title="Notification Title"
+            message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."
+          />
         </DocumentationForm>
         <DocumentationForm
           componentName="CircularProgressBar"
@@ -1145,7 +1126,7 @@ return (
           stateInfo={[]}
           codeSnippet={circularProgCode}
         >
-        <CircularProgressBar value={75} color="pink" size={150}/>
+          <CircularProgressBar value={75} color="pink" size={150} />
         </DocumentationForm>
       </div>
       <div className="container">
@@ -1173,8 +1154,8 @@ return (
           stateInfo={[]}
           codeSnippet={tableCode}
         >
-        <PureTable datacolumns={datacolumns} records={dataSource} />
-        {/* <TableComponent
+          <PureTable datacolumns={datacolumns} records={dataSource} />
+          {/* <TableComponent
           initialRows={[
             {
               columns: ["Text1", "Text2"],
@@ -1364,9 +1345,9 @@ return (
                   stateInfo={[]}
                   codeSnippet={dividerCode}
                 >
-              <Divider orientation="right" style={{ margin: '3rem 0' }}>
-                <p>laboriosam.</p>
-              </Divider>
+                  <Divider orientation="right" style={{ margin: "3rem 0" }}>
+                    <p>laboriosam.</p>
+                  </Divider>
                 </DocumentationForm>
               </div>
               <DocumentationForm
@@ -1421,17 +1402,34 @@ return (
                 <Layout>
                   <Header>Header</Header>
                   <Layout hasSider={true}>
-                  <Sider reverseArrow={true} collapsible={collapsible}>
-                    <div style={{ width: '100%', padding: '1rem', fontSize: '14px', fontWeight: '300', fontFamily: '"Roboto", sans-serif' }}>
-                      <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                        <li>Home</li>
-                        <li>Pricing</li>
-                        <li>About</li>
-                        <li>Contact us</li>
-                      </ul>
-                    </div>
-                  </Sider>
-                  <Content className='' style={{}}>lorem</Content>
+                    <Sider reverseArrow={true} collapsible={collapsible}>
+                      <div
+                        style={{
+                          width: "100%",
+                          padding: "1rem",
+                          fontSize: "14px",
+                          fontWeight: "300",
+                          fontFamily: '"Roboto", sans-serif',
+                        }}
+                      >
+                        <ul
+                          style={{
+                            listStyle: "none",
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "1rem",
+                          }}
+                        >
+                          <li>Home</li>
+                          <li>Pricing</li>
+                          <li>About</li>
+                          <li>Contact us</li>
+                        </ul>
+                      </div>
+                    </Sider>
+                    <Content className="" style={{}}>
+                      lorem
+                    </Content>
                   </Layout>
                   <Footer>Footer</Footer>
                 </Layout>
