@@ -1,9 +1,19 @@
-import style from './layout.module.css';
+import spaceStyle from './layout.module.css';
 
 
-const Space = ({ children, align, size, direction, wrap }) => {
+const Space = ({ children, className, style, align, size, direction, wrap }) => {
+
+    const allStyle = {
+        alignItems: align || 'flex-start',
+        flexDirection: direction || 'row',
+        flexWrap: wrap || 'nowrap',
+        gap: size || '0',
+        ...style
+    }
+
+
     return (
-        <div className={style.space} style={{ alignItems: align || 'flex-start', flexDirection: direction || 'row', flexWrap: wrap || 'nowrap', gap: size || '0' }}>
+        <div className={`${spaceStyle.space} ${className}`} style={allStyle}>
             {children}
         </div>
     )

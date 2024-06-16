@@ -1,8 +1,8 @@
-import style from './layout.module.css'
+import contentStyle from './layout.module.css'
 
-const Content = () => {
+const Content = ({ className, style, children }) => {
     return (
-        <div className={style.content}>Content</div>
+        <div className={`${contentStyle.content} ${className}`} style={style}>{children}</div>
     )
 }
 

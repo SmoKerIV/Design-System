@@ -1,6 +1,6 @@
-import style from './layout.module.css'
+import dividerStyle from './layout.module.css'
 
-export const Divider = ({ orientation, orientationMargin, type, children }) => {
+export const Divider = ({ orientation, orientationMargin, type, className, style, children }) => {
     let st = {}
 
     if (orientation === 'left') {
@@ -25,8 +25,8 @@ export const Divider = ({ orientation, orientationMargin, type, children }) => {
 
 
     return (
-        <div className={style.Divider}>
-            <p className={style.p} style={st}>
+        <div className={`${dividerStyle.Divider} ${className}`} style={style}>
+            <p className={dividerStyle.p} style={st}>
                 {children}
             </p>
         </div>

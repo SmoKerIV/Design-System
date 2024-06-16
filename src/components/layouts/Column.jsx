@@ -1,9 +1,14 @@
-import style from './layout.module.css'
+import colStyle from './layout.module.css'
 
-const Col = ({ span, children, sm, md, lg }) => {
+const Col = ({ span, children, className, style, sm, md, lg }) => {
+
+    const allStyle = {
+        gridColumn: `auto / span ${span || 24}`,
+        ...style
+    }
 
     return (
-        <div className={`${style.col} ${style[`span-md-${md}`]} ${style[`span-sm-${sm}`]} ${style[`span-lg-${lg}`]}`} style={{ gridColumn: `auto / span ${span || 24}` }}>
+        <div className={`${className} ${colStyle.col} ${colStyle[`span-md-${md}`]} ${colStyle[`span-sm-${sm}`]} ${colStyle[`span-lg-${lg}`]}`} style={allStyle}>
             {children}
         </div>
     )

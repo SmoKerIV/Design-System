@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import './radio.css';
+import React, { useState } from "react";
+import "./radio.css";
 
-const Radio = ({ label, name, value, disabled }) => {
-    const [selectedValue, setSelectedValue] = useState(null);
-
-    const handleChange = (e) => {
-        setSelectedValue(e.target.value);
-    };
-
-    return (
-        <div className={`radio-wrapper ${disabled ? 'disabled' : ''}`}>
-            <input
-                type="radio"
-                name={name}
-                value={value}
-                checked={selectedValue === value}
-                disabled={disabled}
-                onChange={handleChange}
-            />
-            {label}
-        </div>
-    );
+const Radio = ({ children, value, selectedValue, onChange, disabled }) => {
+  const handleChange = () => {
+    if (!disabled && onChange) {
+      onChange(value);
+    }
+  };
+  return (
+    <div
+      className={`radio-wrapper ${disabled ? "disabled" : ""}`}
+      onClick={handleChange}
+    >
+      <button
+        type="button"
+        className={`radio-button ${selectedValue === value ? "selected" : ""}`}
+        disabled={disabled}
+      >
+      </button>
+      {children}
+    </div>
+  );
 };
 
 export default Radio;

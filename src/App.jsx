@@ -11,12 +11,10 @@ import style from "./components/PureModal/pureModal.module.css";
 import { PureModal } from "./components/PureModal/pureModal";
 import { useState } from "react";
 import Sider from "./components/layouts/Sider";
-import style2 from "./components/layouts/layout.module.css";
 import { Row } from "./components/layouts/Row";
 import Col from "./components/layouts/Column";
 import Badges from "./components/datadisplay/badges/badges";
 import LoadingButton from "./components/buttons/loadingButton";
-import Card from "./components/datadisplay/card/card";
 import ListComponent from "./components/datadisplay/lists/list";
 import Notification from "./components/feedback/Notifications/notification";
 import CircularProgressBar from "./components/feedback/progress/circular";
@@ -25,7 +23,8 @@ import BellIcon from "./components/datadisplay/badges/assets/bell-icon.svg";
 import InputField from "./components/Forms/Input/input";
 import Inputmail from "./components/Forms/Input/inputmail";
 import SearchInput from "./components/Forms/Input/searchinput";
-import Checkbox from "./components/Forms/checkbox/checkbox";
+import CheckboxGroup from "./components/Forms/checkbox/checkboxGroup";
+import RadioGroup from "./components/Forms/radio/radioGroup";
 import Radio from "./components/Forms/radio/radio";
 import Form from "./components/Forms/form/form";
 import Alert from "./components/feedback/alerts/alert2";
@@ -41,16 +40,16 @@ import {
   Space,
 } from "./components/layouts";
 import DocumentationForm from "./components/docs/documentation";
+import icon from "./components/navigation/tabs/assets/tb.svg";
+import aicon from "./components/navigation/tabs/assets/atb.svg";
 
 function App() {
   const [visible, setVisible] = useState(false);
-  const [checked, setChecked] = useState(true);
-  const [indeterminate, setIndeterminate] = useState(true);
-  const [disabledChecked, setDisabledChecked] = useState(true);
   const [formValues, setFormValues] = useState({});
   const [errors, setErrors] = useState({});
   const [collapsible, setCollapsible] = useState(true);
   const [collapseStatus, setCollapseStatus] = useState(false);
+  const [value, setValue] = useState();
   const [fields, setFields] = useState([
     {
       id: 1,
@@ -69,6 +68,22 @@ function App() {
       required: false,
     },
   ]);
+  const [checkedValues, setCheckedValues] = useState(['Apple']);
+
+  const onChange = (values) => {
+    console.log('checked = ', values);
+    setCheckedValues(values);
+  };
+
+  const options = [
+    { label: 'Apple', value: 'Apple' },
+    { label: 'Pear', value: 'Pear' },
+    { label: 'Orange', value: 'Orange', disabled: true}
+  ];
+  const onRadioChange = (newValue) => {
+    console.log("radio checked", newValue);
+    setValue(newValue);
+  };
 
   const handleChange = (e, id) => {
     const { name, value } = e.target;
@@ -236,17 +251,34 @@ export const PureModal = ({ isOpen = false, onClose = () => { }, children }) => 
 `;
 
   const tab = `
-const tabs = [
-    { title: "Tab 1", content: <div>Content for Tab 1</div> },
-    { title: "Tab 2", content: <div>Content for Tab 2</div> },
-    { title: "Tab 3", content: <div>Content for Tab 3</div> },
-     ];
+import icon from "./components/navigation/tabs/assets/tb.svg";
+import aicon from "./components/navigation/tabs/assets/atb.svg";
+  const tabs = [
+    {
+      title: "Tab 1",
+      content: <div>Content 1</div>,
+      icon: icon,
+      aicon: aicon,
+    },
+    {
+      title: "Tab 2",
+      content: <div>Content 2</div>,
+      icon: icon,
+      aicon: aicon,
+    },
+    {
+      title: "Tab 3",
+      content: <div>Content 3</div>,
+      icon: icon,
+      aicon: aicon,
+    },
+  ];
      return (
        <Tabs tabs={tabs} />
        <VerticalTabs tabs={tabs} />
 
      )`;
-     const inputCode = `     
+  const inputCode = `     
      return(       
             <InputField placeholder={"example"} onChange={handleInputChange} />
             <Inputmail placeholder={"example"} onChange={handleInputChange} />
@@ -254,30 +286,39 @@ const tabs = [
       )`;
 
   const checkCode = `
-    const [checked, setChecked] = useState(true);
-    const [indeterminate, setIndeterminate] = useState(true);
-    const [disabledChecked, setDisabledChecked] = useState(true);
-    return(
-      <Checkbox
-       label="Label"
-        checked={checked}
-         onChange={() => setChecked(!checked)} />
-      <Checkbox
-       label="Label"
-        indeterminate={indeterminate}
-         checked={false} onChange={() => setIndeterminate(!indeterminate)} />
-      <Checkbox
-       label="Label"
-        disabled checked={disabledChecked}
-         onChange={() => setDisabledChecked(!disabledChecked)} />
-    )
+import CheckboxGroup from './CheckboxGroup';
+  const [checkedValues, setCheckedValues] = useState(['Apple']);
+
+  const onChange = (values) => {
+    console.log('checked = ', values);
+    setCheckedValues(values);
+  };
+    const optionsWithDisabled = [
+    { label: 'Apple', value: 'Apple' },
+    { label: 'Pear', value: 'Pear' },
+    { label: 'Orange', value: 'Orange', disabled: true }
+  ];
+
+  return (
+    <div className="app">
+      <CheckboxGroup options={options} value={checkedValues} onChange={onChange} />
+);
   `;
   const radioCode = `
-  return(
-    <Radio label="Normal" name="example" value="normal" />
-    <Radio label="Normal" name="example" value="normal" />
-    <Radio label="Disabled" name="example" value="disabled" disabled />
-  )
+import RadioGroup from "./components/Forms/radio/radioGroup";
+import Radio from "./components/Forms/radio/radio";
+  const [value, setValue] = useState();
+    const onRadioChange = (newValue) => {
+    console.log("radio checked", newValue);
+    setValue(newValue);
+  };
+  return (
+        <RadioGroup onChange={onRadioChange} value={value}>
+          <Radio value={1}>A</Radio>
+          <Radio value={2}>B</Radio>
+          <Radio value={3}>C</Radio>
+          <Radio value={4} disabled>D</Radio>
+        </RadioGroup>
   `;
   const formCode = `
   const fields = [
@@ -326,7 +367,6 @@ const tabs = [
     handleSubmit={handleSubmit} />
   )
   `;
-  
 
   const rowColCodeSnippet = `
   import React from 'react';
@@ -411,7 +451,7 @@ export default Space`;
               </Layout>    )
 }`;
 
-const primarybtnCode = `
+  const primarybtnCode = `
 const handleClick = () => {
     console.log("Button clicked");
   };
@@ -447,7 +487,7 @@ return (
      loadingDurationInSeconds={3}  
    >Loading Button</LoadingButton>
 );`;
-const badgesCode = `
+  const badgesCode = `
 
 const handleNotificationsClick = () => {
     console.log("Notifications clicked");
@@ -463,17 +503,8 @@ return (
 );
 `;
 
-const cardCode = `
 
-return (
-   <Card
-      imageSrc="https://via.placeholder.com/300"
-      title="Card Title 1"
-      description="This is a longer description of the card content. Click the button to toggle more or less content."/>
-);
-`;
-
-const listCode = `
+  const listCode = `
 
 return (
      <ListComponent
@@ -492,7 +523,7 @@ return (
 );
 `;
 
-const successAlertCode = `
+  const successAlertCode = `
 
 return (
     <Alert type="Success" description="Detailed description and advice about successful copywriting." />
@@ -514,7 +545,7 @@ return (
     message="Proactively incubate innovative processes for high-payoff architectures. Globally benchmark flexible."/>
 );
 `;
-const circularProgCode = `
+  const circularProgCode = `
 
 return (
     <CircularProgressBar value={75} color="pink" size={150}/>
@@ -589,9 +620,24 @@ return (
     { label: "Option 4" },
   ];
   const tabs = [
-    { title: "Tab 1", content: <div>Content for Tab 1</div> },
-    { title: "Tab 2", content: <div>Content for Tab 2</div> },
-    { title: "Tab 3", content: <div>Content for Tab 3</div> },
+    {
+      title: "Tab 1",
+      content: <div>Content 1</div>,
+      icon: icon,
+      aicon: aicon,
+    },
+    {
+      title: "Tab 2",
+      content: <div>Content 2</div>,
+      icon: icon,
+      aicon: aicon,
+    },
+    {
+      title: "Tab 3",
+      content: <div>Content 3</div>,
+      icon: icon,
+      aicon: aicon,
+    },
   ];
   const menuItems = [
     { label: "Home", url: "/" },
@@ -835,7 +881,8 @@ return (
                 {
                   name: "indeterminate",
                   type: "boolean",
-                  description: "Indicates whether the checkbox is indeterminate.",
+                  description:
+                    "Indicates whether the checkbox is indeterminate.",
                 },
                 {
                   name: "disabled",
@@ -857,24 +904,8 @@ return (
               ]}
               codeSnippet={checkCode}
             >
-            <Checkbox
-              label="Label"
-              checked={checked}
-              onChange={() => setChecked(!checked)}
-            />
-            <Checkbox
-              label="Label"
-              indeterminate={indeterminate}
-              checked={false}
-              onChange={() => setIndeterminate(!indeterminate)}
-            />
-            <Checkbox
-              label="Label"
-              disabled
-              checked={disabledChecked}
-              onChange={() => setDisabledChecked(!disabledChecked)}
-            />
-          </DocumentationForm>
+      <CheckboxGroup options={options} value={checkedValues} onChange={onChange} />
+            </DocumentationForm>
           </div>
         </div>
       </div>
@@ -904,22 +935,27 @@ return (
                 {
                   name: "disabled",
                   type: "boolean",
-                  description: "Indicates whether the radio button is disabled.",
+                  description:
+                    "Indicates whether the radio button is disabled.",
                 },
               ]}
               stateInfo={[
                 {
                   name: "onChange",
                   type: "function",
-                  description: "Callback function to handle radio button changes.",
+                  description:
+                    "Callback function to handle radio button changes.",
                 },
               ]}
               codeSnippet={radioCode}
             >
-            <Radio label="Normal" name="example" value="normal" />
-            <Radio label="Normal" name="example" value="normal" />
-            <Radio label="Disabled" name="example" value="disabled" disabled />
-          </DocumentationForm>
+              <RadioGroup onChange={onRadioChange} value={value}>
+                <Radio value={1}>A</Radio>
+                <Radio value={2}>B</Radio>
+                <Radio value={3}>C</Radio>
+                <Radio value={4} disabled>D</Radio>
+              </RadioGroup>
+            </DocumentationForm>
           </div>
         </div>
       </div>
@@ -961,14 +997,14 @@ return (
             ]}
             codeSnippet={formCode}
           >
-          <Form
-            fields={fields}
-            formValues={formValues}
-            errors={errors}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
-        </DocumentationForm>
+            <Form
+              fields={fields}
+              formValues={formValues}
+              errors={errors}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
+          </DocumentationForm>
         </div>
       </div>
       <div className="container">
@@ -1050,19 +1086,19 @@ return (
           stateInfo={[]}
           codeSnippet={listCode}
         >
-        <ListComponent
-          initialItems={[
-            "[ITEM] Racing car sprays burning fuel into crowd.",
-            "[ITEM] Japanese princess to wed commoner.",
-            "[ITEM] Australian walks 100km after outback crash.",
-            "[ITEM] Man charged over missing wedding girl.",
-            "[ITEM] Los Angeles battles huge wildfires.",
-            "[ITEM] New item 1.",
-            "[ITEM] New item 2.",
-            "[ITEM] New item 3.",
-            "[ITEM] New item 4.",
-          ]}
-        />
+          <ListComponent
+            initialItems={[
+              "[ITEM] Racing car sprays burning fuel into crowd.",
+              "[ITEM] Japanese princess to wed commoner.",
+              "[ITEM] Australian walks 100km after outback crash.",
+              "[ITEM] Man charged over missing wedding girl.",
+              "[ITEM] Los Angeles battles huge wildfires.",
+              "[ITEM] New item 1.",
+              "[ITEM] New item 2.",
+              "[ITEM] New item 3.",
+              "[ITEM] New item 4.",
+            ]}
+          />
         </DocumentationForm>
         <DocumentationForm
           componentName="Alert"
@@ -1130,7 +1166,8 @@ return (
             {
               name: "columnTitles",
               type: "array",
-              description: "Array of column titles to be displayed in the table.",
+              description:
+                "Array of column titles to be displayed in the table.",
             },
           ]}
           stateInfo={[]}
@@ -1211,97 +1248,128 @@ return (
                     codeSnippet={modalCode}
                   >
                     <PureModal
+                      title="Title here"
+                      closeIcon={true}
                       isOpen={visible}
                       onClose={() => setVisible(false)}
+                      onOk={() => console.log("OK button pressed")}
                     >
-                      <button onClick={() => setVisible(false)}>Close</button>
-                      <h1>Hello Modal</h1>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Unde, fugiat!
+                      </p>
                     </PureModal>
                   </DocumentationForm>
                 </div>
               </div>
 
               <div>
-              <DocumentationForm
-                componentName="Row and Col"
-                description="The Row and Col components from Ant Design provide a responsive grid layout system. It allows for flexible and consistent layout structures."
-                propsInfo={[
-                    { name: 'gutter', type: 'array', description: 'Spacing between the grid columns. Accepts an array with horizontal and vertical spacing values.' },
-                    { name: 'span', type: 'number', description: 'Number of columns the grid item should span. Total columns in a row is 24.' },
-                    { name: 'sm', type: 'number', description: 'Grid item width at small breakpoint (576px).' },
-                    { name: 'md', type: 'number', description: 'Grid item width at medium breakpoint (768px).' },
-                    { name: 'lg', type: 'number', description: 'Grid item width at large breakpoint (992px).' },
-                ]}
-                stateInfo={[]}
-                codeSnippet={rowColCodeSnippet}
-            >
-                <Row gutter={[16, 16]}>
-                  <Col span={4} md={8} sm={4} lg={24}>
-                    <div>hello</div>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Id, nulla!
-                    </p>
-                  </Col>
-                  <Col span={8} sm={4} md={8} lg={24}>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Iste, sint.
-                    </p>
-                  </Col>
-                  <Col span={8} sm={4} md={8} lg={24}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Quibusdam, accusantium.
-                  </Col>
-                  <Col span={6} sm={8} md={8} lg={16}>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Quas, reiciendis.
-                    </p>
-                  </Col>
-                  <Col span={6} sm={4} md={8} lg={16}>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </Col>
-                  <Col span={6}>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                  </Col>
-                  <Col span={6}>Lorem ipsum dolor sit amet.</Col>
-                  <Col span={6}>Lorem ipsum dolor sit amet.</Col>
-                  <Col span={6}>Lorem ipsum dolor sit amet.</Col>
-                </Row>
-              </DocumentationForm>
+                <DocumentationForm
+                  componentName="Row and Col"
+                  description="The Row and Col components from Ant Design provide a responsive grid layout system. It allows for flexible and consistent layout structures."
+                  propsInfo={[
+                    {
+                      name: "gutter",
+                      type: "array",
+                      description:
+                        "Spacing between the grid columns. Accepts an array with horizontal and vertical spacing values.",
+                    },
+                    {
+                      name: "span",
+                      type: "number",
+                      description:
+                        "Number of columns the grid item should span. Total columns in a row is 24.",
+                    },
+                    {
+                      name: "sm",
+                      type: "number",
+                      description:
+                        "Grid item width at small breakpoint (576px).",
+                    },
+                    {
+                      name: "md",
+                      type: "number",
+                      description:
+                        "Grid item width at medium breakpoint (768px).",
+                    },
+                    {
+                      name: "lg",
+                      type: "number",
+                      description:
+                        "Grid item width at large breakpoint (992px).",
+                    },
+                  ]}
+                  stateInfo={[]}
+                  codeSnippet={rowColCodeSnippet}
+                >
+                  <Row gutter={[16, 16]}>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      <p>Lorem ipsum dolor sit amet.</p>
+                    </Col>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      <p>Lorem ipsum dolor sit amet.</p>
+                    </Col>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      Lorem ipsum dolor sit amet.
+                    </Col>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      <p>Lorem ipsum dolor sit amet.</p>
+                    </Col>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      <p>Lorem ipsum dolor sit amet.</p>
+                    </Col>
+                    <Col span={8} sm={14} md={8} lg={24}>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Culpa ?
+                      </p>
+                    </Col>
+                    <Col span={8} sm={14} md={8} lg={24}>
+                      Lorem ipsum dolor sit amet.
+                    </Col>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      Lorem ipsum dolor sit amet.
+                    </Col>
+                    <Col span={8} sm={14} md={8} lg={8}>
+                      Lorem ipsum dolor sit amet.
+                    </Col>
+                  </Row>
+                </DocumentationForm>
               </div>
 
               <div>
                 <DocumentationForm
                   componentName="Divider"
                   description="A divider component that separates content with a horizontal line."
-                  propsInfo={[  
+                  propsInfo={[
                     {
                       name: "orientation",
                       type: "string",
-                      description: "Position of the divider line. Options: 'left', 'right', 'center'.",
+                      description:
+                        "Position of the divider line. Options: 'left', 'right', 'center'.",
                     },
                     {
                       name: "orientationMargin",
                       type: "string",
-                      description: "Margin of the divider line. Options: 'top', 'bottom'.",
+                      description:
+                        "Margin of the divider line. Options: 'top', 'bottom'.",
                     },
                     {
                       name: "type",
                       type: "string",
-                      description: "Type of the divider line. Options: 'horizontal', 'vertical'.",
+                      description:
+                        "Type of the divider line. Options: 'horizontal', 'vertical'.",
                     },
                   ]}
                   stateInfo={[]}
-                  codeSnippet={dividerCode}>
-                <Divider orientation="right">
-                  <p>laboriosam.</p>
-                </Divider>
-              </DocumentationForm>
+                  codeSnippet={dividerCode}
+                >
+              <Divider orientation="right" style={{ margin: '3rem 0' }}>
+                <p>laboriosam.</p>
+              </Divider>
+                </DocumentationForm>
               </div>
               <DocumentationForm
-              
                 componentName="Space"
                 description="A space component that provides spacing between elements."
                 propsInfo={[
@@ -1313,12 +1381,14 @@ return (
                   {
                     name: "align",
                     type: "string",
-                    description: "Alignment of elements. Options: 'flex-start', 'center', 'flex-end'.",
+                    description:
+                      "Alignment of elements. Options: 'flex-start', 'center', 'flex-end'.",
                   },
                   {
                     name: "direction",
                     type: "string",
-                    description: "Direction of elements. Options: 'row', 'column'.",
+                    description:
+                      "Direction of elements. Options: 'row', 'column'.",
                   },
                   {
                     name: "wrap",
@@ -1329,39 +1399,43 @@ return (
                 stateInfo={[]}
                 codeSnippet={spaceCode}
               >
-              <Space size={20} direction="column" align="center" wrap="wrap">
-                <button>submit</button>
-                <button>reload</button>
-                <button>close</button>
-              </Space>
-            </DocumentationForm>
-            <DocumentationForm
-              componentName="Layout"
-              description="A layout component that provides a basic structure for the page."
-              propsInfo={[
-                {
-                  name: "hasSider",
-                  type: "boolean",
-                  description: "Indicates whether the layout has a sidebar.",
-                },
-              ]}
-              stateInfo={[]}
-              codeSnippet={LayoutCode}
-            >
-              <Layout>
-                <Header>Header</Header>
-                <Layout className={style2.layout2} hasSider={true}>
-                  <Sider collapsed={collapseStatus} collapsible={collapsible}>
-                    <p>Lorem</p>
-                    <button onClick={() => setCollapseStatus(!collapseStatus)}>
-                      open/close
-                    </button>
+                <Space size={20} direction="column" align="center" wrap="wrap">
+                  <button>submit</button>
+                  <button>reload</button>
+                  <button>close</button>
+                </Space>
+              </DocumentationForm>
+              <DocumentationForm
+                componentName="Layout"
+                description="A layout component that provides a basic structure for the page."
+                propsInfo={[
+                  {
+                    name: "hasSider",
+                    type: "boolean",
+                    description: "Indicates whether the layout has a sidebar.",
+                  },
+                ]}
+                stateInfo={[]}
+                codeSnippet={LayoutCode}
+              >
+                <Layout>
+                  <Header>Header</Header>
+                  <Layout hasSider={true}>
+                  <Sider reverseArrow={true} collapsible={collapsible}>
+                    <div style={{ width: '100%', padding: '1rem', fontSize: '14px', fontWeight: '300', fontFamily: '"Roboto", sans-serif' }}>
+                      <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <li>Home</li>
+                        <li>Pricing</li>
+                        <li>About</li>
+                        <li>Contact us</li>
+                      </ul>
+                    </div>
                   </Sider>
-                  <Content>lorem</Content>
+                  <Content className='' style={{}}>lorem</Content>
+                  </Layout>
+                  <Footer>Footer</Footer>
                 </Layout>
-                <Footer>Footer</Footer>
-              </Layout>
-            </DocumentationForm>
+              </DocumentationForm>
             </div>
           </div>
         </div>

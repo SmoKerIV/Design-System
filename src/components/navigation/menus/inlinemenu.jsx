@@ -4,8 +4,7 @@ import arrow from './assets/arrow.svg';
 import arrowd from './assets/arrowd.svg';
 import message from './assets/message.svg'; 
 
-const InlineMenu = ({ items, onSelect }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const InlineMenu = ({ items, onSelect }) => {  const [isOpen, setIsOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const menuRef = useRef(null);
 
@@ -31,30 +30,27 @@ const InlineMenu = ({ items, onSelect }) => {
   return (
     <div className="selector-menu" ref={menuRef}>
       <div className="selector-menu-toggle" onClick={() => setIsOpen(!isOpen)}>
-        
         <div className='selector-title'>
-        <img src={message} alt="message" className="menu-icon" />
-        {selectedItem ? selectedItem.label : 'Navigation One'}
+          <img src={message} alt="message" className="menu-icon" />
+          {selectedItem ? selectedItem.label : 'Navigation One'}
         </div>
         <img
-          src={isOpen ? arrowd : arrow}
+          src={isOpen ? arrow : arrowd}
           alt="Arrow"
-          className={`arrow ${isOpen ? 'arrow-up' : 'arrow-down'}`}
+          className={'arrow'}
         />
       </div>
-      {isOpen && (
-        <div className="selector-menu-list">
-          {items.map((item, index) => (
-            <div
-              key={index}
-              className={`selector-menu-item ${selectedItem && selectedItem.label === item.label ? 'selected' : ''}`}
-              onClick={() => handleItemClick(item)}
-            >
-              {item.label}
-            </div>
-          ))}
-        </div>
-      )}
+      <div className={`selector-menu-list ${isOpen ? 'open' : 'close'}`}>
+        {items.map((item, index) => (
+          <div
+            key={index}
+            className={`selector-menu-item ${selectedItem && selectedItem.label === item.label ? 'selected' : ''}`}
+            onClick={() => handleItemClick(item)}
+          >
+            {item.label}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

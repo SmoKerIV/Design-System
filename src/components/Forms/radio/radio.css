@@ -1,21 +1,51 @@
-/* Radio.css */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
 .radio-wrapper {
   display: flex;
   align-items: center;
-  margin-right: 20px;
-  border: none;
-}
-.radio-wrapper input {
-  width: 20px;
-}
-.radio-wrapper input[type="radio"] {
-  margin-right: 8px;
+  margin: 8px 0;
+  cursor: pointer;
 }
 
 .radio-wrapper.disabled {
   color: var(--gray-dark);
+  cursor: not-allowed;
+}
+.radio-wrapper.disabled button{
+  color: var(--gray-dark);
+  border: 2px solid var(--grayer);
+  cursor: not-allowed;
 }
 
-.radio-wrapper input[type="radio"]:disabled {
-  cursor: not-allowed;
+.radio-button {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  border: 2px solid var(--grayer);
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  padding: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.1s;
+}
+.radio-button:hover{
+  border: 2px solid var(--blue);
+}
+
+.radio-button.selected{
+  border: 6px solid var(--blue);
+  animation: ripple 0.6s;
+}
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 var(--primary-hover);
+  }
+  100% {
+    box-shadow: 0 0 0 4px var(--white)}
 }
