@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom'; 
 import './menu.css';
 
-const Menu = ({ items, onItemClick }) => {
+const Menus = ({ items, onItemClick }) => {
   const [activeItem, setActiveItem] = useState(null);
   const location = useLocation();
 
@@ -32,4 +32,4 @@ const Menu = ({ items, onItemClick }) => {
   );
 };
 
-export default Menu;
+export default Menus;

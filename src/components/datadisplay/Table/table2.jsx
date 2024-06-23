@@ -1,6 +1,6 @@
 import "./table2.css";
 
-export const PureTable = ({ datacolumns, records }) => {
+const PureTable = ({ datacolumns, records }) => {
   return (
     <table className="custom-table">
       <thead>
@@ -24,4 +24,4 @@ export const PureTable = ({ datacolumns, records }) => {
     </table>
   );
 };
-
+export default PureTable;

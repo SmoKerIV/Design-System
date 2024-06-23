@@ -3,29 +3,28 @@
 import React, { useState } from 'react';
 import './input.css';
 
-const Inputmail = ({ placeholder, type = 'text', onChange }) => {
-  const [value, setValue] = useState('');
+const Inputmail = ({ placeholder, type = 'text', onChange, addonBefore = 'http://', addonAfter = '.com', defaultValue = '' }) => {
+  const [value, setValue] = useState(defaultValue);
 
   const handleChange = (e) => {
     const inputValue = e.target.value;
     setValue(inputValue);
     if (onChange) {
-      onChange(`https://${inputValue}.com`);
+      onChange(`${addonBefore}${inputValue}${addonAfter}`);
     }
   };
 
   return (
-    <div className='mail'>
-      <div className='start'><p>https://</p></div>
-      <div>
-        <input
-          type={type}
-          value={value}
-          onChange={handleChange}
-          placeholder={placeholder}
-        />
-      </div>
-      <div className='end'><p>.com</p></div>
+    <div className="input-field">
+      <div className="addon addon-before">{addonBefore}</div>
+      <input
+        type={type}
+        value={value}
+        onChange={handleChange}
+        placeholder={placeholder}
+        className="input"
+      />
+      <div className="addon addon-after">{addonAfter}</div>
     </div>
   );
 };

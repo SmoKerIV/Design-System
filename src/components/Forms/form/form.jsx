@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "./form.css";
 
-const Form = ({ fields, handleSubmit }) => {
+const FormComponent = ({ fields, handleSubmit }) => {
   const [formValues, setFormValues] = useState({});
   const [errors, setErrors] = useState({});
 
@@ -53,4 +53,4 @@ const Form = ({ fields, handleSubmit }) => {
   );
 };
 
-export default Form;
+export default FormComponent;

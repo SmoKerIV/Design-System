@@ -1,0 +1,58 @@
+/* src/components/Card.css */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    height: 200px;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* added value */
+    height: 100%;
+  }
+  
+  .card-content .img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .card-content img {
+    object-fit: cover;
+  }
+  
+  .card-content .title-container {
+    padding: 10px 10px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .card-content h3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    text-decoration: none; /* ensure this is set */
+    display: block;
+    color: var(--gray-dark);
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
