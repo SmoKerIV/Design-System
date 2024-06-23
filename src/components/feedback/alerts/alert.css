@@ -18,11 +18,14 @@
 
 .alert-content {
   text-align: left;
+  
 }
 
 .alert-title {
   margin: 0;
   font-size: 1.2em;
+  padding: 12px;
+
 }
 
 .alert-description {
